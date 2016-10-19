@@ -1,0 +1,57 @@
+mbr_free
+- id_free (Primary key)
+- nom
+- prenom
+- mail
+- password
+- date_inscr
+- test
+---------------------------------*profil*-------
+- competances
+- site_web
+- photo
+- tarif
+- langues
+- localisation
+
+
+mbr_society
+-id_soc (Primary key)
+- raison_sociale
+- siret
+- mail
+- password
+- date_inscr
+---------------------------------*profil*-------
+- capital
+- site_web
+- siege_social
+- recruteur
+
+
+mbr_admin
+- id_admin (Primary key)
+- pseudo
+- password
+
+
+annonces
+- id_ann (Primary key)
+- titre
+- date_publi
+- date_debut
+- duree
+- salaire
+- description
+- lieu
+- competences
+
+test
+- id_test (Primary key)
+- result
+- id_free (Foreign key)
+
+
+
+
+
