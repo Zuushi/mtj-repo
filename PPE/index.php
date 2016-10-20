@@ -47,7 +47,7 @@ include_once('includes/co_bdd.php');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Freelance's World</a>
+          <a href="index.php"><img style="" src="img/Sphere5.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
@@ -57,8 +57,8 @@ include_once('includes/co_bdd.php');
             <div class="form-group">
               <input type="password" placeholder="Mot de passe" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Connexion</button>
-            <a href="inscription.php"><button type="button" class="btn btn-success">Inscription</button></a>
+            <button type="submit" class="btn btn-primary">Connexion</button>
+            <a href="inscription.php"><button type="button" class="btn btn-primary">Inscription</button></a>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
