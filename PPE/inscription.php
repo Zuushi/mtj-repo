@@ -1,3 +1,11 @@
+<?php
+include_once('includes/co_bdd.php');
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelance's World</title>
+    <title>PPE Site Freelance</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,8 +43,13 @@
 </head>
 
 <body class="my_background">
-<form action="action.inscription.php" method="post">
+<form action="" method="post">
     <div class="container">
+
+    <?php 
+    //TRAITEMENT FORMULAIRE INSCR FREELANCE AVEC AFFICHAGE ERREURS OU AFFICHAGE INSCR OK
+    include_once('includes/add_mbr_free.php'); 
+    ?>
 
         <div class="row">
 
@@ -84,13 +97,13 @@
             <div class="col-md-offset-2 col-md-7">
                 <div class="form-group">
                     <label for="Email">Adresse Mail</label>
-                    <input type="text" class="form-control" name="email" placeholder="Entrez l'email">
+                    <input type="mail" class="form-control" name="email" placeholder="Entrez l'email">
                 </div>
             </div>
             <div class="col-md-offset-2 col-md-7">
                 <div class="form-group">
                     <label for="Email">Vérification Mail</label>
-                    <input type="text" class="form-control" name="email" placeholder="Entrez de nouveau l'email">
+                    <input type="mail" class="form-control" name="v_email" placeholder="Entrez de nouveau l'email">
                 </div>
             </div>
         </div>
@@ -105,7 +118,7 @@
             <div class="col-md-offset-2 col-md-7">
                 <div class="form-group">
                     <label for="Vpassword">Vérification mot de passe</label>
-                    <input type="password" class="form-control" name="vpassword" placeholder="Vérification mot de passe">
+                    <input type="password" class="form-control" name="v_password" placeholder="Vérification mot de passe">
                 </div>
             </div>
         </div>

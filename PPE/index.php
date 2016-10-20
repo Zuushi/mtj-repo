@@ -1,3 +1,8 @@
+<?php
+include_once('includes/co_bdd.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +14,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>PPE Site Freelance</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../PPE/dist/css/bootstrap.css" rel="stylesheet">
