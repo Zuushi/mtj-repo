@@ -162,6 +162,7 @@ $( "#v_password" ).keyup(function() {
 
 
 //SCRIPT COULEURS NOM DOIT ETRE UNE CHAINE DE CARACTERE
+var nom = $("#nom").val();
 
 $( "#nom" ).keyup(function() {
 
@@ -174,7 +175,7 @@ $( "#nom" ).keyup(function() {
 
 	else
 	{
-		if(jQuery.type( $( "#nom" ) ) !== "string")
+		if(typeof nom !== "string")
 		{
 			$( "#nom" ).css({'background-color' : '#91C091', 'color' : 'white'});
 		}
