@@ -104,3 +104,87 @@ if (!empty($_POST))
 		}//FIN SI !EMPTY[ERROR]
 
 	}//FIN SI !EMPTY[POST]
+
+	?>
+
+	<script>
+
+//SCRIPT COULEURS VERIF MAIL
+
+$( "#v_email" ).keyup(function() {
+
+	if(!$("#v_email").val())
+	{
+
+		$( "#v_email" ).css("background-color", "white");
+
+	}
+
+	else
+	{
+		if($("#v_email").val() == $("#email").val())
+		{
+			$( "#v_email" ).css({'background-color' : '#91C091', 'color' : 'white'});
+		}
+		else
+		{
+			$( "#v_email" ).css({'background-color' : '#E25E5E', 'color' : 'white'});
+		}
+	}
+
+});
+
+
+//SCRIPT COULEURS VERIF PASS
+
+$( "#v_password" ).keyup(function() {
+
+	if(!$("#v_password").val())
+	{
+
+		$( "#v_password" ).css("background-color", "white");
+
+	}
+
+	else
+	{
+		if($("#v_password").val() == $("#password").val())
+		{
+			$( "#v_password" ).css({'background-color' : '#91C091', 'color' : 'white'});
+		}
+		else
+		{
+			$( "#v_password" ).css({'background-color' : '#E25E5E', 'color' : 'white'});
+		}
+	}
+
+});
+
+
+//SCRIPT COULEURS NOM DOIT ETRE UNE CHAINE DE CARACTERE
+
+$( "#nom" ).keyup(function() {
+
+	if(!$("#nom").val())
+	{
+
+		$( "#nom" ).css("background-color", "white");
+
+	}
+
+	else
+	{
+		if(jQuery.type( $( "#nom" ) ) !== "string")
+		{
+			$( "#nom" ).css({'background-color' : '#91C091', 'color' : 'white'});
+		}
+		else
+		{
+			$( "#nom" ).css({'background-color' : '#E25E5E', 'color' : 'white'});
+		}
+	}
+
+});
+
+
+</script>
