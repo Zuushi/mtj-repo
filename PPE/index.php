@@ -41,7 +41,7 @@ include_once('includes/co_bdd.php');
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -107,12 +107,11 @@ include_once('includes/co_bdd.php');
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('img/couverture.jpg');"></div>
+                <div class="fill" style="background-image:url('img/focus.jpg');"></div>
             </div>
-<!--        <div class="item">
-                 Set the third background image using inline CSS below.
-                <div class="fill" style="background-image:url('img/couverture.jpg');"></div>
-            </div> -->
+           <div class="item">
+                <div class="fill" style="background-image:url('img/webd.jpg');"></div>
+            </div>
         </div>
 
         <!-- Controls -->
