@@ -224,12 +224,12 @@ function checkerRs (x,y)
     if (test == "")
     {
         test2.style.backgroundColor = "#F5A9A9"; //rouge
-        ico.src = "img/invalid.gif";
+        ico.src = "img/invalid.png";
     }
     else
     {
         test2.style.backgroundColor = "#BCF5A9"; //vert
-        ico.src = "img/valid.svg";
+        ico.src = "img/valid.png";
         ok = true; // le nom saisi est valide, on assigne vrai a ok
     }
     return ok;
@@ -249,12 +249,12 @@ function checker (x,y)
     if (hasNumbers(test) && test != "")
     {
         test2.style.backgroundColor = "#F5A9A9"; //rouge
-        ico.src = "img/invalid.gif";
+        ico.src = "img/invalid.png";
     }
     else
     {
         test2.style.backgroundColor = "#BCF5A9"; //vert
-        ico.src = "img/valid.svg";
+        ico.src = "img/valid.png";
         if (nom == prenom)
         {
             ok = true; // le nom et prenom saisis sont valide, on assigne vrai a ok
@@ -280,13 +280,13 @@ function checkerSiret (x,y)
     if (hasNumbers(test) && test != "")
     {
         test2.style.backgroundColor = "#BCF5A9"; //vert
-        ico.src = "img/valid.svg";
+        ico.src = "img/valid.png";
         ok = true; // le nom saisi est valide, on assigne vrai a ok
     }
     else
     {
         test2.style.backgroundColor = "#F5A9A9"; //rouge
-        ico.src = "img/invalid.gif";
+        ico.src = "img/invalid.png";
     }
     if (test == "")
     {
@@ -320,9 +320,9 @@ function checkerMail (v,x,y,z)
     if (mail == vmail && mail != "" && vmail != "" &&validateEmail(mail) && validateEmail(vmail))
     {
         bmail.style.backgroundColor = "#BCF5A9"; //vert
-        ico.src = "img/valid.svg";        
+        ico.src = "img/valid.png";        
         bvmail.style.backgroundColor = "#BCF5A9"; //vert
-        ico2.src = "img/valid.svg";
+        ico2.src = "img/valid.png";
 
         if ( email == v_email)
         {
@@ -332,9 +332,9 @@ function checkerMail (v,x,y,z)
     else if (mail != "" && vmail != "")
     {
         bmail.style.backgroundColor = "#F5A9A9"; //rouge
-        ico.src = "img/invalid.gif";       
+        ico.src = "img/invalid.png";       
         bvmail.style.backgroundColor = "#F5A9A9"; //rouge
-        ico2.src = "img/invalid.gif";
+        ico2.src = "img/invalid.png";
     }
 
     if (mail == "" && vmail == "" || vmail == "" || mail == "")
@@ -363,9 +363,9 @@ function checkerMdp (v,x,y,z)
     if (mdp == vmdp && mdp != "" && vmdp != "") // vérifie si les mdp correspondent, il faudrait ajouter des conditions de mdp: 1Maj, 1chiffre, etc...
     {
         bmdp.style.backgroundColor = "#BCF5A9"; //vert
-        ico.src = "img/valid.svg";        
+        ico.src = "img/valid.png";        
         bvmdp.style.backgroundColor = "#BCF5A9"; //vert
-        ico2.src = "img/valid.svg";
+        ico2.src = "img/valid.png";
         if (password == v_password)
         {
             ok = true; // less emails saisies sont valide, on assigne vrai a ok
@@ -375,9 +375,9 @@ function checkerMdp (v,x,y,z)
     else if (mdp != "" && vmdp != "")
     {
         bmdp.style.backgroundColor = "#F5A9A9"; //rouge
-        ico.src = "img/invalid.gif";        
+        ico.src = "img/invalid.png";        
         bvmdp.style.backgroundColor = "#F5A9A9"; //rouge
-        ico2.src = "img/invalid.gif";
+        ico2.src = "img/invalid.png";
     }
 
     if (mdp == "" && vmdp == ""|| vmdp == "" || mdp == "")
