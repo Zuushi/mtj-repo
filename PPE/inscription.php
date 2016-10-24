@@ -65,7 +65,7 @@ include_once('includes/co_bdd.php');
                   Freelance
               </button>
               <!-- Boutton Societe -->
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#societe">
+              <button type="button" onclick="disableButtonSociete()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#societe">
                   Société
               </button>
 
@@ -194,7 +194,7 @@ include_once('includes/co_bdd.php');
         <input type='hidden' name='post_society' value='check1'>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-            <button type="submit" class="btn btn-primary">S'inscrire</button>
+            <button type="submit" id="sub_button_societe" class="btn btn-primary">S'inscrire</button>
         </div>
     </div>
 </div>
@@ -208,6 +208,32 @@ include_once('includes/co_bdd.php');
 </body>
 
 <script language="JavaScript" type="text/javascript">
+//Vérifie si tout les champs sont vert pour activer le boutton inscription
+function checkerChampsSociete()
+{
+
+    //id="sub_button_societe"
+    var raison_sociale = document.getElementById('raison_sociale');
+    var siret = document.getElementById('siret');
+    var password = document.getElementById('smdp');
+    var v_password = document.getElementById('vsmdp');
+    var email = document.getElementById('semail');
+    var v_email = document.getElementById('vsemail');
+    var b = document.getElementById('sub_button_societe');
+    var vert = "rgb(188, 245, 169)";
+    // console.log(alert(nom.style.backgroundColor));
+
+    if ((raison_sociale.style.backgroundColor == vert) && (siret.style.backgroundColor == vert) && (password.style.backgroundColor == vert) && (v_password.style.backgroundColor == vert) && (email.style.backgroundColor == vert) && (v_email.style.backgroundColor == vert))
+    {
+        // active le boutton inscription
+        b.disabled = false;
+    }
+    else
+    {
+        // désactive le boutton inscription
+        b.disabled = true;
+    }
+}
 
 //Vérifie si tout les champs sont vert pour activer le boutton inscription
 function checkerChamps()
@@ -259,6 +285,7 @@ function checkerRs (x,y)
         test2.style.backgroundColor = "#BCF5A9"; //vert
         ico.src = "img/valid.png";
     }
+    checkerChampsSociete();
 }
 
 //Vérifie la saisie du champ nom et prenom
@@ -267,8 +294,6 @@ function checker (x,y)
     var test = x.value; // contient la saisie du champ
     var test2 = x; // test2 est enfaite l'input; il sert a modifier sa .value .style etc...
     var ico = y; // recupère l'id de l'icone en argument
-    var nom = document.getElementById('nom').style.backgroundColor;
-    var prenom = document.getElementById('prenom').style.backgroundColor;
 
     //On test si la saisie contient des chiffres et n'est pas vide
     if (hasNumbers(test) && test != "")
@@ -288,7 +313,7 @@ function checker (x,y)
        test2.style.backgroundColor = "white"; 
        ico.src = "";
     }
-    checkerChamps()
+    checkerChamps();
 }
 
 //Vérifie la saisie du N° Siret qui ne doit contenir que des chiffres
@@ -316,6 +341,7 @@ function checkerSiret (x,y)
        test2.style.backgroundColor = "white"; 
        ico.src = "";
     }
+    checkerChampsSociete();
 }
 
 //Vérifie si la saisie de l'email : exemple@exemple.ex
@@ -334,8 +360,6 @@ function checkerMail (v,x,y,z)
     var bvmail = x; // bvmail est enfaite l'input; il sert a modifier sa .value .style etc...
     var ico = y; // recupère l'id de l'icone en argument
     var ico2 = z; 
-    var email = document.getElementById('email').style.backgroundColor;
-    var v_email = document.getElementById('v_email').style.backgroundColor;
 
     //On test si la saisie contient des chiffres et n'est pas vide
     if (mail == vmail && mail != "" && vmail != "" &&validateEmail(mail) && validateEmail(vmail))
@@ -361,7 +385,8 @@ function checkerMail (v,x,y,z)
        bvmail.style.backgroundColor = "white"; 
        ico2.src = "";
     }
-    checkerChamps()
+    checkerChamps();
+    checkerChampsSociete();
 }
 
 //Vérifie si la saisie des deux mot de passe correspondent
@@ -373,10 +398,6 @@ function checkerMdp (v,x,y,z)
     var bvmdp = x; // bvmdp est enfaite l'input; il sert a modifier sa .value .style etc...
     var ico = y; // recupère l'id de l'icone en argument
     var ico2 = z;
-    var password = document.getElementById('password').style.backgroundColor;
-    var v_password = document.getElementById('v_password').style.backgroundColor;
-    var email = document.getElementById('email').style.backgroundColor;
-    var v_email = document.getElementById('v_email').style.backgroundColor;
 
     if (mdp == vmdp && mdp != "" && vmdp != "") // vérifie si les mdp correspondent, il faudrait ajouter des conditions de mdp: 1Maj, 1chiffre, etc...
     {
@@ -401,13 +422,19 @@ function checkerMdp (v,x,y,z)
        bvmdp.style.backgroundColor = "white"; 
        ico2.src = "";
     }
-    checkerChamps()
+    checkerChamps();
+    checkerChampsSociete();
 }
 
 // désactive le button inscription
 function disableButton ()
 {
     var b = document.getElementById("sub-button").disabled = true;
+}
+
+function disableButtonSociete ()
+{
+    var b = document.getElementById("sub_button_societe").disabled = true;
 }
 
 /*function inscritFreelance()
