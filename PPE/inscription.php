@@ -206,6 +206,31 @@ include_once('includes/co_bdd.php');
 
 <script language="JavaScript" type="text/javascript">
 
+//Vérifie si tout les champs sont vert pour activer le boutton inscription
+function checkerChamps()
+{
+    var nom = document.getElementById('nom');
+    var prenom = document.getElementById('prenom');
+    var password = document.getElementById('password');
+    var v_password = document.getElementById('v_password');
+    var email = document.getElementById('email');
+    var v_email = document.getElementById('v_email');
+    var b = document.getElementById('sub-button');
+    var vert = "rgb(188, 245, 169)";
+    // console.log(alert(nom.style.backgroundColor));
+
+    if ((nom.style.backgroundColor == vert) && (prenom.style.backgroundColor == vert) && (password.style.backgroundColor == vert) && (v_password.style.backgroundColor == vert) && (email.style.backgroundColor == vert) && (v_email.style.backgroundColor == vert))
+    {
+        // active le boutton inscription
+        b.disabled = false;
+    }
+    else
+    {
+        // désactive le boutton inscription
+        b.disabled = true;
+    }
+}
+
 //Si un chiffre ou + est saisi return TRUE
 function hasNumbers(t)
 {
@@ -218,7 +243,6 @@ function checkerRs (x,y)
     var test = x.value; // contient la saisie du champ
     var test2 = x; // test2 est enfaite l'input; il sert a modifier sa .value .style etc...
     var ico = y; // recupère l'id de l'icone en argument
-    var ok = false; // variable booléenne renvoyé par la fonction
 
     //On test si la saisie contient des chiffres et n'est pas vide
     if (test == "")
@@ -226,13 +250,12 @@ function checkerRs (x,y)
         test2.style.backgroundColor = "#F5A9A9"; //rouge
         ico.src = "img/invalid.png";
     }
+
     else
     {
         test2.style.backgroundColor = "#BCF5A9"; //vert
         ico.src = "img/valid.png";
-        ok = true; // le nom saisi est valide, on assigne vrai a ok
     }
-    return ok;
 }
 
 //Vérifie la saisie du champ nom et prenom
@@ -241,7 +264,6 @@ function checker (x,y)
     var test = x.value; // contient la saisie du champ
     var test2 = x; // test2 est enfaite l'input; il sert a modifier sa .value .style etc...
     var ico = y; // recupère l'id de l'icone en argument
-    var ok = false; // variable booléenne renvoyé par la fonction
     var nom = document.getElementById('nom').style.backgroundColor;
     var prenom = document.getElementById('prenom').style.backgroundColor;
 
@@ -251,21 +273,19 @@ function checker (x,y)
         test2.style.backgroundColor = "#F5A9A9"; //rouge
         ico.src = "img/invalid.png";
     }
+
     else
     {
         test2.style.backgroundColor = "#BCF5A9"; //vert
         ico.src = "img/valid.png";
-        if (nom == prenom)
-        {
-            ok = true; // le nom et prenom saisis sont valide, on assigne vrai a ok
-        }
     }
+
     if (test == "")
     {
        test2.style.backgroundColor = "white"; 
        ico.src = "";
     }
-    return ok; // on retourne le booléen
+    checkerChamps()
 }
 
 //Vérifie la saisie du N° Siret qui ne doit contenir que des chiffres
@@ -274,26 +294,25 @@ function checkerSiret (x,y)
     var test = x.value; // contient la saisie du champ N°Siret
     var test2 = x;
     var ico = y;
-    var ok = false; // variable booléenne renvoyé par la fonction
 
     //On test si la saisie contient des chiffres et n'est pas vide
     if (hasNumbers(test) && test != "")
     {
         test2.style.backgroundColor = "#BCF5A9"; //vert
         ico.src = "img/valid.png";
-        ok = true; // le nom saisi est valide, on assigne vrai a ok
     }
+
     else
     {
         test2.style.backgroundColor = "#F5A9A9"; //rouge
         ico.src = "img/invalid.png";
     }
+
     if (test == "")
     {
        test2.style.backgroundColor = "white"; 
        ico.src = "";
     }
-    return ok;
 }
 
 //Vérifie si la saisie de l'email : exemple@exemple.ex
@@ -312,7 +331,6 @@ function checkerMail (v,x,y,z)
     var bvmail = x; // bvmail est enfaite l'input; il sert a modifier sa .value .style etc...
     var ico = y; // recupère l'id de l'icone en argument
     var ico2 = z; 
-    var ok = false; // variable booléenne renvoyé par la fonction
     var email = document.getElementById('email').style.backgroundColor;
     var v_email = document.getElementById('v_email').style.backgroundColor;
 
@@ -323,12 +341,8 @@ function checkerMail (v,x,y,z)
         ico.src = "img/valid.png";        
         bvmail.style.backgroundColor = "#BCF5A9"; //vert
         ico2.src = "img/valid.png";
-
-        if ( email == v_email)
-        {
-            ok = true; // le nom saisi est valide, on assigne vrai a ok
-        }
     }
+
     else if (mail != "" && vmail != "")
     {
         bmail.style.backgroundColor = "#F5A9A9"; //rouge
@@ -344,7 +358,7 @@ function checkerMail (v,x,y,z)
        bvmail.style.backgroundColor = "white"; 
        ico2.src = "";
     }
-    return ok;
+    checkerChamps()
 }
 
 //Vérifie si la saisie des deux mot de passe correspondent
@@ -356,9 +370,10 @@ function checkerMdp (v,x,y,z)
     var bvmdp = x; // bvmdp est enfaite l'input; il sert a modifier sa .value .style etc...
     var ico = y; // recupère l'id de l'icone en argument
     var ico2 = z;
-    var ok = false; // variable boolénne renvoyé par la fonction
     var password = document.getElementById('password').style.backgroundColor;
     var v_password = document.getElementById('v_password').style.backgroundColor;
+    var email = document.getElementById('email').style.backgroundColor;
+    var v_email = document.getElementById('v_email').style.backgroundColor;
 
     if (mdp == vmdp && mdp != "" && vmdp != "") // vérifie si les mdp correspondent, il faudrait ajouter des conditions de mdp: 1Maj, 1chiffre, etc...
     {
@@ -366,12 +381,8 @@ function checkerMdp (v,x,y,z)
         ico.src = "img/valid.png";        
         bvmdp.style.backgroundColor = "#BCF5A9"; //vert
         ico2.src = "img/valid.png";
-        if (password == v_password)
-        {
-            ok = true; // less emails saisies sont valide, on assigne vrai a ok
-            var b = document.getElementById("sub-button").disabled = false;
-        }
     }
+
     else if (mdp != "" && vmdp != "")
     {
         bmdp.style.backgroundColor = "#F5A9A9"; //rouge
@@ -387,9 +398,10 @@ function checkerMdp (v,x,y,z)
        bvmdp.style.backgroundColor = "white"; 
        ico2.src = "";
     }
-    return ok;
+    checkerChamps()
 }
 
+// désactive le button inscription
 function disableButton ()
 {
     var b = document.getElementById("sub-button").disabled = true;
