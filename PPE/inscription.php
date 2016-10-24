@@ -50,6 +50,7 @@ include_once('includes/co_bdd.php');
                 <?php 
                 //TRAITEMENT FORMULAIRE INSCR FREELANCE AVEC AFFICHAGE ERREURS OU AFFICHAGE INSCR OK
                 include_once('includes/add_mbr_free.php'); 
+                include_once('includes/add_mbr_society.php');
                 ?>
                 <div class="row">
 
@@ -124,6 +125,7 @@ include_once('includes/co_bdd.php');
                     </div>
 
                 </div>
+                <input type='hidden' name='post_free' value='check2'>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
                     <button type="submit" id="sub-button" class="btn btn-primary">S'inscrire</button>
@@ -132,7 +134,7 @@ include_once('includes/co_bdd.php');
         </div>
     </div>
 </form>
-<form autocomplete="off" method="post" action="add_mbr_soci.php">
+<form autocomplete="off" method="post" action="">
     <!-- SOCIETE -->
     <div class="modal fade" id="societe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -189,6 +191,7 @@ include_once('includes/co_bdd.php');
                 </div>
             </div>
         </div>
+        <input type='hidden' name='post_society' value='check1'>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
             <button type="submit" class="btn btn-primary">S'inscrire</button>
@@ -439,9 +442,4 @@ function disableButton ()
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
-
-<?php
-//TRAITEMENT FORMULAIRE INSCR FREELANCE AVEC AFFICHAGE ERREURS OU AFFICHAGE INSCR OK
-include_once('includes/add_mbr_free.php'); 
-?>
 </html>
