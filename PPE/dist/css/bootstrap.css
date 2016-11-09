@@ -6776,3 +6776,18 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+#p_err_co
+{
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+#p_co
+{  
+  font-weight: bold;
+  float: right;
+}
+
+
