@@ -38,8 +38,8 @@ $reponse = $bdd->query('SELECT pseudo, message, heure FROM minichat ORDER BY heu
 // Affichage de chaque message (toutes les données sont protégées par htmlspecialchars)
 while ($donnees = $reponse->fetch())
 {
-    $heure = date('H:i');
-	echo '<p><strong>'.$donnees['heure'] . htmlspecialchars($donnees['pseudo']) . '</strong> : ' . htmlspecialchars($donnees['message']) . '</p>';
+
+	echo '<p><strong>'.$donnees['heure'] .' ' . htmlspecialchars($donnees['pseudo']) . '</strong> : ' . htmlspecialchars($donnees['message']) . '</p>';
 }
 
 $reponse->closeCursor();

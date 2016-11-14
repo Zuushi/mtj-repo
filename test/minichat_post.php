@@ -10,10 +10,10 @@ catch(Exception $e)
 }
 
 // Insertion du message à l'aide d'une requête préparée
-$heure = date('H:i');
 
-$req = $bdd->prepare('INSERT INTO minichat (pseudo, message, heure) VALUES(?, ?, ?)');
-$req->execute(array($_POST['pseudo'], $_POST['message'], $_POST['heure']));
+
+$req = $bdd->prepare('INSERT INTO minichat (pseudo, message, heure) VALUES(?, ?, NOW() )');
+$req->execute(array($_POST['pseudo'], $_POST['message']));
 
 // Redirection du visiteur vers la page du minichat
 header('Location: minichat.php');
