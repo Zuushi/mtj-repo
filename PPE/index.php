@@ -13,7 +13,7 @@ include_once('includes/traitement_co_free.php');
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="../favicon.ico">
+  <link rel="icon" href="img/ico.png">
 
   <title>PPE Site Freelance</title>
 
@@ -63,7 +63,7 @@ include_once('includes/traitement_co_free.php');
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="index.php"><img class="img-responsive" style="" src="img/Sphere4.png"></a>
+            <a href="index.php"><img class="img-responsive" style="" src="img/FS5.png"></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
            <?php echo '<p id="p_co">Bonjour ' .$donnees['prenom']. '<br /> <a href="deco.php">Déconnexion</a></p>'; ?>
@@ -79,18 +79,22 @@ include_once('includes/traitement_co_free.php');
          {
           ?>
         <nav class="navbar navbar-inverse">
+        <center>
          <div class="principal-top">
-          <div class="navbar-header">
-            <a href="index.php"><img class="img-responsive" style="" src="img/Sphere4.png"></a>
-          </div>
-          <input type="search" class="input-xl form-control bar-form" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Chercher</button>
-          <a class="lien-nav" href=""><B>TROUVER UN FREELANCE</B></a>
-          <a class="lien-nav" href=""><B>TROUVER UNE MISSION</B></a>
-            <form class="barre-de-recherche">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion">Connexion</button>
+            <a href="index.php"><img class="image-resp" src="img/FS5.png"></a>
+                      <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="search" class="input-xl form-control bar-form" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
+          <span class="sections">  
+          <a class="lien-nav" href=""><B>ENGAGER UN FREELANCE</B></a>&nbsp;&nbsp;
+          <a class="lien-nav" href=""><B>CONTRAT DE MISSION</B></a>&nbsp;&nbsp;
+          <a class="lien-nav" href=""><B>GUIDE POUR COMMENCER</B></a>
+          </span>
+          <span class="sections">         
+          	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion">Connexion</button>&nbsp;&nbsp;
               <a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
-            </form> 
+          </span>
           </div><!--/.navbar-collapse -->
+        </center>
         </div>
       </nav>
 
@@ -160,7 +164,7 @@ include_once('includes/traitement_co_free.php');
               <div class="fill" style="background-image:url('img/bandeau2.png');"></div>
             </div>       
             <div class="item">
-              <div class="fill" style="background-image:url('img/bandeau4.jpg');"></div>
+              <div class="fill" style="background-image:url('img/bandeau5.jpg');"></div>
             </div>
           </div>
 
@@ -177,31 +181,106 @@ include_once('includes/traitement_co_free.php');
 
       <div>
         <!-- Example row of columns -->
-<div class="mid-principal">
-    <div class="container">
-    </div>
-    <div>
-    <span class="center-title"><h2>Les étapes pour un départ réussi:
-    <button class="btn-choix">JE SUIS UN FREELANCE</button><button class="btn-choix">JE SUIS UN FREELANCE</button></h2></span>
-    </div><br>
-</div>
+	<div class="mid-principal">
+		<center>
+		    <div class="container">
+		    </div>
+		    <div>
+		    <span><h2>Les étapes pour un départ réussi:
+		    <button class="btn-choix" onclick="changeInfos2(0)">JE SUIS UN FREELANCE</button><button onclick="changeInfos(0)" class="btn-choix">JE SUIS UNE SOCIETE</button></h2></span>
+		    </div><br>
+		</center>
+	</div>
+	<div id="infos" class="resp-etapes">
+			<span class="resp-numbers2">
+				<img  src="img/1.png">
+				<span class="resp-span">
+				<B>Créez un compte</B><br><br>
+					<ul>
+						<li>Renseignez votre profil</li>
+						<li>Passez l'épreuve d'admission</li>
+						<li>Définissez vos compétences</li>
+					</ul>
+				</span>
+			</span>					
+			<span class="resp-numbers">
+				<img  src="img/2.png">
+				<span class="resp-span">
+				<B>Déposez votre CV</B><br><br>
+					<ul>
+						<li>Renseignez vos expériences</li>
+						<li>Déposez vos diplômes</li>
+						<li>Présentez vos projets</li>
+					</ul>
+				</span>
+			</span>					
+			<span class="resp-numbers">
+				<img  src="img/3.png">
+				<span class="resp-span">
+				<B>Postulez aux missions</B><br><br>
+					<ul>
+						<li>Montrez vos atouts</li>
+						<li>Répondez aux attentes de vos clients</li>
+						<li>Recevez vos missions par mail</li>
+						<li>Concluez le contrat</li>
+					</ul>
+				</span>
+			</span>		
+	</div>
+	<div id="infos2" class="resp-etapes2">
+			<span class="resp-numbers2">
+				<img  src="img/1.png">
+				<span class="resp-span">
+				<B>Créez un compte entreprise</B><br><br>
+					<ul>
+						<li>Renseignez les informations<br> de la société</li>
+						<li>Définissez vos attentes</li>
+					</ul>
+				</span>
+			</span>					
+			<span class="resp-numbers">
+				<img  src="img/2.png">
+				<span class="resp-span">
+				<B>Déposez votre mission</B><br><br>
+					<ul>
+						<li>Spécifiez les compétences<br> requises</li>
+						<li>Précisez les axes de mission</li>
+						<li>Présentez le projet</li>
+					</ul>
+				</span>
+			</span>					
+			<span class="resp-numbers">
+				<img  src="img/3.png">
+				<span class="resp-span">
+				<B>Trouvez les professionnels dont vous avez besoin</B><br><br>
+					<ul>
+						<li>Des profils compétents dans tout les secteurs</li>
+						<li>Divers critères de selection</li>
+						<li>Envoyez vos offres de mission par mail</li>
+						<li>Concluez le contrat</li>
+					</ul>
+				</span>
+			</span>		
+	</div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <hr>
 <div class="mid-principal">
     <div class="container">
-<div class="clear"></div>
+		<div class="clear"></div>
     </div>
+
     <div>
     <br><br>
-    <center><h1>Nos partenaires : &nbsp;
-    	<img class="part" src="img/logo_part/air-logo.png">&nbsp;&nbsp;
-    	<img class="part2" src="img/logo_part/logo-etat.png">&nbsp;&nbsp;
-    	<img class="part2" src="img/logo_part/sophia-logo1.png">&nbsp;&nbsp;
-    	<img class="part2" src="img/logo_part/eurocop.png">&nbsp;&nbsp;
-    </h1></center>
+	    <center><h1>Nos partenaires : &nbsp;
+	    	<img class="part" src="img/logo_part/air-logo.png">&nbsp;&nbsp;
+	    	<img class="part2" src="img/logo_part/logo-etat.png">&nbsp;&nbsp;
+	    	<img class="part2" src="img/logo_part/sophia-logo1.png">&nbsp;&nbsp;
+	    	<img class="part2" src="img/logo_part/eurocop.png">&nbsp;&nbsp;
+	    </h1></center>
         <br clear="all"><br><br>
     </div>
 </div>
+
 <div class="footer-principal">
     <div class="container">
 <div class="clear"></div>
@@ -323,6 +402,45 @@ include_once('includes/traitement_co_free.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+    function FluffyKittenMaker(SomeNumberThing)
+    {
+    	var infos2 = document.getElementById('infos2');
+    	infos2.style.opacity = SomeNumberThing/100;
+    } 
+
+    function changeInfos(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+    		document.getElementById('infos').style.visibility = "hidden";
+    		document.getElementById('infos2').style.visibility = "visible";
+		    FluffyKittenMaker(SomeNumberThing);
+		    SomeNumberThing += 0.4;
+		    window.setTimeout("changeInfos("+SomeNumberThing+")", 1);
+		}
+    }    
+
+    function FluffyKitten(SomeNumberThing)
+    {
+    	var infos = document.getElementById('infos');
+    	infos.style.opacity = SomeNumberThing/100;
+    } 
+
+    function changeInfos2(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+    		document.getElementById('infos2').style.visibility = "hidden";
+    		document.getElementById('infos').style.visibility = "visible";
+		    FluffyKitten(SomeNumberThing);
+		    SomeNumberThing += 0.4;
+		    window.setTimeout("changeInfos2("+SomeNumberThing+")", 1);
+		}
+    }
+    </script>
 
     <script>
       $('.carousel').carousel({
