@@ -55,7 +55,7 @@ include_once('includes/co_bdd.php');
                 <div class="row">
 
                     <div class="col-md-offset-2 col-md-8">
-                        <a href="index.php"><img style="" src="img/Sphere4.png"></a>
+                        <a href="index.php"><img style="" src="img/FS4.png"></a>
                         <h1> Inscription <br/> <small> Vous êtes... </small></h1>
                     </div>
                 </div>
