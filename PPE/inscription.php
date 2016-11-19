@@ -29,6 +29,7 @@ include_once('includes/co_bdd.php');
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
+    <link rel="icon" href="img/ico.png">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
@@ -55,7 +56,7 @@ include_once('includes/co_bdd.php');
                 <div class="row">
 
                     <div class="col-md-offset-2 col-md-8">
-                        <a href="index.php"><img style="" src="img/FS4.png"></a>
+                        <a href="index.php"><img style="" src="img/FS5.png"></a>
                         <h1> Inscription <br/> <small> Vous êtes... </small></h1>
                     </div>
                 </div>
