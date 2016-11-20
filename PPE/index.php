@@ -54,6 +54,8 @@ include_once('includes/traitement_co_free.php');
         $donnees = $req->fetch();
 
         ?>
+
+
       <nav class="navbar navbar-inverse">
         <div class="container">
           <div class="navbar-header">
@@ -78,26 +80,56 @@ include_once('includes/traitement_co_free.php');
          else
          {
           ?>
-        <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
+<center>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a href="index.php"><img class="image-resp" src="img/FS5.png"></a>   
+            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div>
+        	
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+          		<input type="search" class="input-xl form-control bar-form" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
+            </div>
+            <div class="form-group lien-nav">
+		          <a href=""><B>ENGAGER UN FREELANCE</B></a>&nbsp;&nbsp;
+		          <a href=""><B>CONTRAT DE MISSION</B></a>&nbsp;&nbsp;
+		          <a href=""><B>GUIDE POUR COMMENCER</B></a>
+            </div>
+          	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion">Connexion</button>&nbsp;&nbsp;
+              <a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+</center>
+    </nav>
+
+<!--         <nav class="navbar navbar-inverse">
         <center>
          <div class="principal-top">
             <a href="index.php"><img class="image-resp" src="img/FS5.png"></a>
                       <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="search" class="input-xl form-control bar-form" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
           <span class="sections">  
-          <a class="lien-nav" href=""><B>ENGAGER UN FREELANCE</B></a>&nbsp;&nbsp;
-          <a class="lien-nav" href=""><B>CONTRAT DE MISSION</B></a>&nbsp;&nbsp;
-          <a class="lien-nav" href=""><B>GUIDE POUR COMMENCER</B></a>
           </span>
           <span class="sections">         
           	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion">Connexion</button>&nbsp;&nbsp;
               <a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
           </span>
-          </div><!--/.navbar-collapse -->
+          </div>
         </center>
         </div>
-      </nav>
-
+      </nav> -->
       <?php
          }
 
@@ -195,7 +227,7 @@ include_once('includes/traitement_co_free.php');
 	</div>
 	<div id="infos" class="resp-etapes">
 			<span class="resp-numbers2">
-				<img  src="img/1.png">
+				<img class="img-responsive" src="img/1.png">
 				<span class="resp-span">
 				<B>Créez un compte</B><br><br>
 					<ul>
@@ -206,7 +238,7 @@ include_once('includes/traitement_co_free.php');
 				</span>
 			</span>					
 			<span class="resp-numbers">
-				<img  src="img/2.png">
+				<img  class="img-responsive" src="img/2.png">
 				<span class="resp-span">
 				<B>Déposez votre CV</B><br><br>
 					<ul>
@@ -217,7 +249,7 @@ include_once('includes/traitement_co_free.php');
 				</span>
 			</span>					
 			<span class="resp-numbers">
-				<img  src="img/3.png">
+				<img  class="img-responsive" src="img/3.png">
 				<span class="resp-span">
 				<B>Postulez aux missions</B><br><br>
 					<ul>
