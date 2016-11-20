@@ -1599,7 +1599,15 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+/*  
+width: 1170px;*/
+width:100%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .lien-nav {
+    max-width: none;
   }
 }
 .container-fluid {
@@ -4435,7 +4443,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-form {
     width: auto;
-    padding-top: 0;
+/*    padding-top: 0; mod*/ 
     padding-bottom: 0;
     margin-right: 0;
     margin-left: 0;
@@ -4484,8 +4492,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left !important;
   }
   .navbar-right {
-    float: right !important;
-    margin-right: -15px;
+/*    float: right !important;
+    margin-right: -15px; mod*/
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
@@ -4600,6 +4608,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         }
     }
 
+
 .btn-choix {
   background-color: #6F92B3;
   margin-left: 30px;
@@ -4638,10 +4647,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .full_slide {
   height: 370px;
   max-width: 100%;
-}
-
-.sections{
-  margin-left: 100px;
 }
 
 .image-resp{
@@ -4763,6 +4768,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
 .lien-nav
 {
+  max-width: 600px;
+}
+
+.sections{
   margin-left: 10px;
 }
 
