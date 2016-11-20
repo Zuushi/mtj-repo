@@ -63,7 +63,7 @@ include_once('includes/traitement_co_free.php');
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="index.php"><img class="img-responsive" style="" src="img/FS5.png"></a>
+            <a href="index.php"><img class="img-responsive" src="img/FS5.png"></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
            <?php echo '<p id="p_co">Bonjour ' .$donnees['prenom']. '<br /> <a href="deco.php">Déconnexion</a></p>'; ?>

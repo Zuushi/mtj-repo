@@ -44,8 +44,8 @@ include_once('includes/co_bdd.php');
     </head>
 
 
-    <body class="my_background" style="background-color:#E6E6E6;">
-    <div class="col-md-offset-3 col-md-8" style="margin-left:25%;background-color:#FFFFFF;margin-top:10px; margin-bottom:30px;box-shadow: 1px 1px 12px #555;max-width:50%;height:auto;">
+    <body class="my_background bg-color-inscription">
+    <div class="col-md-offset-3 col-md-8 mise-en-page">
 
         <form name="inscrit_free" id="inscrit_free" autocomplete="off" method="post">
             <div >
@@ -57,12 +57,12 @@ include_once('includes/co_bdd.php');
                 <div class="row">
 
                     <div class="col-md-12">
-                            <a href="index.php"><img class="img-responsive" style="margin-top: 10px; margin-left:10px;" src="img/FS5.png"></a>
+                            <a href="index.php"><img class="img-responsive img-placement" src="img/FS5.png"></a>
                             <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a><br><br>
                             <span class="text-bold">Créer un compte gratuitement!</span><br/><br/>
                     </div>
                 </div>
-                <div style="max-width:100%; height:40px;background-color: #337ab7;">
+                <div class="btn-de-compte">
                     <span class="button-inscription" onclick="disableButton()" data-toggle="modal" data-target="#freelance">FREELANCE</span>
                     <span class="button-inscription" onclick="disableButtonSociete()" data-toggle="modal" data-target="#societe">SOCIETE</span>
                 </div>
@@ -86,7 +86,7 @@ include_once('includes/co_bdd.php');
                 </div>
 
               <!-- FREELANCE -->
-              <div class="modal fade" style="color:#337ab7" id="freelance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal fade blue" id="freelance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header title-color">
@@ -163,7 +163,7 @@ include_once('includes/co_bdd.php');
 </form>
 <form autocomplete="off" method="post" action="">
     <!-- SOCIETE -->
-    <div style="color:#337ab7" class="modal fade" id="societe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade blue" id="societe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header title-color">
