@@ -44,10 +44,11 @@ include_once('includes/co_bdd.php');
     </head>
 
 
-    <body class="my_background">
+    <body class="my_background" style="background-color:#E6E6E6;">
+    <div class="col-md-offset-3 col-md-8" style="margin-left:25%;background-color:#FFFFFF;margin-top:10px; margin-bottom:30px;box-shadow: 1px 1px 12px #555;max-width:50%;height:auto;">
 
-<form name="inscrit_free" id="inscrit_free" autocomplete="off" method="post" action="">
-            <div class="container">
+        <form name="inscrit_free" id="inscrit_free" autocomplete="off" method="post">
+            <div >
                 <?php 
                 //TRAITEMENT FORMULAIRE INSCR FREELANCE AVEC AFFICHAGE ERREURS OU AFFICHAGE INSCR OK
                 include_once('includes/add_mbr_free.php'); 
@@ -55,41 +56,59 @@ include_once('includes/co_bdd.php');
                 ?>
                 <div class="row">
 
-                    <div class="col-md-offset-2 col-md-8">
-                        <a href="index.php"><img style="" src="img/FS5.png"></a>
-                        <h1> Inscription <br/> <small> Vous êtes... </small></h1>
+                    <div class="col-md-12">
+                            <a href="index.php"><img class="img-responsive" style="margin-top: 10px; margin-left:10px;" src="img/FS5.png"></a>
+                            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a><br><br>
+                            <span class="text-bold">Créer un compte gratuitement!</span><br/><br/>
                     </div>
                 </div>
+                <div style="max-width:100%; height:40px;background-color: #337ab7;">
+                    <span class="button-inscription" onclick="disableButton()" data-toggle="modal" data-target="#freelance">FREELANCE</span>
+                    <span class="button-inscription" onclick="disableButtonSociete()" data-toggle="modal" data-target="#societe">SOCIETE</span>
+                </div>
+                <div class="span6">
+                <br>
+                <h4>Qu'est-ce que Freelance-sphere.com ?</h4>
+                    <p>C'est une plateforme de mise en relation entre freelances et sociétés pour des missions. </p>
 
-                <!-- Boutton Freelance -->
-                <button type="button" onclick="disableButton()" class="btn btn-primary btn-lg col-md-offset-2" data-toggle="modal" data-target="#freelance">
-                  Freelance
-              </button>
-              <!-- Boutton Societe -->
-              <button type="button" onclick="disableButtonSociete()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#societe">
-                  Société
-              </button>
+                    <h4>Comment fonctionne la plateforme ?</h4>
+                    <p>Les sociétés déposent des annonces gratuitement, les freelances ayant réussi le test d'admission répondent par des devis puis discutent avec les clients par mail.</p>
+
+                    <h4>Pourquoi m'inscrire ?</h4>
+                    <p>Freelance-sphere.com regroupe les plus grandes sociétés au monde en matière de développement technologique, ce sont plus de 20.000 clients, 1.000 nouvelles annonces par mois et plus de 500 contrats de missions menés à bien chaque mois.</p>
+
+                    <h4>Qui utilise Freelance-sphere.com ?</h4>
+                    <p>Les prestataires sont des freelances, des indépendants, des auto-entrepreneurs et même des agences. Les clients sont des TPE, des PME, des e-commerçants, des startups et même des grands comptes.</p>
+
+                    <h4>Quelles missions sont proposés sur Freelance-sphere.com ?</h4>
+                    <p>Les missions : développement, création de site web, d'applications mobiles, de e-commerce, webmarketing, référencement, création graphique, rédaction, traduction, commercial et plus. Les budgets varient de 50 à 50.000 euros.</p>
+                    <br><br>
+                </div>
 
               <!-- FREELANCE -->
-              <div class="modal fade" id="freelance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal fade" style="color:#337ab7" id="freelance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
+                      <div class="modal-header title-color">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Je suis un Freelance...</h4>
-                    </div>
+                        <center>
+                            <h4 class="modal-title title-color" id="myModalLabel">Je suis un Freelance</h4>
+                        </center>
+                      </div>
                     <!-- Contenu de l'inscription Freelance-->
                     <div class="modal-body">
                      <div class="row">
                         <div class="col-md-offset-2 col-md-7">
                             <div class="form-group">
                                 <label for="Nom">Nom<img id="ico0" class="ico-img" src=""></label>
+                                <span title="Ce champ doit obligatoirement être rempli"> *</span>
                                 <input type="text" class="form-control" oninput="checker(document.getElementById('nom'),document.getElementById('ico0'));" name="nom" id="nom" placeholder="Nom">
                             </div>
                         </div>
                         <div class="col-md-offset-2 col-md-7">
                             <div class="form-group">
                                 <label for="Prenom">Prénom<img id="ico1" class="ico-img" src=""></label>
+                                <span title="Ce champ doit obligatoirement être rempli"> *</span>
                                 <input type="text" class="form-control" oninput="checker(document.getElementById('prenom'),document.getElementById('ico1'));" name="prenom" id="prenom" placeholder="Prénom">
                             </div>
                         </div>
@@ -99,12 +118,14 @@ include_once('includes/co_bdd.php');
                         <div class="col-md-offset-2 col-md-7">
                             <div class="form-group">
                                 <label for="Email">Adresse Mail<img id="ico2" class="ico-img" src=""></label>
+                                <span title="Ce champ doit obligatoirement être rempli"> *</span>
                                 <input type="mail" class="form-control" oninput="checkerMail(document.getElementById('email'),document.getElementById('v_email'),document.getElementById('ico2'),document.getElementById('ico3'));" name="email" id="email" placeholder="Entrez l'email">
                             </div>
                         </div>
                         <div class="col-md-offset-2 col-md-7">
                             <div class="form-group">
                                 <label for="Email">Vérification Mail<img id="ico3" class="ico-img" src=""></label>
+                                <span title="Ce champ doit obligatoirement être rempli"> *</span>
                                 <input type="mail" class="form-control" oninput="checkerMail(document.getElementById('email'),document.getElementById('v_email'),document.getElementById('ico2'),document.getElementById('ico3'));" name="v_email" id="v_email" placeholder="Entrez de nouveau l'email">
                             </div>
                         </div>
@@ -114,22 +135,27 @@ include_once('includes/co_bdd.php');
                         <div class="col-md-offset-2 col-md-7">
                             <div class="form-group">
                                 <label for="Password">Mot de passe<img id="ico4" class="ico-img" src=""></label>
+                                <span title="Ce champ doit obligatoirement être rempli"> *</span>
                                 <input type="password" class="form-control" oninput="checkerMdp(document.getElementById('password'),document.getElementById('v_password'),document.getElementById('ico4'),document.getElementById('ico5'));" name="password" id="password" placeholder="Mot de passe">
                             </div>
                         </div>
                         <div class="col-md-offset-2 col-md-7">
                             <div class="form-group">
                                 <label for="Vpassword">Vérification mot de passe<img id="ico5" class="ico-img" src=""></label>
+                                <span title="Ce champ doit obligatoirement être rempli"> *</span>
                                 <input type="password" class="form-control" oninput="checkerMdp(document.getElementById('password'),document.getElementById('v_password'),document.getElementById('ico4'),document.getElementById('ico5'));" name="v_password" id="v_password" placeholder="Vérification mot de passe">
+                            </div>
+                            <div>
+                                <span>* (champs obligatoire)</span>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <input type='hidden' name='post_free' value='check2'>
-                <div class="modal-footer">
+                <div class="modal-footer footer-color">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-                    <button type="submit" id="sub-button" class="btn btn-primary">S'inscrire</button>
+                    <button type="submit" id="sub-button" class="btn btn-default">S'inscrire</button>
                 </div>
             </div>
         </div>
@@ -137,12 +163,14 @@ include_once('includes/co_bdd.php');
 </form>
 <form autocomplete="off" method="post" action="">
     <!-- SOCIETE -->
-    <div class="modal fade" id="societe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div style="color:#337ab7" class="modal fade" id="societe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header title-color">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Je représente une Société...</h4>
+                <center>
+                    <h4 class="modal-title title-color" id="myModalLabel">Je représente une société</h4>
+                </center>
         </div>
         <!-- Contenu de l'inscription Societe -->
         <div class="modal-body">
@@ -151,12 +179,14 @@ include_once('includes/co_bdd.php');
                 <div class="col-md-offset-2 col-md-7">
                     <div class="form-group">
                         <label for="Raison Sociale">Raison Sociale<img id="ico11" class="ico-img" src=""></label>
+                        <span title="Ce champ doit obligatoirement être rempli"> *</span>
                         <input type="text" class="form-control" oninput="checkerRs(document.getElementById('raison_sociale'),document.getElementById('ico11'));" id="raison_sociale" name="raison_sociale" placeholder="Raison Sociale">
                     </div>
                 </div>
                 <div class="col-md-offset-2 col-md-7">
                     <div class="form-group">
                         <label for="Siret">N° Siret<img id="ico10" class="ico-img" src=""></label>
+                        <span title="Ce champ doit obligatoirement être rempli"> *</span>
                         <input type="text" class="form-control" oninput="checkerSiret(document.getElementById('siret'),document.getElementById('ico10'));" id="siret" name="siret" placeholder="Numéro Siret">
                     </div>
                 </div>
@@ -166,12 +196,14 @@ include_once('includes/co_bdd.php');
                 <div class="col-md-offset-2 col-md-7">
                     <div class="form-group">
                         <label for="Email">Adresse Mail<img id="ico6" class="ico-img" src=""></label>
+                        <span title="Ce champ doit obligatoirement être rempli"> *</span>
                         <input type="text" class="form-control" oninput="checkerMail(document.getElementById('semail'),document.getElementById('vsemail'),document.getElementById('ico6'),document.getElementById('ico7'));" id="semail" name="email_societe" placeholder="Entrez l'email">
                     </div>
                 </div>
                 <div class="col-md-offset-2 col-md-7">
                     <div class="form-group">
                         <label for="Email">Vérification Mail<img id="ico7" class="ico-img" src=""></label>
+                        <span title="Ce champ doit obligatoirement être rempli"> *</span>
                         <input type="text" class="form-control" oninput="checkerMail(document.getElementById('semail'),document.getElementById('vsemail'),document.getElementById('ico6'),document.getElementById('ico7'));" id="vsemail" name="vemail_societe" placeholder="Entrez de nouveau l'email">
                     </div>
                 </div>
@@ -181,23 +213,28 @@ include_once('includes/co_bdd.php');
                 <div class="col-md-offset-2 col-md-7">
                     <div class="form-group">
                         <label for="Password">Mot de passe<img id="ico8" class="ico-img" src=""></label>
+                        <span title="Ce champ doit obligatoirement être rempli"> *</span>
                         <input type="password" class="form-control" oninput="checkerMdp(document.getElementById('smdp'),document.getElementById('vsmdp'),document.getElementById('ico8'),document.getElementById('ico9'));" id="smdp" name="password_societe" placeholder="Mot de passe">
                     </div>
                 </div>
                 <div class="col-md-offset-2 col-md-7">
                     <div class="form-group">
                         <label for="Vpassword">Vérification mot de passe<img id="ico9" class="ico-img" src=""></label>
+                        <span title="Ce champ doit obligatoirement être rempli"> *</span>
                         <input type="password" class="form-control" oninput="checkerMdp(document.getElementById('smdp'),document.getElementById('vsmdp'),document.getElementById('ico8'),document.getElementById('ico9'));" id="vsmdp" name="vpassword_societe" placeholder="Vérification mot de passe">
+                    </div>
+                    <div>
+                        <span>* (champs obligatoire)</span>
                     </div>
                 </div>
             </div>
         </div>
-        <input type='hidden' name='post_society' value='check1'>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-            <button type="submit" id="sub_button_societe" class="btn btn-primary">S'inscrire</button>
-        </div>
     </div>
+        <input type='hidden' name='post_society' value='check1'>
+        <div class="modal-footer footer-color">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
+            <button type="submit" id="sub_button_societe" class="btn btn-default">S'inscrire</button>
+        </div>
 </div>
 </div>
 
@@ -205,6 +242,7 @@ include_once('includes/co_bdd.php');
 
 </div>
 </form>
+</div>
 
 </body>
 

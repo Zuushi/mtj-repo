@@ -106,18 +106,20 @@ include_once('includes/traitement_co_free.php');
       <div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header title-color">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="col-md-offset-4">Connexion...</h3>
+                <center>
+                    <h4 class="modal-title" id="myModalLabel">Veuillez saisir vos identifiants</h4>
+                </center>
             </div>
-            <!-- Contenu de l'inscription Freelance-->
+            <!-- Champ connexion-->
 
             <form method="post" action="">
 
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-offset-2 col-md-7">
-                    <div class="form-group">
+                    <div class="form-group blue">
                       <label for="Email">Adresse Mail</label>
                       <input type="text" class="form-control" name="email" placeholder="Entrez l'email">
                     </div>
@@ -126,16 +128,16 @@ include_once('includes/traitement_co_free.php');
 
                 <div class="row">
                   <div class="col-md-offset-2 col-md-7">
-                    <div class="form-group">
+                    <div class="form-group blue">
                       <label for="Password">Mot de passe</label>
                       <input type="password" class="form-control" name="password" placeholder="Mot de passe">
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div class="modal-footer footer-color">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-                <button type="submit" class="btn btn-primary">Connexion</button>
+                <button type="submit" class="btn btn-default">Connexion</button>
               </div>
             </div>
           </div>
@@ -155,26 +157,26 @@ include_once('includes/traitement_co_free.php');
         <header id="myCarousel" class="carousel slide">
           <!-- Wrapper for Slides -->
           <div class="carousel-inner">
-            <div class="item active">
+            <div class="item active" id="item1">
               <!-- Set the first background image using inline CSS below. -->
-              <div class="fill" style="background-image:url('img/bandeau1.jpg');"></div>
+              <div class="fill" style="background-image:url('img/bandeau1.jpg');color:white"><br><center><span id="slogan-1-1">DES PARTENAIRES<br><br></span><span id="slogan-1-2"> A TRAVERS LE MONDE</span></center></div>
             </div>
-            <div class="item">
+            <div class="item" id="item2">
               <!-- Set the second background image using inline CSS below. -->
-              <div class="fill" style="background-image:url('img/bandeau2.png');"></div>
+              <div class="fill" style="background-image:url('img/bandeau2.png');color:white"><br><center><span id="slogan-2-1">DES PROFESSIONNELS<br></span><span id="slogan-2-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A l'ECOUTE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DE VOS BESOINS</span></center></div>
             </div>       
-            <div class="item">
-              <div class="fill" style="background-image:url('img/bandeau5.jpg');"></div>
+            <div class="item" id="item3">
+              <div class="fill" style="background-image:url('img/bandeau5.jpg');color:white"><center><span id="slogan-3-1">&nbsp;DES MISSIONS <br>ADAPTEES<br></span><span id="slogan-3-2">A VOS COMPETENCES</span></center></div>
             </div>
           </div>
 
-          <!-- Controls -->
+<!--            Controls 
           <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="icon-prev"></span>
           </a>
           <a class="right carousel-control" href="#myCarousel" data-slide="next">
             <span class="icon-next"></span>
-          </a>
+          </a> -->
 
         </header>
       </div>
@@ -418,7 +420,7 @@ include_once('includes/traitement_co_free.php');
     		document.getElementById('infos').style.visibility = "hidden";
     		document.getElementById('infos2').style.visibility = "visible";
 		    FluffyKittenMaker(SomeNumberThing);
-		    SomeNumberThing += 0.4;
+		    SomeNumberThing += 1;
 		    window.setTimeout("changeInfos("+SomeNumberThing+")", 1);
 		}
     }    
@@ -436,15 +438,168 @@ include_once('includes/traitement_co_free.php');
     		document.getElementById('infos2').style.visibility = "hidden";
     		document.getElementById('infos').style.visibility = "visible";
 		    FluffyKitten(SomeNumberThing);
-		    SomeNumberThing += 0.4;
+		    SomeNumberThing += 1;
 		    window.setTimeout("changeInfos2("+SomeNumberThing+")", 1);
 		}
     }
+
+        function Slogan11(SomeNumberThing)
+    {
+    	var slogan11 = document.getElementById('slogan-1-1');
+    	slogan11.style.opacity = SomeNumberThing/100;
+    }         
+
+    	function Slogan12(SomeNumberThing)
+    {
+    	var slogan12 = document.getElementById('slogan-1-2');
+    	slogan12.style.opacity = SomeNumberThing/100;
+    }         
+
+    	function Slogan21(SomeNumberThing)
+    {
+    	var slogan21 = document.getElementById('slogan-2-1');
+    	slogan21.style.opacity = SomeNumberThing/100;
+    }         
+
+    	function Slogan22(SomeNumberThing)
+    {
+    	var slogan22 = document.getElementById('slogan-2-2');
+    	slogan22.style.opacity = SomeNumberThing/100;
+    }     	
+    	function Slogan31(SomeNumberThing)
+    {
+    	var slogan31 = document.getElementById('slogan-3-1');
+    	slogan31.style.opacity = SomeNumberThing/100;
+    }         
+
+    	function Slogan32(SomeNumberThing)
+    {
+    	var slogan32 = document.getElementById('slogan-3-2');
+    	slogan32.style.opacity = SomeNumberThing/100;
+    } 
+
+    function FluffySlogan11(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+		    Slogan11(SomeNumberThing);
+		    SomeNumberThing += 0.2;
+		    window.setTimeout("FluffySlogan11("+SomeNumberThing+")", 1);
+		}
+		if (SomeNumberThing >= 100)
+		{
+			FluffySlogan12(0);
+		}
+    }
+
+    function FluffySlogan12(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+		    Slogan12(SomeNumberThing);
+		    SomeNumberThing += 0.2;
+		    window.setTimeout("FluffySlogan12("+SomeNumberThing+")", 1);
+		}
+		if (SomeNumberThing >= 100)
+		{
+			var item2 = document.getElementById('item2');
+			if (item2.classList.contains('active'))
+			{
+				FluffySlogan21(0);
+			}
+			else
+			{
+				window.setTimeout("FluffySlogan12("+SomeNumberThing+")", 100);
+			}  		
+		}
+    }
+
+    function FluffySlogan21(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+		    Slogan21(SomeNumberThing);
+		    SomeNumberThing += 0.2;
+		    window.setTimeout("FluffySlogan21("+SomeNumberThing+")", 1);
+		}
+		if (SomeNumberThing >= 100)
+		{
+			FluffySlogan22(0);
+		}
+    }
+
+    function FluffySlogan22(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+		    Slogan22(SomeNumberThing);
+		    SomeNumberThing += 0.2;
+		    window.setTimeout("FluffySlogan22("+SomeNumberThing+")", 1);
+		}
+
+		if (SomeNumberThing >= 100)
+		{
+			var item3 = document.getElementById('item3');
+			if (item3.classList.contains('active'))
+			{
+				FluffySlogan31(0);
+			}
+			else
+			{
+				window.setTimeout("FluffySlogan22("+SomeNumberThing+")", 100);
+			}  		
+		}
+    }    
+    	function FluffySlogan31(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+		    Slogan31(SomeNumberThing);
+		    SomeNumberThing += 0.2;
+		    window.setTimeout("FluffySlogan31("+SomeNumberThing+")", 1);
+		}
+		if (SomeNumberThing >= 100)
+		{
+			FluffySlogan32(0);
+		}
+    }
+
+    function FluffySlogan32(SomeNumberThing) 
+    {
+    	if (SomeNumberThing <= 100) 
+    	{
+		    Slogan32(SomeNumberThing);
+		    SomeNumberThing += 0.2;
+		    window.setTimeout("FluffySlogan32("+SomeNumberThing+")", 1);
+		}
+
+/*		if (SomeNumberThing >= 100)
+		{
+			var item1 = document.getElementById('item1');
+			if (item1.classList.contains('active'))
+			{
+				FluffySlogan11(0);
+			}
+			else
+			{
+				window.setTimeout("FluffySlogan32("+SomeNumberThing+")", 100);
+			}  		
+		}*/
+    }
+
+    window.onload = sliderShow;
+
+    function sliderShow ()
+    {
+    	FluffySlogan11(0);
+    }
+
+
     </script>
 
     <script>
       $('.carousel').carousel({
-        interval: 5000 //changes the speed
+        interval: 8000 //changes the speed
       })  
     </script>
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
