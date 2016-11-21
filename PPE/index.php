@@ -80,7 +80,43 @@ include_once('includes/traitement_co_free.php');
          else
          {
           ?>
-<nav class="navbar navbar-inverse">
+
+
+
+
+          <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="index.php"><img class="image-resp" src="img/FS5.png"></a>   
+            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <center>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="search" class="input-xl form-control bar-form" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
+            </div>
+            <div class="form-group">
+              <div class="lien-nav2"><a href="?"><B>ENGAGER UN FREELANCE</B></a></div>
+		          <div class="lien-nav2"><a href="?"><B>CONTRAT DE MISSION</B></a></div>
+		          <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
+            </div>
+            		      <div class="btn-nav-index">
+		          	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion">Connexion</button>
+              		<a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
+              </div>
+          </form>
+          </center>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+<!-- <nav class="navbar navbar-inverse">
 <center>
       <div class="container">
         <div class="navbar-header">
@@ -101,35 +137,21 @@ include_once('includes/traitement_co_free.php');
             <div class="form-group">
           		<input type="search" class="input-xl form-control bar-form" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
             </div>
-            <div class="form-group lien-nav">
-		          <a href=""><B>ENGAGER UN FREELANCE</B></a>&nbsp;&nbsp;
-		          <a href=""><B>CONTRAT DE MISSION</B></a>&nbsp;&nbsp;
-		          <a href=""><B>GUIDE POUR COMMENCER</B></a>
+            <div class="form-group">
+		          <div class="lien-nav2"><a href=""><B>ENGAGER UN FREELANCE</B></a>&nbsp;&nbsp;</div>
+		          <div class="lien-nav2"><a href=""><B>CONTRAT DE MISSION</B></a>&nbsp;&nbsp;</div>
+		          <div class="lien-nav2"><a href=""><B>GUIDE POUR DEMARRER</B></div>
             </div>
+            <span>
           	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion">Connexion</button>&nbsp;&nbsp;
               <a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
+            </span>
           </form>
-        </div><!--/.navbar-collapse -->
+        </div>
       </div>
 </center>
-    </nav>
+    </nav> -->
 
-<!--         <nav class="navbar navbar-inverse">
-        <center>
-         <div class="principal-top">
-            <a href="index.php"><img class="image-resp" src="img/FS5.png"></a>
-                      <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="search" class="input-xl form-control bar-form" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-          <span class="sections">  
-          </span>
-          <span class="sections">         
-          	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion">Connexion</button>&nbsp;&nbsp;
-              <a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
-          </span>
-          </div>
-        </center>
-        </div>
-      </nav> -->
       <?php
          }
 
@@ -191,14 +213,14 @@ include_once('includes/traitement_co_free.php');
           <div class="carousel-inner">
             <div class="item active" id="item1">
               <!-- Set the first background image using inline CSS below. -->
-              <div class="fill" style="background-image:url('img/bandeau1.jpg');color:white"><br><center><span id="slogan-1-1">DES PARTENAIRES<br><br></span><span id="slogan-1-2"> A TRAVERS LE MONDE</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau1.jpg');color:white"><br><center><span id="slogan-1-1">DES PARTENAIRES<br><br></span><span id="slogan-1-2"> A TRAVERS LE MONDE</span></center></div>
             </div>
             <div class="item" id="item2">
               <!-- Set the second background image using inline CSS below. -->
-              <div class="fill" style="background-image:url('img/bandeau2.png');color:white"><br><center><span id="slogan-2-1">DES PROFESSIONNELS<br></span><span id="slogan-2-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A l'ECOUTE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DE VOS BESOINS</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau2.png');color:white"><br><center><span id="slogan-2-1">DES PROFESSIONNELS<br></span><span id="slogan-2-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A l'ECOUTE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DE VOS BESOINS</span></center></div>
             </div>       
             <div class="item" id="item3">
-              <div class="fill" style="background-image:url('img/bandeau5.jpg');color:white"><center><span id="slogan-3-1">&nbsp;DES MISSIONS <br>ADAPTEES<br></span><span id="slogan-3-2">A VOS COMPETENCES</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau5.jpg');color:white"><center><span id="slogan-3-1">&nbsp;DES MISSIONS <br>ADAPTEES<br></span><span id="slogan-3-2">A VOS COMPETENCES</span></center></div>
             </div>
           </div>
 
@@ -631,7 +653,7 @@ include_once('includes/traitement_co_free.php');
 
     <script>
       $('.carousel').carousel({
-        interval: 8000 //changes the speed
+        interval: 5000 //changes the speed
       })  
     </script>
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
