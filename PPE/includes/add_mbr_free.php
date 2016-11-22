@@ -3,7 +3,7 @@ include_once('includes/co_bdd.php');
 
 
 //SI DES DONNEES ONT ETE POSTE ON COMMENCE LE TRAITEMENT 
-if (!empty($_POST))
+if (!empty($_POST['post_free']))
 
 {
 
@@ -59,7 +59,7 @@ if (!empty($_POST))
 	if (empty($error)) {
 
 		//CRYPTAGE MDP
-		$secure_pass = crypt($_POST['password']);
+		$secure_pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
 		//INSERTION BDD
 		$req = $bdd->prepare('INSERT INTO mbr_free(nom, prenom, mail, password, date_inscr) VALUES(:nom, :prenom, :mail, :password, CURDATE()
@@ -111,7 +111,7 @@ if (!empty($_POST))
 
 //SCRIPT COULEURS VERIF MAIL
 
-$( "#v_email" ).keyup(function() {
+/*$( "#v_email" ).keyup(function() {
 
 	if(!$("#v_email").val())
 	{
@@ -132,12 +132,12 @@ $( "#v_email" ).keyup(function() {
 		}
 	}
 
-});
+});*/
 
 
 //SCRIPT COULEURS VERIF PASS
 
-$( "#v_password" ).keyup(function() {
+/*$( "#v_password" ).keyup(function() {
 
 	if(!$("#v_password").val())
 	{
@@ -158,11 +158,11 @@ $( "#v_password" ).keyup(function() {
 		}
 	}
 
-});
+});*/
 
 
 //SCRIPT COULEURS NOM DOIT ETRE UNE CHAINE DE CARACTERE
-var nom = $("#nom").val();
+/*var nom = $("#nom").val();
 
 $( "#nom" ).keyup(function() {
 
@@ -185,7 +185,7 @@ $( "#nom" ).keyup(function() {
 		}
 	}
 
-});
+});*/
 
 
 </script>

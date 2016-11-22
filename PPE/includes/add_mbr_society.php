@@ -54,7 +54,8 @@ if (!empty($_POST['post_society']))
 	if (empty($error2)) {
 
 		//CRYPTAGE MDP
-		$secure_pass = crypt($_POST['password_societe']);
+		$secure_pass = password_hash($_POST['password_societe'], PASSWORD_BCRYPT);
+
 
 		//INSERTION BDD
 		$req = $bdd->prepare('INSERT INTO mbr_society(raison_sociale, siret, mail, password, date_inscr) VALUES(:raison_sociale, :siret, :mail, :password, CURDATE()
