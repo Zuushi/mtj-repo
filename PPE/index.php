@@ -85,7 +85,7 @@ include_once('includes/traitement_co_free.php');
 
 
           <nav class="navbar navbar-inverse">
-      <div class="container">
+      <div class="container2">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -209,97 +209,108 @@ include_once('includes/traitement_co_free.php');
 		    <div class="container">
 		    </div>
 		    <div>
-		    <span><h2>Les étapes pour un départ réussi:
-		    <button class="btn-choix" onclick="changeInfos2(0)">JE SUIS UN FREELANCE</button><button onclick="changeInfos(0)" class="btn-choix">JE SUIS UNE SOCIETE</button></h2></span>
+		    <span><h2>Les étapes pour un départ réussi: 
+		    <button class="btn-choix" id="btn-1" onclick="changeInfos2(0)">JE SUIS UN FREELANCE</button><button id="btn-2" onclick="changeInfos(0)" class="btn-choix">JE SUIS UNE SOCIETE</button></h2></span>
 		    </div><br>
 		</center>
 	</div>
-	<div id="infos" class="resp-etapes">
-			<span class="resp-numbers2">
-				<img class="img-responsive" src="img/1.png">
-				<span class="resp-span">
-				<B>Créez un compte</B><br><br>
-					<ul>
-						<li>Renseignez votre profil</li>
-						<li>Passez l'épreuve d'admission</li>
-						<li>Définissez vos compétences</li>
-					</ul>
-				</span>
-			</span>					
-			<span class="resp-numbers">
-				<img  class="img-responsive" src="img/2.png">
-				<span class="resp-span">
-				<B>Déposez votre CV</B><br><br>
-					<ul>
-						<li>Renseignez vos expériences</li>
-						<li>Déposez vos diplômes</li>
-						<li>Présentez vos projets</li>
-					</ul>
-				</span>
-			</span>					
-			<span class="resp-numbers">
-				<img  class="img-responsive" src="img/3.png">
-				<span class="resp-span">
-				<B>Postulez aux missions</B><br><br>
-					<ul>
-						<li>Montrez vos atouts</li>
-						<li>Répondez aux attentes de vos clients</li>
-						<li>Recevez vos missions par mail</li>
-						<li>Concluez le contrat</li>
-					</ul>
-				</span>
-			</span>		
-	</div>
-	<div id="infos2" class="resp-etapes2">
-			<span class="resp-numbers2">
-				<img  src="img/1.png">
-				<span class="resp-span">
-				<B>Créez un compte entreprise</B><br><br>
-					<ul>
-						<li>Renseignez les informations<br> de la société</li>
-						<li>Définissez vos attentes</li>
-					</ul>
-				</span>
-			</span>					
-			<span class="resp-numbers">
-				<img  src="img/2.png">
-				<span class="resp-span">
-				<B>Déposez votre mission</B><br><br>
-					<ul>
-						<li>Spécifiez les compétences<br> requises</li>
-						<li>Précisez les axes de mission</li>
-						<li>Présentez le projet</li>
-					</ul>
-				</span>
-			</span>					
-			<span class="resp-numbers">
-				<img  src="img/3.png">
-				<span class="resp-span">
-				<B>Trouvez les professionnels dont vous avez besoin</B><br><br>
-					<ul>
-						<li>Des profils compétents dans tout les secteurs</li>
-						<li>Divers critères de selection</li>
-						<li>Envoyez vos offres de mission par mail</li>
-						<li>Concluez le contrat</li>
-					</ul>
-				</span>
-			</span>		
-	</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <hr>
+  <div id="infos" class="resp-etapes">
+      <span class="resp-numbers2">
+        <img class="nombre2" src="img/1.png">
+        <span class="resp-span">
+        <center>
+        <B>Créez un compte</B><br><br>
+        </center>
+          <ul>
+            <li>Renseignez votre profil</li>
+            <li>Passez l'épreuve d'admission</li>
+            <li>Définissez vos compétences</li>
+          </ul>
+        </span>
+      </span>         
+      <span class="resp-numbers">
+        <img class="nombre2" src="img/2.png">
+        <span class="resp-span">
+        <center>
+        <B>Déposez votre CV</B><br><br>
+        </center>
+          <ul>
+            <li>Renseignez vos expériences</li>
+            <li>Déposez vos diplômes</li>
+            <li>Présentez vos projets</li>
+          </ul>
+        </span>
+      </span>         
+      <span class="resp-numbers">
+        <img class="nombre" src="img/3.png">
+        <span class="resp-span">
+        <center>
+        <B>Postulez aux missions qui vous correspondent</B><br><br>
+        </center>
+          <ul>
+            <li>Montrez vos atouts</li>
+            <li>Répondez aux attentes de vos clients</li>
+            <li>Recevez vos missions par mail</li>
+            <li>Concluez le contrat</li>
+          </ul>
+        </span>
+      </span>   
+  </div>
+  <div id="infos2" class="resp-etapes2">
+      <span class="resp-numbers2">
+        <img class="nombre2" src="img/1.png">
+        <span class="resp-span">
+        <center>
+        <B>Créez un compte entreprise</B><br><br>
+        </center>
+          <ul>
+            <li>Renseignez les informations<br> de la société</li>
+            <li>Définissez vos attentes</li>
+          </ul>
+        </span>
+      </span>         
+      <span class="resp-numbers">
+        <img class="nombre2" src="img/2.png">
+        <span class="resp-span">
+        <center>
+        <B>Déposez votre mission</B><br><br>
+        </center>
+          <ul>
+            <li>Spécifiez les compétences<br> requises</li>
+            <li>Précisez les axes de mission</li>
+            <li>Présentez le projet</li>
+          </ul>
+        </span>
+      </span>         
+      <span class="resp-numbers">
+        <img class="nombre" src="img/3.png">
+        <span class="resp-span">
+        <center>
+        <B>Trouvez les professionnels dont vous avez besoin</B><br><br>
+        </center>
+          <ul>
+            <li>Des profils compétents dans tout les secteurs</li>
+            <li>Divers critères de selection</li>
+            <li>Envoyez vos offres de mission par mail</li>
+            <li>Concluez le contrat</li>
+          </ul>
+        </span>
+      </span>   
+  </div>
+
 <div class="mid-principal">
     <div class="container">
 		<div class="clear"></div>
     </div>
 
     <div>
-    <br><br>
-	    <center><h1>Nos partenaires : &nbsp;
+    <br>
+	    <center><span class="phrase-plateforme" id="les-part">Nos partenaires : &nbsp;
 	    	<img class="part" src="img/logo_part/air-logo.png">&nbsp;&nbsp;
 	    	<img class="part2" src="img/logo_part/logo-etat.png">&nbsp;&nbsp;
 	    	<img class="part2" src="img/logo_part/sophia-logo1.png">&nbsp;&nbsp;
 	    	<img class="part2" src="img/logo_part/eurocop.png">&nbsp;&nbsp;
-	    </h1></center>
+	    </span></center>
         <br clear="all"><br><br>
     </div>
 </div>
@@ -316,7 +327,7 @@ include_once('includes/traitement_co_free.php');
                 <a href="https://getbootstrap.com"><img class="logo-icon" src="img/Boostrap.png"></a>
                 <a href="https://www.youtube.fr"><img class="logo-icon" src="img/Youtube.png"></a>
                 <a href="https://www.google.fr"><img class="logo-icon2" src="img/google.png"></a>
-                <span style="position:relative;top:6px;left:5%;font-size:30px;">Suivez-nous sur les différentes plateformes!</span>
+                <span class="phrase-plateforme">Suivez-nous sur les différentes plateformes!</span>
             </div>
         </div>
     <hr class="hrwhite">
@@ -414,7 +425,7 @@ include_once('includes/traitement_co_free.php');
         <br clear="all"><br><br>
     </div>
 </div>
-      </div> <!-- /container -->
+      </div>  <!--/container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -436,6 +447,9 @@ include_once('includes/traitement_co_free.php');
 
     function changeInfos(SomeNumberThing) 
     {
+
+      document.getElementById('btn-1').disabled = true;
+      document.getElementById('btn-2').disabled = true;
     	if (SomeNumberThing <= 100) 
     	{
     		document.getElementById('infos').style.visibility = "hidden";
@@ -443,7 +457,12 @@ include_once('includes/traitement_co_free.php');
 		    FluffyKittenMaker(SomeNumberThing);
 		    SomeNumberThing += 1;
 		    window.setTimeout("changeInfos("+SomeNumberThing+")", 1);
-		}
+		  }
+      else
+      {
+        document.getElementById('btn-1').disabled = false;
+        document.getElementById('btn-2').disabled = false;
+      }
     }    
 
     function FluffyKitten(SomeNumberThing)
@@ -454,6 +473,8 @@ include_once('includes/traitement_co_free.php');
 
     function changeInfos2(SomeNumberThing) 
     {
+      document.getElementById('btn-1').disabled = true;
+      document.getElementById('btn-2').disabled = true;
     	if (SomeNumberThing <= 100) 
     	{
     		document.getElementById('infos2').style.visibility = "hidden";
@@ -461,7 +482,12 @@ include_once('includes/traitement_co_free.php');
 		    FluffyKitten(SomeNumberThing);
 		    SomeNumberThing += 1;
 		    window.setTimeout("changeInfos2("+SomeNumberThing+")", 1);
-		}
+		  }
+      else
+      {
+        document.getElementById('btn-1').disabled = false;
+        document.getElementById('btn-2').disabled = false;
+      }
     }
 
         function Slogan11(SomeNumberThing)
