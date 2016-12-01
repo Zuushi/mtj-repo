@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 08, 2016 at 10:05 AM
+-- Generation Time: Dec 01, 2016 at 07:55 AM
 -- Server version: 5.5.49-log
 -- PHP Version: 7.0.9
 
@@ -31,12 +31,24 @@ CREATE TABLE IF NOT EXISTS `annonces` (
   `titre` varchar(150) NOT NULL,
   `date_publi` date NOT NULL,
   `date_debut` date NOT NULL,
-  `duree` int(11) NOT NULL,
+  `duree` varchar(50) NOT NULL,
   `salaire` int(11) NOT NULL,
   `description` text NOT NULL,
   `lieu` varchar(100) NOT NULL,
-  `competences` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `competences` text NOT NULL,
+  `cat` varchar(50) NOT NULL,
+  `spe` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `annonces`
+--
+
+INSERT INTO `annonces` (`id_ann`, `titre`, `date_publi`, `date_debut`, `duree`, `salaire`, `description`, `lieu`, `competences`, `cat`, `spe`) VALUES
+(1, 'Site de vente', '2016-10-18', '2016-11-21', '1 mois', 5000, 'Création d''un site de vente en ligne.', 'Paris', 'Nous recherchons un développeur Symfony expérimenté. ', 'dev', 'php'),
+(2, 'Site vitrine', '2016-11-17', '2016-11-24', '1 semaine', 500, 'Création d''un site vitrine', 'Nice', 'Maîtrise du framework Bootstrap.', 'dev', 'css'),
+(3, 'Programme JAVA', '2016-11-25', '2016-12-23', '', 3000, 'Developpement d''un programme sous JAVA', 'Paris ', 'Maîtrise de JAVA', 'prog', 'java'),
+(4, 'Administrateur CISCO', '2016-11-25', '2016-11-29', '', 1300, 'Administration réseau', 'Marseille', 'Avoir la certification CISCO systeme', 'reseau', 'cisco');
 
 -- --------------------------------------------------------
 
@@ -61,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `mbr_free` (
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `date_inscr` date NOT NULL,
   `test` tinyint(1) NOT NULL,
   `competences` text NOT NULL,
@@ -70,7 +82,16 @@ CREATE TABLE IF NOT EXISTS `mbr_free` (
   `tarif` int(11) NOT NULL,
   `langues` varchar(25) NOT NULL,
   `localisation` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mbr_free`
+--
+
+INSERT INTO `mbr_free` (`id_free`, `nom`, `prenom`, `mail`, `password`, `date_inscr`, `test`, `competences`, `site_web`, `photo`, `tarif`, `langues`, `localisation`) VALUES
+(1, 'tom', 'salvadore', 'tom.salvadore@gmail.com', '1234', '2016-11-08', 0, '', '', '', 0, '', ''),
+(6, 'test', 'test', 'test@test.test', '$2y$10$YdgQ4tqUcZbt9TON9DFSMOwPwTUTw1Vqr556hoWhrvAMwhyUPU9Me', '2016-11-09', 0, '', '', '', 0, '', ''),
+(7, 'iji', 'ij', 'tom@tom.com', '$2y$10$GIU7j6xp2yN73iX1sdxHWevDZFBLuw44uG23VW1siL2M5Tg8UDfwS', '2016-11-25', 0, '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -147,7 +168,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `annonces`
 --
 ALTER TABLE `annonces`
-  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `mbr_admin`
 --
@@ -157,7 +178,7 @@ ALTER TABLE `mbr_admin`
 -- AUTO_INCREMENT for table `mbr_free`
 --
 ALTER TABLE `mbr_free`
-  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `mbr_society`
 --
