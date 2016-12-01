@@ -1967,7 +1967,11 @@ justify-content: center
   }
 }
 @media (min-width: 630px) {
-
+  #les-part
+  {
+    position: relative;
+    top: -2px;
+  }
     .part 
 {
     position: relative;
@@ -2488,6 +2492,11 @@ justify-content: center
 
 @media (min-width: 1500px) {
 
+  #les-part
+  {
+    position: relative;
+    top: 15px;
+  }
   .part 
 {
   width:400px;
@@ -2657,6 +2666,12 @@ justify-content: center
 }
 
 @media (min-width: 1900px) {
+
+  #les-part
+  {
+    position: relative;
+    top: 15px;
+  }
 
   .part 
 {
