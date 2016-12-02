@@ -2198,6 +2198,10 @@ justify-content: center;
 }
   #btn-connexion{
     margin-left: 5px;
+  }  
+
+  #btn-deconnexion{
+    margin-left: 5px;
   }
 
   .btn-choix {
@@ -2382,6 +2386,10 @@ justify-content: center
 }
 
   #btn-connexion{
+    margin-left: 40px;
+  }
+
+  #btn-deconnexion{
     margin-left: 40px;
   }
 
@@ -2756,6 +2764,11 @@ justify-content: center
 }
 
     #btn-connexion
+    {
+    margin-left: 0px;
+    }    
+
+    #btn-deconnexion
     {
     margin-left: 0px;
     }
@@ -5882,7 +5895,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 
-
+.bjr
+{
+  font-size: 25px;
+}
 .btn-choix:hover
 {
   background-color: #466E95;
@@ -5921,6 +5937,24 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-weight: bold;
   font-size:20px;
   color: #337ab7;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 .button-inscription
