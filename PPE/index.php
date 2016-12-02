@@ -56,22 +56,72 @@ include_once('includes/traitement_co_free.php');
         ?>
 
 
-      <nav class="navbar navbar-inverse">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="index.php"><img class="img-responsive" src="img/FS5.png" id="logo"></a>
+
+          <nav class="navbar navbar-inverse">
+      <div class="container2">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div id="div-logo">
+          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
+            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-           <?php echo '<p id="p_co">Bonjour ' .$donnees['prenom']. '<br /> <a href="deco.php">Déconnexion</a></p>'; ?>
-          </div><!--/.navbar-collapse -->
         </div>
-      </nav>
+        <div id="navbar" class="navbar-collapse collapse">
+        <center>
+          <form class="navbar-form navbar-right">
+            <div class="form-group" id="form-index">
+              <input type="search" class="input-xl form-control bar-form" id="bar-index" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
+            </div>
+            <div class="form-group">
+              <div class="lien-nav2"><a href="?"><B>ENGAGER UN FREELANCE</B></a></div>
+              <div class="lien-nav2"><a href="?"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
+              <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
+            </div>
+                      <div class="btn-nav-index">
+             <!--           <div class="lien-nav2 blue bjr"><?php echo '<span id="p_co">Bonjour ' .$donnees['prenom']. '</span>'; ?></div> -->
+
+                <button type="button" class="btn btn-primary" id="btn-deconnexion" onclick="deco()">Déconnexion</button>
+                    <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+    <li><center class="blue"><?php echo 'Bonjour '.$donnees['prenom'].' !'; ?></center></li>
+      <li><hr></li>
+      <li><a href="#"><span class="blue">Mes informations</span></a></li>
+      <li><a href="#"><span class="blue">Mes relations</span></a></li>
+      <li><a href="#"><span class="blue">Mes contrats</span></a></li>
+    </ul>
+  </div>
+<style>
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>
+              </div>
+          </form>
+          </center>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
 
       <?php
 
@@ -490,7 +540,7 @@ include_once('includes/traitement_co_free.php');
       }
     }
 
-        function Slogan11(SomeNumberThing)
+      function Slogan11(SomeNumberThing)
     {
     	var slogan11 = document.getElementById('slogan-1-1');
     	slogan11.style.opacity = SomeNumberThing/100;
@@ -530,7 +580,7 @@ include_once('includes/traitement_co_free.php');
     	if (SomeNumberThing <= 100) 
     	{
 		    Slogan11(SomeNumberThing);
-		    SomeNumberThing += 1;
+		    SomeNumberThing += 0.4;
 		    window.setTimeout("FluffySlogan11("+SomeNumberThing+")", 1);
 		}
 		if (SomeNumberThing >= 100)
@@ -544,7 +594,7 @@ include_once('includes/traitement_co_free.php');
     	if (SomeNumberThing <= 100) 
     	{
 		    Slogan12(SomeNumberThing);
-		    SomeNumberThing += 1;
+		    SomeNumberThing += 0.4;
 		    window.setTimeout("FluffySlogan12("+SomeNumberThing+")", 1);
 		}
 		if (SomeNumberThing >= 100)
@@ -566,7 +616,7 @@ include_once('includes/traitement_co_free.php');
     	if (SomeNumberThing <= 100) 
     	{
 		    Slogan21(SomeNumberThing);
-		    SomeNumberThing += 1;
+		    SomeNumberThing += 0.4;
 		    window.setTimeout("FluffySlogan21("+SomeNumberThing+")", 1);
 		}
 		if (SomeNumberThing >= 100)
@@ -580,7 +630,7 @@ include_once('includes/traitement_co_free.php');
     	if (SomeNumberThing <= 100) 
     	{
 		    Slogan22(SomeNumberThing);
-		    SomeNumberThing += 1;
+		    SomeNumberThing += 0.4;
 		    window.setTimeout("FluffySlogan22("+SomeNumberThing+")", 1);
 		}
 
@@ -602,7 +652,7 @@ include_once('includes/traitement_co_free.php');
     	if (SomeNumberThing <= 100) 
     	{
 		    Slogan31(SomeNumberThing);
-		    SomeNumberThing += 1;
+		    SomeNumberThing += 0.4;
 		    window.setTimeout("FluffySlogan31("+SomeNumberThing+")", 1);
 		}
 		if (SomeNumberThing >= 100)
@@ -616,7 +666,7 @@ include_once('includes/traitement_co_free.php');
     	if (SomeNumberThing <= 100) 
     	{
 		    Slogan32(SomeNumberThing);
-		    SomeNumberThing += 1;
+		    SomeNumberThing += 0.4;
 		    window.setTimeout("FluffySlogan32("+SomeNumberThing+")", 1);
 		}
 
@@ -641,12 +691,17 @@ include_once('includes/traitement_co_free.php');
     	FluffySlogan11(0);
     }
 
+    function deco () 
+    {
+      window.location= "deco.php";
+    }
+
 
     </script>
 
     <script>
       $('.carousel').carousel({
-        interval: 3000 //changes the speed
+        interval: 8000 //changes the speed
       })  
     </script>
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
