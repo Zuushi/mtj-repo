@@ -63,9 +63,7 @@ include_once('includes/traitement_co_free.php');
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span  style="font-weight: bold">Menu</span>
           </button>
           <div id="div-logo">
           <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
@@ -121,9 +119,7 @@ include_once('includes/traitement_co_free.php');
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            Menu
           </button>
           <div id="div-logo">
           <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
