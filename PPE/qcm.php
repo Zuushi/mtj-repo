@@ -57,6 +57,7 @@ session_start();
             </div>
                 <div>
                     <center>
+                        <br/><div>&nbsp;</div>
                         <button type="button" class="btn btn-primary">Retour</button>
                         <button type="button" class="btn btn-primary">Valider</button>
                         <br/><div>&nbsp;</div>

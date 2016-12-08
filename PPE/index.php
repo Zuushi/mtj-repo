@@ -46,7 +46,7 @@ include_once('includes/traitement_co_free.php');
 
       {
 
-        $req = $bdd->prepare('SELECT prenom FROM mbr_free WHERE mail = :mail');
+        $req = $bdd->prepare('SELECT * FROM mbr_free WHERE mail = :mail');
         $req->execute(array(
           'mail' => $_SESSION['mail_sess']
           ));
@@ -212,14 +212,14 @@ include_once('includes/traitement_co_free.php');
           <div class="carousel-inner">
             <div class="item active" id="item1">
               <!-- Set the first background image using inline CSS below. -->
-              <div class="fill image-resp" style="background-image:url('img/bandeau1.jpg');color:white"><center><span id="slogan-1-1">DES PARTENAIRES<br><br></span><span id="slogan-1-2"> A TRAVERS LE MONDE</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau1.jpg');color:white"><center><span id="slogan-1-1">DES PARTENAIRES<br><br></span><span id="slogan-1-2"> À TRAVERS LE MONDE</span></center></div>
             </div>
             <div class="item" id="item2">
               <!-- Set the second background image using inline CSS below. -->
-              <div class="fill image-resp" style="background-image:url('img/bandeau2.png');color:white"><center><span id="slogan-2-1">DES PROFESSIONNELS<br></span><span id="slogan-2-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A l'ECOUTE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DE VOS BESOINS</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau2.png');color:white"><center><span id="slogan-2-1">DES PROFESSIONNELS<br></span><span id="slogan-2-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;À l'ECOUTE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DE VOS BESOINS</span></center></div>
             </div>       
             <div class="item" id="item3">
-              <div class="fill image-resp" style="background-image:url('img/bandeau5.jpg');color:white"><center><span id="slogan-3-1">&nbsp;DES MISSIONS <br>ADAPTEES<br></span><span id="slogan-3-2">A VOS COMPETENCES</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau5.jpg');color:white"><center><span id="slogan-3-1">&nbsp;DES MISSIONS <br>ADAPTÉES<br></span><span id="slogan-3-2">À VOS COMPETENCES</span></center></div>
             </div>
           </div>
 
