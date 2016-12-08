@@ -52,7 +52,8 @@ include_once('includes/traitement_co_free.php');
           ));
 
         $donnees = $req->fetch();
-
+        $_SESSION['prenom'] = $donnees['prenom'];
+        $_SESSION['id_free'] = $donnees['id_free'];
         ?>
 
 
@@ -82,41 +83,22 @@ include_once('includes/traitement_co_free.php');
               <div class="lien-nav2"><a href="?"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
               <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
             </div>
-                      <div class="btn-nav-index">
-             <!--           <div class="lien-nav2 blue bjr"><?php echo '<span id="p_co">Bonjour ' .$donnees['prenom']. '</span>'; ?></div> -->
 
+            <div class="btn-nav-index">
                 <button type="button" class="btn btn-primary" id="btn-deconnexion" onclick="deco()">Déconnexion</button>
                     <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-    <li><center class="blue"><?php echo 'Bonjour '.$donnees['prenom'].' !'; ?></center></li>
-      <li><hr></li>
-      <li><a href="#"><span class="blue">Mes informations</span></a></li>
-      <li><a href="#"><span class="blue">Mes relations</span></a></li>
-      <li><a href="#"><span class="blue">Mes contrats</span></a></li>
-    </ul>
-  </div>
-<style>
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-</style>
-              </div>
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                      <li><center class="blue"><?php echo 'Bonjour '.$donnees['prenom'].' !'; ?></center></li>
+                        <li><hr></li>
+                        <li><a href="#"><span class="blue">Mes informations</span></a></li>
+                        <li><a href="#"><span class="blue">Mes relations</span></a></li>
+                        <li><a href="#"><span class="blue">Mes contrats</span></a></li>
+                        <li><a href="qcm.php"><span class="blue">QCM</span></a></li>
+                      </ul>
+                    </div>
+            </div>
           </form>
           </center>
         </div><!--/.navbar-collapse -->
