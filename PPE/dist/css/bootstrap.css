@@ -5577,8 +5577,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color :#337ab7;
   border-radius: 4px;
 }
-
-
 .navbar-toggle:focus {
   outline: 0;
 }
@@ -6078,6 +6076,25 @@ justify-content: center
   width: 100%;
 }
 
+.hr-bleu
+{
+  color:white;
+   max-width:100%;
+   margin-top: 20px;
+   height:30px;
+   background-color: #337ab7;
+}
+
+.annonces-focus:hover 
+{
+    background: #C3E1FE;
+
+}
+.annonces-focus
+{
+    margin-top: 5px;
+}
+
 .ico-img {
   margin-left: 5px;
 }
@@ -6138,9 +6155,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 /*.navbar-inverse .navbar-toggle:focus*/ {
   background-color: #337ab7 !important;
   color: white !important;
-}
-.navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #fff;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
