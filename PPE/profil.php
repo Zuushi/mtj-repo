@@ -1,6 +1,7 @@
 <?php
 include_once('includes/co_bdd.php');
-include_once('includes/traitement_co_free.php');
+session_start();
+#include_once('includes/traitement_co_free.php');
 
 
 
@@ -15,8 +16,8 @@ include_once('includes/traitement_co_free.php');
 
         while ($donnees = $req->fetch())
                      {  
-        $_SESSION['prenom'] = $donnees['prenom'];
-        $_SESSION['id_free'] = $donnees['id_free'];
+        #$_SESSION['prenom'] = $donnees['prenom'];
+        #$_SESSION['id_free'] = $donnees['id_free'];
             
 
 		echo ' 	<div class="container">
