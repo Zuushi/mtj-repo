@@ -1620,7 +1620,7 @@ width:100%;
 @media (min-width: 350px) {
   #btn-search {
     position: relative;
-    top: -2.8px;
+    top: -1.5px;
   }
 }
 
@@ -1634,7 +1634,7 @@ width:100%;
 @media (min-width: 450px) {
   #btn-search {
     position: relative;
-    top: -2.55px;
+    top: -1.5px;
   }
 }
 
@@ -1646,6 +1646,13 @@ width:100%;
 }
 
 @media (min-width: 650px) {
+  #btn-search {
+    position: relative;
+    top: -1px;
+  }
+}
+
+@media (min-width: 800px) {
   #btn-search {
     position: relative;
     top: 0px;
