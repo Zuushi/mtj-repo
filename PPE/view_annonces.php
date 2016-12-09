@@ -35,11 +35,14 @@
 
   <form class="form-horizontal" method="post" action="">
   <center>
+      <div>
+      <br />
+    </div>
     <div class="row">
       <div class="col-md-4">
 
         <label class="radio-inline">
-          <input id="radio_dev" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="dev"> Developpement web
+          <input id="radio_dev" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="dev"> Développement Web
         </label>
 
         <div id="div_dev" style="visibility: hidden;">
@@ -55,7 +58,7 @@
       <div class="col-md-4">
 
         <label class="radio-inline">
-          <input id="radio_prog" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="prog"> Programmation logicielle
+          <input id="radio_prog" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="prog"> Programmation Logicielle
         </label>
 
         <div id="div_prog" style="visibility: hidden;">
@@ -71,15 +74,15 @@
       <div class="col-md-4">
 
         <label class="radio-inline">
-          <input id="radio_reseau" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="reseau"> Réseau
+          <input id="radio_reseau" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="reseau"> Systèmes Réseaux
         </label>
 
         <div id="div_reseau" style="visibility: hidden;">
           <select name="spe3" style="width: 200px;" class="form-control">
            <option value="specialites">Toutes les offres</option>
-            <option value="cisco">Senior Windows Server</option>
+            <option value="windows">Senior Windows Server</option>
             <option value="cisco">Certifié Cisco Systems</option>
-            <option value="cisco">Ingénieur Sécurité Réseau</option>       
+            <option value="securite">Ingénieur Sécurité Réseau</option>       
           </select>
         </div>
 
@@ -124,9 +127,30 @@
      <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
    </ul>';
  }
-
 }
 
+ //AFFICHE TOUTE LES ANNONCES SI AUCUN FILTRE SPÉCIFIÉ
+  if (!empty($_POST)) {
+
+ if ($_POST['spe1'] == 'langages' AND $_POST['spe2'] == 'langages' AND $_POST['spe3'] == 'specialites')
+ {
+    $reponse = $bdd->query('SELECT titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
+
+    while ($donnees = $reponse->fetch())
+    {
+     echo '<ul class="annonces-focus">
+     <li><b>Titre :</b> ' .$donnees['titre']. '</li>
+     <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
+     <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
+     <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
+     <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
+     <li><b>Description :</b> ' .$donnees['description']. '</li>
+     <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
+     <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
+   </ul>';
+ }
+}
+}
 
 if (!empty($_POST)) {
 
