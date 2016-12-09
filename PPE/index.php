@@ -1,7 +1,7 @@
 <?php
 /*session_start();*/
 include_once('includes/co_bdd.php');
-include_once('includes/traitement_co_free.php');
+include_once('includes/traitement_co.php');
 ?>
 
 <!DOCTYPE html>
@@ -77,8 +77,8 @@ include_once('includes/traitement_co_free.php');
               <input type="search" class="input-xl form-control bar-form" id="bar-index" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
             </div>
             <div class="form-group">
-              <div class="lien-nav2"><a href="?"><B>ENGAGER UN FREELANCE</B></a></div>
-              <div class="lien-nav2"><a href="?"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
+              <div class="lien-nav2"><a href="view_annonces.php"><B>ENGAGER UN FREELANCE</B></a></div>
+              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
               <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
             </div>
 
@@ -119,7 +119,7 @@ include_once('includes/traitement_co_free.php');
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
-            Menu
+            <span  style="font-weight: bold">Menu</span>
           </button>
           <div id="div-logo">
           <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
@@ -133,9 +133,9 @@ include_once('includes/traitement_co_free.php');
               <input type="search" class="input-xl form-control bar-form" id="bar-index" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
             </div>
             <div class="form-group">
-              <div class="lien-nav2"><a href="?"><B>ENGAGER UN FREELANCE</B></a></div>
-		          <div class="lien-nav2"><a href="?"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-		          <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
+              <div class="lien-nav2"><a href="view_annonces.php"><B>ENGAGER UN FREELANCE</B></a></div>
+              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
+              <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
             </div>
             		      <div class="btn-nav-index">
 		          	<button type="button" class="btn btn-primary" id="btn-connexion" data-toggle="modal" data-target="#connexion">Connexion</button>
@@ -325,6 +325,31 @@ include_once('includes/traitement_co_free.php');
         </span>
       </span>   
   </div>
+
+<div class="container">
+  <div style="width: 100%; display: inline-block;border-style: solid; border-width: 1px 1px 1px 1px;">
+    <div style="display: inline-block;max-width: 30%; border-style: solid; border-width: 1px 1px 1px 1px;">
+      yolo
+    </div>
+    <div style="display: inline-block;max-width: 30%; border-style: solid; border-width: 1px 1px 1px 1px;">
+      yolo
+    </div>
+    <div style="display: inline-block;max-width: 30%; border-style: solid; border-width: 1px 1px 1px 1px;">
+      yolo
+    </div>
+  </div>  
+  <div>
+    <div style="border-style: solid; border-width: 1px 1px 1px 1px;">
+      yolo
+    </div>
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+  </div>
+</div>
 
 <div class="mid-principal">
     <div class="container">
