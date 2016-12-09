@@ -90,7 +90,7 @@ include_once('includes/traitement_co.php');
                       <ul class="dropdown-menu">
                       <li><center class="blue"><?php echo 'Bonjour '.$donnees['prenom'].' !'; ?></center></li>
                         <li><hr></li>
-                        <li><a href="#"><span class="blue">Mes informations</span></a></li>
+                        <li><a href="profil.php"><span class="blue">Mes informations</span></a></li>
                         <li><a href="#"><span class="blue">Mes relations</span></a></li>
                         <li><a href="#"><span class="blue">Mes contrats</span></a></li>
                         <li><a href="qcm.php"><span class="blue">QCM</span></a></li>
@@ -326,28 +326,100 @@ include_once('includes/traitement_co.php');
       </span>   
   </div>
 
-<div class="container">
-  <div style="width: 100%; display: inline-block;border-style: solid; border-width: 1px 1px 1px 1px;">
-    <div style="display: inline-block;max-width: 30%; border-style: solid; border-width: 1px 1px 1px 1px;">
-      yolo
-    </div>
-    <div style="display: inline-block;max-width: 30%; border-style: solid; border-width: 1px 1px 1px 1px;">
-      yolo
-    </div>
-    <div style="display: inline-block;max-width: 30%; border-style: solid; border-width: 1px 1px 1px 1px;">
-      yolo
-    </div>
+<div>
+  <center>
+    <h3 class="blue">Les dernières missions déposées :</h3>
+  </center>
+  <div>
+  <?php 
+  $c = 0;
+      $reponse = $bdd->query('SELECT titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
+    while ($donnees = $reponse->fetch() AND $c < 3)
+    {
+      if ($c == 0) {
+        echo '<div class="last-annonces1" ><ul class="annonces-focus">
+     <li><b>Titre :</b> ' .$donnees['titre']. '</li>
+     <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
+     <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
+     <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
+     <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
+     <li><b>Description :</b> ' .$donnees['description']. '</li>
+     <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
+     <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
+      </ul></div>';
+      }
+      else
+      {
+        echo '<div class="last-annonces" ><ul class="annonces-focus">
+     <li><b>Titre :</b> ' .$donnees['titre']. '</li>
+     <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
+     <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
+     <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
+     <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
+     <li><b>Description :</b> ' .$donnees['description']. '</li>
+     <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
+     <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
+      </ul></div>';
+      }
+      $c = $c + 1;
+
+    }
+
+  ?>
   </div>  
   <div>
-    <div style="border-style: solid; border-width: 1px 1px 1px 1px;">
-      yolo
-    </div>
-    <div>
-      
-    </div>
-    <div>
-      
-    </div>
+    
+  </div>
+</div>
+
+<div>
+  <center>
+    <h3 class="blue">Les Freelancers récemment inscrits :</h3>
+  </center>
+  <div>
+  <?php 
+  $c = 0;
+      $reponse = $bdd->query('SELECT nom, prenom, mail, date_inscr, test, competences, site_web, tarif, langues, localisation FROM mbr_free ORDER BY id_free DESC');
+    while ($donnees = $reponse->fetch() AND $c < 3)
+    {
+      if ($c == 0) {
+        echo '<div class="last-annonces1" ><ul class="annonces-focus">
+     <li><b>Nom :</b> ' .$donnees['nom']. '</li>
+     <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
+     <li><b>Addresse mail :</b> ' .$donnees['mail']. '</li>
+     <li><b>Date inscription :</b> ' .$donnees['date_inscr']. '</li>
+     <li><b>Note du test :</b> ' .$donnees['test'].'/6</li>
+     <li><b>Compétences :</b> ' .$donnees['competences']. '</li>
+     <li><b>Site web :</b> ' .$donnees['site_web']. '</li>
+     <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
+     <li><b>Langues :</b> ' .$donnees['langues']. '</li>
+     <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
+      </ul></div>';
+      }
+      else
+      {
+        echo '<div class="last-annonces" ><ul class="annonces-focus">
+     <li><b>Nom :</b> ' .$donnees['nom']. '</li>
+     <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
+     <li><b>Addresse mail :</b> ' .$donnees['mail']. '</li>
+     <li><b>Date inscription :</b> ' .$donnees['date_inscr']. '</li>
+     <li><b>Note du test :</b> ' .$donnees['test'].'/6</li>
+     <li><b>Compétences :</b> ' .$donnees['competences']. '</li>
+     <li><b>Site web :</b> ' .$donnees['site_web']. '</li>
+     <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
+     <li><b>Langues :</b> ' .$donnees['langues']. '</li>
+     <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
+      </ul></div>';
+      }
+      $c = $c + 1;
+
+    }
+
+  ?>
+  <br><br>
+  </div>  
+  <div>
+    
   </div>
 </div>
 
