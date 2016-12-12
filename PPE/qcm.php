@@ -58,7 +58,7 @@ session_start();
                 <div>
                     <center>
                         <br/><div>&nbsp;</div>
-                        <button type="button" class="btn btn-primary">Retour</button>
+                        <button type="button" class="btn btn-primary" onclick="Retour();">Retour</button>
                         <button type="button" class="btn btn-primary">Valider</button>
                         <br/><div>&nbsp;</div>
                     </center>
@@ -76,5 +76,14 @@ session_start();
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    
+function Retour ()
+{
+    window.location = "index.php";
+}
+
+</script>
 
 </html>

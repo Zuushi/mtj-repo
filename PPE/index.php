@@ -79,7 +79,7 @@ include_once('includes/traitement_co.php');
             <div class="form-group">
               <div class="lien-nav2"><a href="view_annonces.php"><B>ENGAGER UN FREELANCE</B></a></div>
               <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
+              <div class="lien-nav2"><a href="#guide"><B>GUIDE POUR DEMARRER</B></a></div>
             </div>
 
             <div class="btn-nav-index">
@@ -135,7 +135,7 @@ include_once('includes/traitement_co.php');
             <div class="form-group">
               <div class="lien-nav2"><a href="view_annonces.php"><B>ENGAGER UN FREELANCE</B></a></div>
               <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="?"><B>GUIDE POUR DEMARRER</B></a></div>
+              <div class="lien-nav2"><a href="#guide"><B>GUIDE POUR DEMARRER</B></a></div>
             </div>
             		      <div class="btn-nav-index">
 		          	<button type="button" class="btn btn-primary" id="btn-connexion" data-toggle="modal" data-target="#connexion">Connexion</button>
@@ -237,7 +237,7 @@ include_once('includes/traitement_co.php');
 		    <div class="container">
 		    </div>
 		    <div>
-		    <span><h2>Les étapes pour un départ réussi: 
+		    <span><h2 id="guide">Les étapes pour un départ réussi: 
 		    <button class="btn-choix" id="btn-1" onclick="changeInfos2(0)">JE SUIS UN FREELANCE</button><button id="btn-2" onclick="changeInfos(0)" class="btn-choix">JE SUIS UNE SOCIETE</button></h2></span>
 		    </div><br>
 		</center>
@@ -448,7 +448,7 @@ include_once('includes/traitement_co.php');
             <div class="col-lg-12">
                 <br />
                 <a href="https://www.facebook.com"><img class="logo-icon" src="img/fb.png"></a>
-                <a href="https://https://twitter.com/?lang=fr"><img class="logo-icon" src="img/Twitter.png"></a>
+                <a href="https://twitter.com/?lang=fr"><img class="logo-icon" src="img/Twitter.png"></a>
                 <a href="https://getbootstrap.com"><img class="logo-icon" src="img/Boostrap.png"></a>
                 <a href="https://www.youtube.fr"><img class="logo-icon" src="img/Youtube.png"></a>
                 <a href="https://www.google.fr"><img class="logo-icon2" src="img/google.png"></a>
@@ -777,7 +777,14 @@ include_once('includes/traitement_co.php');
     <script>
       $('.carousel').carousel({
         interval: 8000 //changes the speed
-      })  
+      })
+
+      $('a[href^="#guide"]').click(function(){  
+    var id = $(this).attr("href");
+    var offset = $(id).offset().top 
+    $('html, body').animate({scrollTop: offset}, 'slow'); 
+    return false;  
+});   
     </script>
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
