@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 02 Décembre 2016 à 09:27
+-- Généré le :  Lun 12 Décembre 2016 à 18:32
 -- Version du serveur :  5.7.16-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.8-0ubuntu0.16.04.3
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `annonces` (
   `id_ann` int(11) NOT NULL,
   `titre` varchar(150) NOT NULL,
+  `id_soci` int(255) DEFAULT NULL,
+  `nom_soci` varchar(255) DEFAULT NULL,
   `date_publi` date NOT NULL,
   `date_debut` date NOT NULL,
   `duree` varchar(50) NOT NULL,
@@ -44,11 +46,11 @@ CREATE TABLE `annonces` (
 -- Contenu de la table `annonces`
 --
 
-INSERT INTO `annonces` (`id_ann`, `titre`, `date_publi`, `date_debut`, `duree`, `salaire`, `description`, `lieu`, `competences`, `cat`, `spe`) VALUES
-(1, 'Site de vente', '2016-10-18', '2016-11-21', '1 mois', 5000, 'Création d\'un site de vente en ligne.', 'Paris', 'Nous recherchons un développeur Symfony expérimenté. ', 'dev', 'php'),
-(2, 'Site vitrine', '2016-11-17', '2016-11-24', '1 semaine', 500, 'Création d\'un site vitrine', 'Nice', 'Maîtrise du framework Bootstrap.', 'dev', 'css'),
-(3, 'Programme JAVA', '2016-11-25', '2016-12-23', '', 3000, 'Developpement d\'un programme sous JAVA', 'Paris ', 'Maîtrise de JAVA', 'prog', 'java'),
-(4, 'Administrateur CISCO', '2016-11-25', '2016-11-29', '', 1300, 'Administration réseau', 'Marseille', 'Avoir la certification CISCO systeme', 'reseau', 'cisco');
+INSERT INTO `annonces` (`id_ann`, `titre`, `id_soci`, `nom_soci`, `date_publi`, `date_debut`, `duree`, `salaire`, `description`, `lieu`, `competences`, `cat`, `spe`) VALUES
+(1, 'Site de vente', NULL, 'Web Dreams', '2016-10-18', '2016-11-21', '1 mois', 5000, 'Création d\'un site de vente en ligne.', 'Paris', 'Nous recherchons un développeur Symfony expérimenté. ', 'dev', 'php'),
+(2, 'Site vitrine', NULL, 'B2B Websites', '2016-11-17', '2016-11-24', '1 semaine', 500, 'Création d\'un site vitrine', 'Nice', 'Maîtrise du framework Bootstrap.', 'dev', 'css'),
+(3, 'Programme JAVA', NULL, 'Software Constructor', '2016-11-25', '2016-12-23', '', 3000, 'Developpement d\'un programme sous JAVA', 'Paris ', 'Maîtrise de JAVA', 'prog', 'java'),
+(4, 'Administrateur CISCO', NULL, 'Monster Networks', '2016-11-25', '2016-11-29', '', 1300, 'Administration réseau', 'Marseille', 'Avoir la certification CISCO systeme', 'reseau', 'cisco');
 
 -- --------------------------------------------------------
 
@@ -75,13 +77,13 @@ CREATE TABLE `mbr_free` (
   `mail` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date_inscr` date NOT NULL,
-  `test` tinyint(1) NOT NULL,
-  `competences` text NOT NULL,
-  `site_web` varchar(50) NOT NULL,
-  `photo` varchar(100) NOT NULL,
-  `tarif` int(11) NOT NULL,
-  `langues` varchar(25) NOT NULL,
-  `localisation` varchar(50) NOT NULL
+  `test` tinyint(1) DEFAULT NULL,
+  `competences` text,
+  `site_web` varchar(50) DEFAULT NULL,
+  `photo` varchar(100) DEFAULT NULL,
+  `tarif` int(11) DEFAULT NULL,
+  `langues` varchar(25) DEFAULT NULL,
+  `localisation` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -89,9 +91,10 @@ CREATE TABLE `mbr_free` (
 --
 
 INSERT INTO `mbr_free` (`id_free`, `nom`, `prenom`, `mail`, `password`, `date_inscr`, `test`, `competences`, `site_web`, `photo`, `tarif`, `langues`, `localisation`) VALUES
-(1, 'tom', 'salvadore', 'tom.salvadore@gmail.com', '1234', '2016-11-08', 0, '', '', '', 0, '', ''),
-(6, 'test', 'test', 'test@test.test', '$2y$10$YdgQ4tqUcZbt9TON9DFSMOwPwTUTw1Vqr556hoWhrvAMwhyUPU9Me', '2016-11-09', 0, '', '', '', 0, '', ''),
-(7, 'iji', 'ij', 'tom@tom.com', '$2y$10$GIU7j6xp2yN73iX1sdxHWevDZFBLuw44uG23VW1siL2M5Tg8UDfwS', '2016-11-25', 0, '', '', '', 0, '', '');
+(8, 'graille', 'jonathan', 'jo@jo.jo', '$2y$10$s3omZG2JzP.qh0OSoR1b2uLhkgPK8CFn7lWs.D.V3fuN1EwuJJRJe', '2016-12-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Armani', 'Tom', 'armani.tom@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '2016-12-08', 3, 'Développeur Java\r\nProfessionnel Android', 'www.armani.tom.com', NULL, 1500, 'anglais, français', 'Paris'),
+(10, 'Biarmani', 'Tom', 'biarmani@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '2016-12-08', 5, 'Développeur C/C#\r\nProfessionnel systèmes embarqués', 'www.biarmani.tom.com', NULL, 2000, 'anglais, français', 'Nice'),
+(11, 'Ciarmani', 'Charles', 'ciarmani.charles@gmail.com', '$2y$10$o2/cnJjw1TTaKlLKt.EB5unlKu5soPiPTjgqgr0gpoLJSb3uFPxsq', '2016-12-08', 6, 'Développeur .NET/C#\r\nProfessionnel systèmes réseaux', 'www.ciarmani.charles.com', NULL, 3000, 'anglais, français', 'Marseille');
 
 -- --------------------------------------------------------
 
@@ -121,24 +124,24 @@ CREATE TABLE `mbr_society` (
 CREATE TABLE `qcm` (
   `id_question` int(255) NOT NULL,
   `question` varchar(255) NOT NULL,
-  `reponse_v` varchar(255) NOT NULL,
-  `reponse_f1` varchar(255) NOT NULL,
-  `reponse_f2` varchar(255) NOT NULL,
-  `reponse_f3` varchar(255) NOT NULL
+  `1` varchar(255) NOT NULL,
+  `2` varchar(255) NOT NULL,
+  `3` varchar(255) NOT NULL,
+  `4` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `qcm`
 --
 
-INSERT INTO `qcm` (`id_question`, `question`, `reponse_v`, `reponse_f1`, `reponse_f2`, `reponse_f3`) VALUES
-(1, 'Java et JavaScript sont-ils deux mêmes langages informatiques ?', 'Non, le Java est un langage orienté objet et compilé alors que le JavaScript est un langage de script et procédural.', 'Aucune', 'Non, le JavaScript est un langage orienté objet et compilé alors que le Java est un langage de script et procédural.', 'Oui, ce sont des langages orientés objet et compilés.'),
+INSERT INTO `qcm` (`id_question`, `question`, `1`, `2`, `3`, `4`) VALUES
+(1, 'Java et JavaScript sont-ils deux mêmes langages informatiques ?', 'Non, le Java est un langage orienté objet et compilé alors que le JavaScript est un langage de script orienté objet et procédural.', 'Oui, JavaScript est une extension de Java.', 'Non, le JavaScript est un langage orienté objet et compilé alors que le Java est un langage de script et procédural.', 'Oui, ce sont des langages orientés objet et compilés.'),
 (2, 'Quelle est la différence entre un bit et un byte ?', '8 bits = 1 octect, 1 byte = 1 octect.', 'Aucune.', '8 bits = 8 octect, 1 byte = 8 octect.', '1 bits = 1 octect, 1 byte = 1 octect.'),
 (3, 'Qu\'est-ce qu\'un switch ?', 'Un switch désigne un commutateur réseau, équipement ou appareil qui permet l\'interconnexion d\'appareils communicants, terminaux, ordinateurs, serveurs...', 'C\'est un ordinateur très puissant qui a été inventé par les Soviétiques dans les années 1980.', 'C\'est un appareil qui permet de scanner les codes-barres et de retransmettre les informations sur ordinateur.', 'C\'est un appareil qui permet de changer le sens de circulation du courant dans les cartes-mères.'),
 (4, 'Quelle est la fonction qui permet d\'afficher un message à l\'écran en Python ?', '"print".', '"printf".', '"scanf".', '"alert".'),
 (5, 'Quelle est la différence entre la base 10 et le système décimal ?', 'Aucune.', 'En base de 10 on compte de 10 en 10 alors qu\'en décimal on compte 1 en 1 (ex: 10, 20, 30.. 1, 2 ,3 ..).', 'La base de 10 est un langage orienté objet alors que le système décimal est un langage procédural.', 'En base de 10 on compte de 1 en 1 de même pour le système décimal (ex: 1, 2 ,3 ..).'),
 (6, 'Qu\'est-ce que le "Spanning Tree Protocol" ?', 'Le Spanning Tree Protocol est un protocole réseau de niveau 2 permettant de déterminer une topologie réseau sans boucle (appelée arbre) dans les LAN avec ponts.', 'Le Spanning Tree Protocol est un protocole réseau de niveau 3 permettant la connexion et déconnexion automatique de chaque ordinateur entrant et sortant sur un réseau local.', 'Le Spanning Tree Protocol est un protocole réseau en arbre qui détermine les privilèges de chaque branche d\'un réseau.', 'Le Spanning Tree Protocol est un système d\'exploitation Linux qui permet le débogage rapide de logiciels.'),
-(7, 'Qu\'est-ce qu\'une adresse MAC?', 'Une adresse MAC (Media Access Control), est un identifiant physique stocké dans une carte réseau ou une interface réseau similaire. Elle est réputé unique au monde.', 'Une adresse MAC (Mega Adress Card), ou IP, est associé à chaque carte réseau et logiciel de routage.', 'Une adresse MAC est une adresse de messagerie avec laquelle on peut contacter les administrateurs de forum.', 'L\'adresse MAC est une adresse à laquelle on peut accéder à tout les fichiers stockés sur un réseau.'),
+(7, 'Qu\'est-ce qu\'une adresse MAC ?', 'Une adresse MAC (Media Access Control), est un identifiant physique stocké dans une carte réseau ou une interface réseau similaire. Elle est réputé unique au monde.', 'Une adresse MAC (Mega Adress Card), ou IP, est associé à chaque carte réseau et logiciel de routage.', 'Une adresse MAC est une adresse de messagerie avec laquelle on peut contacter les administrateurs de forum.', 'L\'adresse MAC est une adresse à laquelle on peut accéder à tout les fichiers stockés sur un réseau.'),
 (8, 'En quelle année le langage C a-t-il était inventé ?', '1972', '1965', '1975', '1980'),
 (9, 'À partir de quelle version la notion de PHP Data Objects a-t-elle été instauré ?', '5.0', '6.0', '5.5', '7.0'),
 (10, 'Quel est le principe de git ?', 'git est un logiciel de gestion de versions décentralisé. C\'est un logiciel libre.', 'C\'est un logiciel de retouche d\'image et photo, comme Gimp par exemple.', 'C\'est un logiciel de capture d\'écran ainsi que de capture vidéo compatible sur tout les systèmes d\'exploitation.', 'git est un mini système d\'exploitation qu\'on peut intégrer à un Raspberry Pi 3.');
@@ -215,7 +218,7 @@ ALTER TABLE `mbr_admin`
 -- AUTO_INCREMENT pour la table `mbr_free`
 --
 ALTER TABLE `mbr_free`
-  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `mbr_society`
 --
