@@ -29,7 +29,6 @@ for ($j = 0 ; $j < 6 ; $j ++)
 	{
 		$numbers = range(1, 4);
 		shuffle($numbers);
-
 		echo '<form>
 				<h3>Question '.$compteur.':</h3>
 				<h5>'.$donnees[question].'</h5>
