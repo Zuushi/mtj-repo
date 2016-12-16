@@ -23,7 +23,7 @@ if (!empty($_POST['email']))
 		$_SESSION['mail_sess'] = $_POST['email'];
 		$_SESSION['type'] = 'freelance';
 
-		header('Location: view_annonces.php');      
+		header('Location: view_annonces_free.php');      
 	}
 
 
@@ -46,7 +46,7 @@ if (!empty($_POST['email']))
 		$_SESSION['mail_sess'] = $_POST['email'];
 		$_SESSION['type'] = 'societe';
 
-		header('Location: view_annonces.php');      
+		header('Location: view_annonces_free.php');      
 	}
 
 	//SI ON EST RENTRE DANS AUCUNE DES 2 CONDI PRECEDENTES ET QUE DONC AUCUNE SESSION N'A ETE CREEE, REDIRECTION VERS ERROR
