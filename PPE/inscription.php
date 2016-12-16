@@ -59,7 +59,7 @@ include_once('includes/co_bdd.php');
                     <div class="col-md-12">
                             <a href="index.php"><img class="img-responsive img-placement" src="img/FS5.png"></a>
                             <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a><br><br>
-                            <span class="text-bold">Créer un compte gratuitement!</span><br/><br/>
+                            <span class="text-bold">Créer un compte gratuitement !</span><br/><br/>
                     </div>
                 </div>
                 <div class="btn-de-compte">

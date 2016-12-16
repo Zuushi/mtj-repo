@@ -4,6 +4,12 @@ session_start();
 
 ?>
 
+<?php
+      //REDIRIGE SI UTILISATEUR NON CONNECTE
+      if (empty($_SESSION['mail_sess'])) {
+        header("location: index.php");
+      }
+?>
 
 <!DOCTYPE html>
 <html>
@@ -53,19 +59,21 @@ session_start();
                 <span class="text-bold">Vous devez passer ce questionnaire pour valider votre inscription !</span><br/><br/>
             </div>            
             <div class="col-md-12">
-                <?php include_once("includes/genere_qcm.php"); ?>
+        <form method="post" id="qcmnote" name="qcmnote" action="qcm.note.php">
+                    <?php include_once("includes/genere_qcm.php"); ?>
+                    <input type="hidden" name="thenote" id="thenote">
             </div>
                 <div>
                     <center>
                         <br/><div>&nbsp;</div>
                         <button type="button" class="btn btn-primary" onclick="Retour();">Retour</button>
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button type="button" class="btn btn-primary" onclick="valider();">Valider</button>
                         <br/><div>&nbsp;</div>
                     </center>
                 </div>
+        </form>
         </div>
     <div>
-
 </body>
 
 <script language="JavaScript" type="text/javascript">
@@ -82,6 +90,46 @@ session_start();
 function Retour ()
 {
     window.location = "index.php";
+}
+
+function note () {
+    var a = document.getElementById('0');
+    var b = document.getElementById('1');
+    var c = document.getElementById('2');
+    var d = document.getElementById('3');
+    var e = document.getElementById('4');
+    var f = document.getElementById('5');
+    var note = 0;
+
+    if (a.checked === true) {
+        note = note + 1;
+    }
+    if (b.checked === true) {
+        note = note + 1;
+    }
+    if (c.checked === true) {
+        note = note + 1;
+    }
+    if (d.checked === true) {
+        note = note + 1;
+    }
+    if (e.checked === true) {
+        note = note + 1;
+    }
+    if (f.checked === true) {
+        note = note + 1;
+    }
+    console.log(note);
+    return note;
+}
+
+function valider () {
+    var nota = note();
+    if (confirm('Valider vos réponses ?')) {
+        document.getElementById('thenote').value = parseInt(nota);
+        var qcmnote = window.document.qcmnote;
+        qcmnote.submit();
+    }
 }
 
 </script>

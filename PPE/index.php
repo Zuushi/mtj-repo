@@ -42,18 +42,26 @@ include_once('includes/traitement_co.php');
       <?php
 
       //BARRE MENU UTILISATEUR CONNECTE
-      if (!empty($_SESSION['mail_sess'])) 
+      if (!empty($_SESSION['mail_sess'])) {
+           if ($_SESSION['type'] == 'freelance') {
+              $req = $bdd->prepare('SELECT * FROM mbr_free WHERE mail = :mail');
+              $req->execute(array(
+                'mail' => $_SESSION['mail_sess']
+                ));
 
-      {
+              $donnees = $req->fetch();
+              $_SESSION['prenom'] = $donnees['prenom'];
+              $_SESSION['id'] = $donnees['id_free'];
+            } else {
+              $req = $bdd->prepare('SELECT * FROM mbr_society WHERE mail = :mail');
+              $req->execute(array(
+                'mail' => $_SESSION['mail_sess']
+                ));
 
-        $req = $bdd->prepare('SELECT * FROM mbr_free WHERE mail = :mail');
-        $req->execute(array(
-          'mail' => $_SESSION['mail_sess']
-          ));
-
-        $donnees = $req->fetch();
-        $_SESSION['prenom'] = $donnees['prenom'];
-        $_SESSION['id_free'] = $donnees['id_free'];
+              $donnees = $req->fetch();
+              $_SESSION['prenom'] = $donnees['recruteur'];
+              $_SESSION['id'] = $donnees['id_soc'];
+            }  
         ?>
 
 
@@ -72,12 +80,12 @@ include_once('includes/traitement_co.php');
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         <center>
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" action="recherche.php" method="post">
             <div class="form-group" id="form-index">
-              <input type="search" class="input-xl form-control bar-form" id="bar-index" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
+              <input type="search" class="input-xl form-control bar-form" name="recherche" id="bar-index" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
             </div>
             <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces.php"><B>ENGAGER UN FREELANCE</B></a></div>
+              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
               <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
               <div class="lien-nav2"><a href="#guide"><B>GUIDE POUR DEMARRER</B></a></div>
             </div>
@@ -88,12 +96,11 @@ include_once('includes/traitement_co.php');
                       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
                       <span class="caret"></span></button>
                       <ul class="dropdown-menu">
-                      <li><center class="blue"><?php echo 'Bonjour '.$donnees['prenom'].' !'; ?></center></li>
+                      <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
                         <li><hr></li>
-                        <li><a href="profil.php"><span class="blue">Mes informations</span></a></li>
-                        <li><a href="#"><span class="blue">Mes relations</span></a></li>
-                        <li><a href="#"><span class="blue">Mes contrats</span></a></li>
-                        <li><a href="qcm.php"><span class="blue">QCM</span></a></li>
+                        <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
+                        <li><a href="#"><span class="blue">Mes Relations</span></a></li>
+                        <li><a href="#"><span class="blue">Mes Contrats</span></a></li>
                       </ul>
                     </div>
             </div>
@@ -128,12 +135,12 @@ include_once('includes/traitement_co.php');
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         <center>
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" action="recherche.php" method="post">
             <div class="form-group" id="form-index">
-              <input type="search" class="input-xl form-control bar-form" id="bar-index" placeholder="Mot-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
+              <input name="recherche" type="search" class="input-xl form-control bar-form" id="bar-index" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
             </div>
             <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces.php"><B>ENGAGER UN FREELANCE</B></a></div>
+              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
               <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
               <div class="lien-nav2"><a href="#guide"><B>GUIDE POUR DEMARRER</B></a></div>
             </div>
