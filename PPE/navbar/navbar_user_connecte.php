@@ -27,7 +27,7 @@ if ($_SESSION['type'] == 'freelance') {
             </div>
             <div class="form-group">
               <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="view_annonces.php"><B>VOS MISSIONS</B></a></div>
+              <div class="lien-nav2"><a href="vos.missions.freelance.php"><B>VOS MISSIONS</B></a></div>
               <div class="lien-nav2"><a href="#guide"><B>HISTORIQUE MISSIONS</B></a></div>
             </div>
 
@@ -40,7 +40,7 @@ if ($_SESSION['type'] == 'freelance') {
                     <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
                     <li><hr></li>
                     <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
-                    <li><a href="#"><span class="blue">Mes Relations</span></a></li>
+                    <li><a href="minichat.php"><span class="blue">Mes Relations</span></a></li>
                     <li><a href="#"><span class="blue">Mes Contrats</span></a></li>
                   </ul>
                 </div>
@@ -86,7 +86,7 @@ if ($_SESSION['type'] == 'freelance') {
                     <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
                     <li><hr></li>
                     <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
-                    <li><a href="#"><span class="blue">Mes Relations</span></a></li>
+                    <li><a href="minichat.php"><span class="blue">Mes Relations</span></a></li>
                     <li><a href="#"><span class="blue">Mes Contrats</span></a></li>
                   </ul>
                 </div>

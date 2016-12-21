@@ -22,7 +22,6 @@ if (!empty($_POST['email']))
 	{	
 		$_SESSION['mail_sess'] = $_POST['email'];
 		$_SESSION['type'] = 'freelance';
-
 		header('Location: recherche.php');      
 	}
 
