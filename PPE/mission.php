@@ -145,6 +145,7 @@ session_start();
             </div>
             <?php } ?>
           <input type="hidden" name="checker" id="checker" value="0">
+          <input type="hidden" name="id_annonce" value="<?php echo $_POST['id_annonce']?>">
     </div>
   </form>
   <form name="supprimer_mission" id="supprimer_mission" action="includes/supprimer_mission.php" method="post">
