@@ -9,6 +9,7 @@ include_once('includes/co_bdd.php');
 		$duree_modification = $_POST['duree_modification'];
 		$competences_modification = $_POST['competences_modification'];
 		$date_debut_modification = $_POST['date_debut_modification'];
+		$id_annonce = $_POST['id_annonce'];
 		$lieu = $_POST['lieu_modification'];
 
 		$req3= "UPDATE annonces SET salaire=:salaire, description=:description, duree=:duree, date_debut=:date_debut, competences=:competences, lieu=:lieu WHERE id_soci=:id_soci";
@@ -38,5 +39,6 @@ $_POST['date_publication'] = $_POST['date_publication'];
  $_POST['date_debut'] = $date_debut_modification;
  $_POST['lieu'] = $lieu;
  $_POST['competences'] = $competences_modification;
+ $_POST['id_annonce'] = $id_annonce;
 
 } ?>
