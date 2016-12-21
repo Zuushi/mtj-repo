@@ -1805,7 +1805,6 @@ margin-left:7px;
     .resp-etapes2
 {
 position: relative;
-top: -44px;
 left: 8px;
 opacity: 0;
 color:#337ab7;
@@ -1817,6 +1816,7 @@ justify-content: center
 {
   float: right;
   font-size:4px;
+  z-index: 1;
 }
     
     .nombre
@@ -1825,6 +1825,7 @@ justify-content: center
     top: 0px;
     left: 7px;
      height: 20px;
+     z-index: 2;
   }    
 
   .nombre2
@@ -1833,6 +1834,7 @@ justify-content: center
     top: 0px;
     left: 18px;
      height: 20px;
+     z-index: 2;
   }
 
   .btn-choix {
@@ -1943,7 +1945,6 @@ justify-content: center
       .resp-etapes2
 {
 position: relative;
-top: -52px;
 left: 10px;
 opacity: 0;
 color:#337ab7;
@@ -1955,6 +1956,7 @@ justify-content: center
 {
   float: right;
   font-size:5px;
+  z-index: 1;
 }
     
     .nombre
@@ -1963,6 +1965,7 @@ justify-content: center
     top: 0px;
     left: 0px;
      height: 40px;
+     z-index: 2;
   }    
 
   .nombre2
@@ -1971,6 +1974,7 @@ justify-content: center
     top: 0px;
     left: 10px;
      height: 40px;
+     z-index: 2;
   }
 }
 @media (min-width: 630px) {
@@ -2010,7 +2014,6 @@ margin-left:7px;
     .resp-etapes2
 {
 position: relative;
-top: -95px;
 left: 0px;
 opacity: 0;
 color:#337ab7;
@@ -2020,7 +2023,8 @@ justify-content: center
 
   .resp-span
 {
-  font-size:10px;
+  font-size:7px;
+  z-index: 1;
 }
     .nombre
   {
@@ -2028,12 +2032,14 @@ justify-content: center
     top: 0px;
     left: 0px;
      height: 70px;
+     z-index: 2;
   }    
   .nombre2
   {
      height: 70px;
      position: relative;
      left: 25px;
+     z-index: 2;
   }
 
     .btn-choix {
@@ -2139,7 +2145,13 @@ justify-content: center
 }
 
 }
-
+@media (min-width: 800px) {
+	  .resp-span
+	{
+  		font-size:10px;
+  		z-index: 1;
+	}
+}
 @media (min-width: 1000px) {
 
   .part 
@@ -2169,7 +2181,6 @@ margin-left:8px;
     .resp-etapes2
 {
 position: relative;
-top: -95px;
 left: 0px;
 opacity: 0;
 color:#337ab7;
@@ -2353,7 +2364,6 @@ margin-left:10px;
     .resp-etapes2
 {
 position: relative;
-top: -135px;
 left: 0px;
 opacity: 0;
 color:#337ab7;
@@ -2364,6 +2374,7 @@ justify-content: center
   .resp-span
 {
   font-size:15px;
+  z-index: 1;
 }
     .nombre
   {
@@ -2371,6 +2382,7 @@ justify-content: center
     top: 0px;
     left: 0px;
      height: 104px;
+     z-index: 2;
   }    
 
   .nombre2
@@ -2378,6 +2390,7 @@ justify-content: center
      height: 104px;
      position: relative;
      left: 10px;
+     z-index: 2;
   }
 
   .resp-numbers
@@ -2549,7 +2562,6 @@ margin-left:11px;
     .resp-etapes2
 {
 position: relative;
-top: -152px;
 left: 0px;
 opacity: 0;
 color:#337ab7;
@@ -2560,6 +2572,7 @@ justify-content: center
 .resp-span
 {
   font-size:17px;
+  z-index: 1;
 }
 
     .nombre
@@ -2569,6 +2582,7 @@ justify-content: center
     left: 0px;
      height: 50px;
      height: 140px;
+     z-index: 2;
   }    
 
   .nombre2
@@ -2576,6 +2590,7 @@ justify-content: center
      height: 140px;
      position: relative;
      left: 10px;
+     z-index: 2;
   }
 
     .chiffres
@@ -2725,7 +2740,6 @@ margin-left:13px;
   .resp-etapes2
 {
 position: relative;
-top: -176px;
 left: -35px;
 opacity: 0;
 color:#337ab7;
@@ -2736,11 +2750,13 @@ justify-content: center
   .resp-span
 {
   font-size:20px;
+  z-index: 1;
 }
 
     .nombre
   {
      height: 140px;
+     z-index: 2;
   }    
 
   .nombre2
@@ -2748,6 +2764,7 @@ justify-content: center
      height: 140px;
      position: relative;
      left: 10px;
+     z-index: 2;
   }
 
   .chiffres
@@ -5875,6 +5892,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 /*Ajout*/
+  .abcd {
+    height: 2000px;
+  }
 
     @media (max-width: 1400px) {
   .navbar-header {
@@ -6069,7 +6089,10 @@ justify-content: center
 color:#337ab7;
 margin-top:10px;
 display: flex;
-justify-content: center
+justify-content: center;
+position:absolute;
+left: 10%;
+margin: auto;
 }
 
 .blue
