@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Lun 12 Décembre 2016 à 18:32
--- Version du serveur :  5.7.16-0ubuntu0.16.04.1
--- Version de PHP :  7.0.8-0ubuntu0.16.04.3
+-- Client :  127.0.0.1
+-- Généré le :  Mer 21 Décembre 2016 à 20:01
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,7 +37,7 @@ CREATE TABLE `annonces` (
   `salaire` int(11) NOT NULL,
   `description` text NOT NULL,
   `lieu` varchar(100) NOT NULL,
-  `competences` text NOT NULL,
+  `competences` varchar(255) NOT NULL,
   `cat` varchar(50) NOT NULL,
   `spe` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -47,10 +47,26 @@ CREATE TABLE `annonces` (
 --
 
 INSERT INTO `annonces` (`id_ann`, `titre`, `id_soci`, `nom_soci`, `date_publi`, `date_debut`, `duree`, `salaire`, `description`, `lieu`, `competences`, `cat`, `spe`) VALUES
-(1, 'Site de vente', NULL, 'Web Dreams', '2016-10-18', '2016-11-21', '1 mois', 5000, 'Création d\'un site de vente en ligne.', 'Paris', 'Nous recherchons un développeur Symfony expérimenté. ', 'dev', 'php'),
-(2, 'Site vitrine', NULL, 'B2B Websites', '2016-11-17', '2016-11-24', '1 semaine', 500, 'Création d\'un site vitrine', 'Nice', 'Maîtrise du framework Bootstrap.', 'dev', 'css'),
-(3, 'Programme JAVA', NULL, 'Software Constructor', '2016-11-25', '2016-12-23', '', 3000, 'Developpement d\'un programme sous JAVA', 'Paris ', 'Maîtrise de JAVA', 'prog', 'java'),
-(4, 'Administrateur CISCO', NULL, 'Monster Networks', '2016-11-25', '2016-11-29', '', 1300, 'Administration réseau', 'Marseille', 'Avoir la certification CISCO systeme', 'reseau', 'cisco');
+(1, 'Site de vente', 1, 'Web Dreams', '2016-10-18', '2016-11-21', '1 mois', 5000, 'Création d\'un site de vente en ligne.', 'Paris', 'Nous recherchons un développeur Symfony expérimenté. ', 'dev', 'php'),
+(2, 'Site vitrine', 2, 'B2B Websites', '2016-11-17', '2016-11-24', '1 semaine', 500, 'Création d\'un site vitrine', 'Nice', 'Maîtrise du framework Bootstrap.', 'dev', 'css'),
+(3, 'Programme JAVA', 3, 'Software Constructor', '2016-11-25', '2016-12-23', '1 mois', 3000, 'Developpement d\'un programme sous JAVA', 'Paris ', 'Maîtrise de JAVA', 'prog', 'java'),
+(4, 'Administrateur CISCO', 4, 'Monster Networks', '2016-11-25', '2016-11-29', '2 mois', 1300, 'Administration réseau', 'Marseille', 'Avoir la certification CISCO systeme', 'reseau', 'cisco'),
+(5, 'Site de vente', 5, 'Web2Web', '2016-10-01', '2016-11-21', '6 mois', 15000, 'Création d\'un site de vente en ligne.', 'Lyon', 'Nous recherchons un développeur Laravel expérimenté avec forte maitrise PHP/SQL. ', 'dev', 'php'),
+(6, 'Site vitrine', 6, 'B2C Webapps', '2016-11-17', '2016-11-24', '4 semaine', 4500, 'Création d\'un site vitrine pour un de nos clients', 'Bordeaux', 'Maîtrise du framework Bootstrap, des connaissances en base de données seraient un plus.', 'dev', 'css'),
+(7, 'Jeu Vidéo en Typescript', 7, 'Gamers-World', '2016-11-25', '2016-12-23', '1 mois', 6000, 'Au sein de notre équipe vous développerait notre tout dernier jeu vidéo ! Nous recherchons des personnes expérimentés soucieux de créer continuellement sur les dernières technologies en matière de graphisme et d\'instruments de construction de scène de jeux !', 'Paris ', 'Maîtrise de Typescript, expérience exigé de 5 ans minimum', 'dev', 'a1'),
+(8, 'Administrateur Windows Servers', 8, 'Netelnonik Networks', '2016-11-25', '2016-11-29', '1 an', 45000, 'Administration réseau', 'Marseille', 'Avoir 5 ans d\'expérience sur même type de poste, recommandations appréciés', 'reseau', 'windows'),
+(9, 'Site de vente', 9, 'Webomag', '2016-10-18', '2016-11-21', '1 mois', 2000, 'Création d\'un site de vente en ligne.', 'Nantes', 'Nous recherchons un développeur Symfony expérimenté. ', 'dev', 'php'),
+(10, 'Airbus Software', 10, 'Airbus', '2016-11-17', '2016-11-24', '5 ans', 45500, 'Airbus makes the freedom of flight possible by designing, manufacturing and supporting the world’s best aircraft. Join our team to developp next generation softwares', 'London', 'Great experience in JAVA is massively recommanded.', 'prog', 'a2'),
+(11, 'Gérer Linux Servers', 11, 'LinkNdCo', '2016-11-25', '2016-12-23', '7 mois', 21000, 'Gérer notre nouveau parc informatique Linux Servers', 'Paris ', 'Connaissances en commandes Shell indispensables!', 'reseau', 'a3'),
+(12, 'Programmation A.I.', 12, 'A.I.ROBOTS', '2016-11-25', '2026-11-29', '10 ans', 75000, 'Programmation en Python', 'Berlin', 'Nos objectifs sont clairs, être le leader en matière d\'intelligence articificielle dans le monde!', 'prog', 'python'),
+(13, 'Ruby developpement', 13, 'Ruby Dreams', '2016-10-18', '2016-11-21', '1 mois', 5000, 'Création d\'un site de vente en ligne avec Ruby.', 'Paris', 'Nous recherchons un développeur Ruby expérimenté. ', 'dev', 'a1'),
+(14, 'Programmation en C', 14, 'Inside-Systems', '2016-11-17', '2016-11-24', '1 semaine', 2500, 'Amélioration de nos systèmes embarqués codé en C', 'Nice', 'Maîtrise des technologies des systèmes embarqués', 'prog', 'c'),
+(15, 'Site en JavaScript', 15, 'Site Constructor', '2016-11-25', '2016-12-23', '1 mois', 3000, 'Developpement d\'un site en JavaScript', 'Paris ', 'Maîtrise de JavaScript', 'dev', 'js'),
+(16, 'Administrateur Securité', 16, 'Monster Networks', '2016-11-25', '2016-11-29', '2 mois', 1300, 'Administration réseau et sécurité', 'Marseille', 'Etre au courant des dernières technologies en matière d\'attaque informatique', 'reseau', 'securite'),
+(18, 'php', 17, 'Nasa', '2016-12-16', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'dev', 'php'),
+(42, 'php test', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'dev', 'php'),
+(43, 'test cisco', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'reseau', 'cisco'),
+(44, 'C++', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'prog', 'c++');
 
 -- --------------------------------------------------------
 
@@ -72,29 +88,47 @@ CREATE TABLE `mbr_admin` (
 
 CREATE TABLE `mbr_free` (
   `id_free` int(11) NOT NULL,
+  `siret_free` varchar(18) DEFAULT NULL,
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
   `mail` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `telephone` varchar(15) DEFAULT NULL,
   `date_inscr` date NOT NULL,
-  `test` tinyint(1) DEFAULT NULL,
+  `test` int(1) DEFAULT NULL,
   `competences` text,
   `site_web` varchar(50) DEFAULT NULL,
-  `photo` varchar(100) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
   `tarif` int(11) DEFAULT NULL,
-  `langues` varchar(25) DEFAULT NULL,
-  `localisation` varchar(50) DEFAULT NULL
+  `langues` varchar(255) DEFAULT NULL,
+  `localisation` varchar(50) DEFAULT NULL,
+  `cat` varchar(255) DEFAULT NULL,
+  `spe` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `mbr_free`
 --
 
-INSERT INTO `mbr_free` (`id_free`, `nom`, `prenom`, `mail`, `password`, `date_inscr`, `test`, `competences`, `site_web`, `photo`, `tarif`, `langues`, `localisation`) VALUES
-(8, 'graille', 'jonathan', 'jo@jo.jo', '$2y$10$s3omZG2JzP.qh0OSoR1b2uLhkgPK8CFn7lWs.D.V3fuN1EwuJJRJe', '2016-12-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Armani', 'Tom', 'armani.tom@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '2016-12-08', 3, 'Développeur Java\r\nProfessionnel Android', 'www.armani.tom.com', NULL, 1500, 'anglais, français', 'Paris'),
-(10, 'Biarmani', 'Tom', 'biarmani@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '2016-12-08', 5, 'Développeur C/C#\r\nProfessionnel systèmes embarqués', 'www.biarmani.tom.com', NULL, 2000, 'anglais, français', 'Nice'),
-(11, 'Ciarmani', 'Charles', 'ciarmani.charles@gmail.com', '$2y$10$o2/cnJjw1TTaKlLKt.EB5unlKu5soPiPTjgqgr0gpoLJSb3uFPxsq', '2016-12-08', 6, 'Développeur .NET/C#\r\nProfessionnel systèmes réseaux', 'www.ciarmani.charles.com', NULL, 3000, 'anglais, français', 'Marseille');
+INSERT INTO `mbr_free` (`id_free`, `siret_free`, `nom`, `prenom`, `mail`, `password`, `telephone`, `date_inscr`, `test`, `competences`, `site_web`, `photo`, `tarif`, `langues`, `localisation`, `cat`, `spe`) VALUES
+(8, '04 8587 5456 3132', 'graille', 'jonathan', 'jo@jo.jo', '$2y$10$Kzy5LRWAmNj87h616YRdoe37/mP9g0ll5cxOScTEyXq8p9wBs7lKG', '04 94 58 32 01', '2016-12-02', 6, 'Je suis un compte test, le but est de remplir ce champs le plus possible pour tester son affichage... yolo', 'www.test-site.com', 'http://www.apicius.es/wp-content/uploads/2012/07/IMG-20120714-009211.jpg', 2555555, 'français, anglais', 'Marseille', 'programmeur', 'python'),
+(9, '0', 'Armani', 'Tom', 'armani.tom@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '', '2016-12-08', 3, 'Développeur Java\r\nProfessionnel Android', 'www.armani.tom.com', 'http://cdn.business2community.com/wp-content/uploads/2013/11/spongebob.png', 1500, 'anglais, français', 'Paris', 'programmeur', 'java'),
+(10, '0', 'Biarmani', 'Tom', 'biarmani@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-08', 5, 'Développeur C/C#\r\nProfessionnel systèmes embarqués', 'www.biarmani.tom.com', 'http://media02.hongkiat.com/cartoon-character-design-tutorials/26-blue-vector-character.jpg', 2000, 'anglais, français', 'Nice', 'programmeur', 'C'),
+(11, '0', 'Ciarmani', 'Charles', 'ciarmani.charles@gmail.com', '$2y$10$o2/cnJjw1TTaKlLKt.EB5unlKu5soPiPTjgqgr0gpoLJSb3uFPxsq', '', '2016-12-08', 6, 'Développeur .NET/C#\r\nProfessionnel systèmes réseaux', 'www.ciarmani.charles.com', NULL, 3000, 'anglais, français', 'Marseille', 'programmeur', 'C'),
+(12, '0', 'Lucas', 'Thomas', 'lucas.thomas@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '', '2016-12-08', 3, 'Programmeur Python / I.A.', 'www.lucas-thomas.com', NULL, 1500, 'anglais, Russe', 'Bordeaux', 'programmeur', 'python'),
+(13, '0', 'Bhal', 'Nicolas', 'bhal.nicolas@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-08', 4, 'Développeur C/C++', 'www.bhal.nicolas.com', NULL, 2000, 'anglais, Espagnol', 'Nice', 'programmeur', 'C'),
+(14, '0', 'Lure', 'Lucile', 'lure.lucile@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '', '2016-12-08', 6, 'Web Designer HTML5/CSS3', 'www.lure.lucile.com', NULL, 1500, 'anglais, Allemand', 'Lyon', 'web', 'html'),
+(15, '0', 'Bheon', 'Maxime', 'bheon.maxime@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-08', 1, 'Developpeur FS JavaScript', 'www.bheon-max.com', NULL, 2000, 'anglais, Italien', 'Nantes', 'web', 'js'),
+(16, '0', 'Salameran', 'Jose', 'salameran.jose@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '', '2016-12-08', 5, 'Developpeur/Programmeur PHP', 'www.Salameran-jose.com', NULL, 1500, 'anglais, Portugais', 'Marseille', 'web', 'php'),
+(17, '0', 'Guerand', 'Sophie', 'sophie.guerand@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-08', 2, 'Ingénieur Securité Réseaux', 'www.sécu-huerand.com', NULL, 2000, 'anglais, ukrainien', 'Dijon', 'reseau', 'securite'),
+(18, '0', 'Brosni', 'Dimitri', 'milo.dimitri@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '', '2016-12-08', 5, 'Professionnel CISCO systems', 'www.bro-dimitri.com', NULL, 4500, 'anglais, Russe', 'Moscou', 'reseau', 'cisco'),
+(19, '0', 'Bresckov', 'Roslov', 'Bresckov.Roslov@mail.ru', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-08', 1, 'Professionnel Windows 2008 Servers', 'www.bres-roslov.com', NULL, 2000, 'anglais, Russe', 'Krasnoïarsk', 'reseau', 'windows'),
+(20, '0', 'Ariani', 'Ariane', 'ariani.ariane@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '', '2016-12-08', 4, 'Développeur Ruby', 'www.armani.tom.com', NULL, 2500, 'anglais, français', 'Paris', 'web', 'a1'),
+(21, '0', 'Hermes', 'Tom', 'hermes.tom@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-18', 2, 'Professionnel Perl', 'www.hermes.tom.com', NULL, 2000, 'anglais, français', 'Nice', 'programmeur', 'a2'),
+(22, '0', 'Teves', 'Charles', 'theves.charles@gmail.com', '$2y$10$o2/cnJjw1TTaKlLKt.EB5unlKu5soPiPTjgqgr0gpoLJSb3uFPxsq', '', '2016-12-08', 6, 'Professionnel Linux Servers', 'www.theves.charles.com', NULL, 3000, 'anglais, français', 'Marseille', 'reseau', 'a3'),
+(23, '', 'ji', 'ji', 'ji@ji.ji', '$2y$10$wmJLnRlTy/Nq13z87G2zzOOAGHw9rVg/pKcya9vCl9hO1mBErNqLu', NULL, '2016-12-15', 1, '', '', 'http://i.imgur.com/hQd0AQ8.png', 0, '', '', NULL, NULL),
+(24, NULL, 'ju', 'ju', 'ju@ju.ju', '$2y$10$MSOw5Ighs2zXWHZLbi8szu5Cg0qjro0RlSapT7qkRv674YK85e9fS', NULL, '2016-12-16', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, NULL, 'v', 'v', 'v@v.v', '$2y$10$IH.qWPL07bXi3953zzKu.OkM9JHj3uN7F1aY.9.aMQpQS2oTn3uuS', NULL, '2016-12-21', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -104,16 +138,26 @@ INSERT INTO `mbr_free` (`id_free`, `nom`, `prenom`, `mail`, `password`, `date_in
 
 CREATE TABLE `mbr_society` (
   `id_soc` int(11) NOT NULL,
-  `raison_sociale` varchar(50) NOT NULL,
-  `siret` int(11) NOT NULL,
-  `mail` varchar(50) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `raison_sociale` varchar(255) NOT NULL,
+  `siret` varchar(18) DEFAULT NULL,
+  `mail` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `date_inscr` date NOT NULL,
-  `capital` int(11) NOT NULL,
-  `site_web` varchar(50) NOT NULL,
-  `siege_social` varchar(50) NOT NULL,
-  `recruteur` varchar(25) NOT NULL
+  `capital` int(11) DEFAULT NULL,
+  `site_web` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `siege_social` varchar(255) DEFAULT NULL,
+  `recruteur` varchar(255) DEFAULT NULL,
+  `caracteristiques` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `mbr_society`
+--
+
+INSERT INTO `mbr_society` (`id_soc`, `raison_sociale`, `siret`, `mail`, `password`, `date_inscr`, `capital`, `site_web`, `logo`, `siege_social`, `recruteur`, `caracteristiques`) VALUES
+(7, 'Gamers-World', '01 2345 6789 0124', 'gamers.worlds@gmail.com', '$2y$10$Ud7B7AAxmwLh72jmJi1FaObHyT1aKBaYMzO6Y3Awb.5N6hOxYPfsm', '2016-12-20', 12000, 'gamers.worlds.com', 'http://vignette3.wikia.nocookie.net/sf-wikia/images/1/1e/Maxis_logo.png/revision/latest?cb=20120809192031.jpg', 'Paris', 'gamers world recruteur', 'Gamers World, société fondée en 1990 est un entreprise leader sur le marché des jeux vidéo grâce à ses créations dépassant à chaque fois toute attentes !'),
+(17, 'Nasa', '123456', 'ja@ja.ja', '$2y$10$Ze/8VrL.aUkvKWWF9Pg5CuaihYbTL0H9HmaEDM55qY2hwzh7a4uVG', '2016-12-15', 0, 'lol', 'http://www.dafont.com/forum/attach/orig/5/2/524557.png', 'Floride', 'M.toutlemonde', 'un deux trois soleil');
 
 -- --------------------------------------------------------
 
@@ -145,18 +189,6 @@ INSERT INTO `qcm` (`id_question`, `question`, `1`, `2`, `3`, `4`) VALUES
 (8, 'En quelle année le langage C a-t-il était inventé ?', '1972', '1965', '1975', '1980'),
 (9, 'À partir de quelle version la notion de PHP Data Objects a-t-elle été instauré ?', '5.0', '6.0', '5.5', '7.0'),
 (10, 'Quel est le principe de git ?', 'git est un logiciel de gestion de versions décentralisé. C\'est un logiciel libre.', 'C\'est un logiciel de retouche d\'image et photo, comme Gimp par exemple.', 'C\'est un logiciel de capture d\'écran ainsi que de capture vidéo compatible sur tout les systèmes d\'exploitation.', 'git est un mini système d\'exploitation qu\'on peut intégrer à un Raspberry Pi 3.');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `test`
---
-
-CREATE TABLE `test` (
-  `id_test` int(11) NOT NULL,
-  `result` varchar(25) NOT NULL,
-  `id_free` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Index pour les tables exportées
@@ -193,14 +225,6 @@ ALTER TABLE `qcm`
   ADD PRIMARY KEY (`id_question`);
 
 --
--- Index pour la table `test`
---
-ALTER TABLE `test`
-  ADD PRIMARY KEY (`id_test`),
-  ADD KEY `id_free` (`id_free`),
-  ADD KEY `id_free_2` (`id_free`);
-
---
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -208,7 +232,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT pour la table `annonces`
 --
 ALTER TABLE `annonces`
-  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT pour la table `mbr_admin`
 --
@@ -218,27 +242,12 @@ ALTER TABLE `mbr_admin`
 -- AUTO_INCREMENT pour la table `mbr_free`
 --
 ALTER TABLE `mbr_free`
-  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT pour la table `mbr_society`
 --
 ALTER TABLE `mbr_society`
-  MODIFY `id_soc` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `test`
---
-ALTER TABLE `test`
-  MODIFY `id_test` int(11) NOT NULL AUTO_INCREMENT;
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `test`
---
-ALTER TABLE `test`
-  ADD CONSTRAINT `test_ibfk_1` FOREIGN KEY (`id_free`) REFERENCES `mbr_free` (`id_free`);
-
+  MODIFY `id_soc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
