@@ -37,7 +37,7 @@ if ($_SESSION['type'] == 'freelance') {
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                  <li><center class="blue"></center></li>
+                    <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
                     <li><hr></li>
                     <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
                     <li><a href="#"><span class="blue">Mes Relations</span></a></li>
@@ -83,7 +83,7 @@ if ($_SESSION['type'] == 'freelance') {
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                  <li><center class="blue"></center></li>
+                    <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
                     <li><hr></li>
                     <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
                     <li><a href="#"><span class="blue">Mes Relations</span></a></li>
