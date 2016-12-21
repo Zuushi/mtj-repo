@@ -7,7 +7,7 @@ include_once('includes/co_bdd.php');
 
         $donnees = $req->fetch();
           $password = $donnees['password'];
-	if (!empty($_POST['profil_free']) AND $_POST['profil_free'] == 'check1' AND password_verify($_POST['password'], $password)) {
+	if (!empty($_POST['profil_free']) AND $_POST['profil_free'] == 'check1' AND password_verify($_POST['password'], $password) AND empty($_POST['npassword']) AND empty($_POST['nvpassword'])) {
 
 
 		$id = $_SESSION['id'];
@@ -38,7 +38,7 @@ include_once('includes/co_bdd.php');
 
 	if (!empty($_POST['profil_free']) AND $_POST['profil_free'] == 'check1' AND !password_verify($_POST['password'], $password)) { ?>
 			<div class="alert alert-danger">
-				<p>Erreur de saisie !</p>
+				<p>Erreur de saisie du mot de passe !</p>
 			</div>
 	<?php }
 	if (!empty($_POST['profil_free']) AND $_POST['profil_free'] == 'check1' AND password_verify($_POST['password'], $password) AND !empty($_POST['npassword']) AND !empty($_POST['nvpassword'])) {
