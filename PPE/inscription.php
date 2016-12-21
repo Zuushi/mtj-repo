@@ -1,7 +1,6 @@
 <?php
 include_once('includes/co_bdd.php');
-
-
+session_start();
 
 ?>
 
@@ -42,6 +41,13 @@ include_once('includes/co_bdd.php');
         <![endif]-->
 
     </head>
+
+    <?php
+      //REDIRIGE SI UTILISATEUR CONNECTE
+      if (!empty($_SESSION['mail_sess'])) {
+        header("location: index.php");
+      }
+    ?>
 
 
     <body class="my_background bg-color-inscription">

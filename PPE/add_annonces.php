@@ -1,25 +1,58 @@
 <?php
 session_start();
-include_once('co_bdd.php'); ?>
+include_once('includes/co_bdd.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+  include_once('includes/header.php'); 
+?>
 <head>
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
 	<style type="text/css">
 		#c, #cc, #java, #php, #css, #js, #cisco {font-weight: bold;}
 		#c[disabled ], #cc[disabled ], #java[disabled ], #php[disabled ], #css[disabled ], #js[disabled ], #cisco[disabled ] {color: #D1D1D1; font-weight: normal;}
 	</style>
-
 </head>
 
-<div class="container">
+<script type="text/javascript">
+	 function deco () {
+      window.location= "deconnexion/deco.php";
+    }
+</script>
 
-	<h4>Ajouter une offre :</h4><br />
+<body class="my_background bg-color-inscription">
 
+  <?php
+  //BARRE MENU UTILISATEUR CONNECTE
+  if (!empty($_SESSION['mail_sess'])) {
+       if ($_SESSION['type'] == 'freelance') {
+        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION FREELANCE
+        include_once('session/session_freelance.php');
+        } else {
+        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION SOCIETE
+        include_once('session/session_societe.php');
+        }  
+
+     //BARRE MENU UTILISATEUR CONNECTE
+        include_once('navbar\navbar_user_connecte.php');
+     }
+     else {
+     //BARRE MENU UTILISATEUR NON CONNECTE
+        include_once('navbar\navbar_user_non_connecte.php');
+     }
+     //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
+     include_once('includes\formulaire_connexion.php');
+  ?>
+
+<div class="container mise-en-page">
+<center>
+
+	<div style="background-color: #337ab7;color: white;">
+      <span>
+        <center><h1>Ajouter une offre :</h1></center>
+      </span>
+    </div>
+    <?php include_once('includes\action.add_annonces.php'); ?>
 	<form method="post" action="">
 
 		<div class="form-group">
@@ -68,7 +101,7 @@ include_once('co_bdd.php'); ?>
 		</div>
 
 		<div class="form-group">
-			<label>Date de début de mission :</label>
+			<label>Date de début de mission :</label><br>
 			<input style="width: 400px;" type="date" class="form-control" id="date_debut" name="date_debut" placeholder="date de début">
 		</div>
 
@@ -82,37 +115,10 @@ include_once('co_bdd.php'); ?>
 			<input style="width: 400px;" type="text" class="form-control" id="lieu" name="lieu" placeholder="Lieu">
 		</div>
 
-		<button style="width: 400px;" id="submit" type="submit" disabled="true" class="btn btn-success">Poster</button>
+		<button style="width: 400px;" id="submit" type="submit" disabled="true" class="btn btn-primary">Poster</button><br>&nbsp;
 	</form>
-
+</center>
 </div>
-
-<?php
-
-//TRAITEMENT DU FORMULAIRE D'AJOUT
-if (!empty($_POST)) 
-{
-
-	$req = $bdd->prepare('INSERT INTO annonces(titre, date_publi, date_debut, duree, salaire, description, lieu, competences, cat, spe, id_soci, nom_soci) VALUES(:titre, CURDATE(), :date_debut, :duree, :salaire, :description, :lieu, :competences, :cat, :spe, :id_soci, :nom_soci
-			)');
-		$req->execute(array(
-
-			'titre' => $_POST['titre'],
-			'date_debut' =>  $_POST['date_debut'],
-			'duree' =>  $_POST['duree'],
-			'salaire' => $_POST['budget'],
-			'description' =>  $_POST['description'],
-			'lieu' =>  $_POST['lieu'],
-			'competences' => $_POST['competences'],
-			'cat' =>  $_POST['radio'],
-			'spe' =>  $_POST['list_spe'],
-			'id_soci' =>  $_SESSION['id_free'],
-			'nom_soci' =>  $_SESSION['prenom']
-			));
-}
-
-
-?>
 
 <script>
 
@@ -178,3 +184,12 @@ if (!empty($_POST))
 
 </body>
 </html>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>

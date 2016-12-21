@@ -5,209 +5,35 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="img/ico.png">
-
-  <title>PPE Site Freelance</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/full-slider.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="assets/js/ie-emulation-modes-warning.js"></script>
-
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-
-
-
-</head>
+<?php 
+  include_once('includes/header.php'); 
+?>
 
 <!-- Corps de la page-->
 <body class="my_background bg-color-inscription">
 
-   <?php
-
+      <?php
       //BARRE MENU UTILISATEUR CONNECTE
       if (!empty($_SESSION['mail_sess'])) {
            if ($_SESSION['type'] == 'freelance') {
-              $req = $bdd->prepare('SELECT * FROM mbr_free WHERE mail = :mail');
-              $req->execute(array(
-                'mail' => $_SESSION['mail_sess']
-                ));
-
-              $donnees = $req->fetch();
-              $_SESSION['prenom'] = $donnees['prenom'];
-              $_SESSION['id'] = $donnees['id_free'];
+            // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION FREELANCE
+            include_once('session/session_freelance.php');
             } else {
-              $req = $bdd->prepare('SELECT * FROM mbr_society WHERE mail = :mail');
-              $req->execute(array(
-                'mail' => $_SESSION['mail_sess']
-                ));
-
-              $donnees = $req->fetch();
-              $_SESSION['prenom'] = $donnees['recruteur'];
-              $_SESSION['id'] = $donnees['id_soc'];
+            // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION SOCIETE
+            include_once('session/session_societe.php');
             }  
-        ?>
 
-
-
-          <nav class="navbar navbar-inverse">
-      <div class="container2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span  style="font-weight: bold">Menu</span>
-          </button>
-          <div id="div-logo">
-          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
-            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
-          </div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        <center>
-          <form class="navbar-form navbar-right" action="recherche.php" method="post">
-            <div class="form-group" id="form-index">
-              <input type="search" class="input-xl form-control bar-form" name="recherche" id="bar-index" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-            </div>
-            <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
-              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="index.php#guide"><B>GUIDE POUR DEMARRER</B></a></div>
-            </div>
-
-            <div class="btn-nav-index">
-                <button type="button" class="btn btn-primary" id="btn-deconnexion" onclick="deco()">Déconnexion</button>
-                    <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
-                      <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                      <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
-                        <li><hr></li>
-                        <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
-                        <li><a href="#"><span class="blue">Mes Relations</span></a></li>
-                        <li><a href="#"><span class="blue">Mes Contrats</span></a></li>
-                      </ul>
-                    </div>
-            </div>
-          </form>
-          </center>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-      <?php
-
+         //BARRE MENU UTILISATEUR CONNECTE
+            include_once('navbar\navbar_user_connecte.php');
          }
+         else {
          //BARRE MENU UTILISATEUR NON CONNECTE
-         else
-         {
-          ?>
-
-
-
-
-          <nav class="navbar navbar-inverse">
-      <div class="container2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span  style="font-weight: bold">Menu</span>
-          </button>
-          <div id="div-logo">
-          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
-            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
-          </div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        <center>
-          <form class="navbar-form navbar-right" action="recherche.php" method="post">
-            <div class="form-group" id="form-index">
-              <input type="search" class="input-xl form-control bar-form" id="bar-index" name="recherche" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-            </div>
-            <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
-              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="index.php#guide"><B>GUIDE POUR DEMARRER</B></a></div>
-            </div>
-                      <div class="btn-nav-index">
-                <button type="button" class="btn btn-primary" id="btn-connexion" data-toggle="modal" data-target="#connexion">Connexion</button>
-                  <a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
-              </div>
-          </form>
-          </center>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-      <?php
+            include_once('navbar\navbar_user_non_connecte.php');
          }
-
+         //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
+         include_once('includes\formulaire_connexion.php');
       ?>
-      <!-- Connexion -->
-      <div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header title-color">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <center>
-                    <h4 class="modal-title" id="myModalLabel">Veuillez saisir vos identifiants</h4>
-                </center>
-            </div>
-            <!-- Champ connexion-->
-
-            <form method="post" action="">
-
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-offset-2 col-md-7">
-                    <div class="form-group blue">
-                      <label for="Email">Adresse Mail</label>
-                      <input type="text" class="form-control" name="email" placeholder="Entrez l'email">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-offset-2 col-md-7">
-                    <div class="form-group blue">
-                      <label for="Password">Mot de passe</label>
-                      <input type="password" class="form-control" name="password" placeholder="Mot de passe">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer footer-color">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-                <button type="submit" class="btn btn-default">Connexion</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-      <!-- Full Page Image Background Carousel Header -->
-      <?php
-
-      if (!empty($_GET['result']))
-      {
-        echo '<p id="p_err_co">Mauvais identifiant ou mot de passe</p>';
-      }
-
-      ?>
+      
 
 <div class="container mise-en-page">
     <div style="background-color: #337ab7;color: white;">
@@ -291,8 +117,6 @@
   </center>
   </form>
 
-
-
     <div class="hr-bleu">
       <span>
         <h3>&nbsp;Les profils :</h3>
@@ -326,28 +150,32 @@
 
     	  function deco () 
     {
-      window.location= "deco_annonces_free.php";
+      window.location= "deconnexion/deco_annonces_free.php";
     }
 
         function traitement (x)
     {
-      document.getElementById("mission"+x).submit();
+      document.getElementById("profil.freelance"+x).submit();
       return false;
     }
 
     </script>
-
   <?php
 
 //AFFICHAGE PAR DEFAUT DE TOUTES LES ANNONCES
   if (empty($_POST)) {
 
-    $reponse = $bdd->query('SELECT nom, prenom, mail, date_inscr, competences, site_web, tarif, langues, localisation FROM mbr_free ORDER BY date_inscr DESC');
+    $reponse = $bdd->query('SELECT id_free, nom, prenom, photo, mail, date_inscr, competences, site_web, tarif, langues, localisation FROM mbr_free ORDER BY date_inscr DESC');
     $c = 0;
     while ($donnees = $reponse->fetch())
     {
-     echo '<ul class="annonces-focus" onclick="traitement('.$c.')">
-     <li><b>Nom :</b> ' .$donnees['nom']. '</li>
+     echo '<ul class="annonces-focus" onclick="traitement('.$c.')">';
+     if ($donnees['photo'] != "") {
+       echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
+     } else {
+       echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">';
+     }
+     echo'<li><b>Nom :</b> ' .$donnees['nom']. '</li>
      <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
      <li><b>Email :</b> ' .$donnees['mail']. '</li>
      <li><b>Date d\'inscription :</b> ' .$donnees['date_inscr']. '</li>
@@ -356,15 +184,17 @@
      <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
      <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
      <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
-     <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['competences'].'" method="post">
+     <form name="profil.freelance" id="profil.freelance'.$c.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
      <input name="titre" value="'.$donnees['nom'].'" type="hidden">
-     <input name="entreprise" value="'.$donnees['prenom'].'" type="hidden">
-     <input name="date_publication" value="'.$donnees['mail'].'" type="hidden">
-     <input name="date_debut" value="'.$donnees['date_inscr'].'" type="hidden">
-     <input name="salaire" value="'.$donnees['competences'].'" type="hidden">
-     <input name="description" value="'.$donnees['site_web'].'" type="hidden">
-     <input name="lieu" value="'.$donnees['tarif'].'" type="hidden">
-     <input name="competences" value="'.$donnees['langues'].'" type="hidden"> 
+     <input name="id" value="'.$donnees['id_free'].'" type="hidden">
+     <input name="nom" value="'.$donnees['nom'].'" type="hidden">
+     <input name="prenom" value="'.$donnees['prenom'].'" type="hidden">
+     <input name="mail" value="'.$donnees['mail'].'" type="hidden">
+     <input name="date_inscr" value="'.$donnees['date_inscr'].'" type="hidden">
+     <input name="competences" value="'.$donnees['competences'].'" type="hidden">
+     <input name="site_web" value="'.$donnees['site_web'].'" type="hidden">
+     <input name="tarif" value="'.$donnees['tarif'].'" type="hidden">
+     <input name="langues" value="'.$donnees['langues'].'" type="hidden"> 
      <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
      </form>                   
    </ul>
@@ -384,7 +214,7 @@ if (!empty($_POST)) {
 //AFFICHAGE EN FONCTION DE LA CATEGORIE
   if ($_POST['spe1'] == 'langages' AND $_POST['spe2'] == 'langages' AND $_POST['spe3'] == 'specialites' OR empty($_POST['spe1']) AND empty($_POST['spe2']) AND empty($_POST['spe3'])) {
 
-    $req = $bdd->prepare('SELECT nom, prenom, mail, date_inscr, competences, site_web, tarif, langues, localisation FROM mbr_free WHERE cat = :cat ORDER BY date_inscr DESC');
+    $req = $bdd->prepare('SELECT id_free, nom, prenom, mail, photo, date_inscr, competences, site_web, tarif, langues, localisation FROM mbr_free WHERE cat = :cat ORDER BY date_inscr DESC');
     $req->execute(array(
       'cat' => $_POST['inlineRadioOptions']
       ));
@@ -392,8 +222,13 @@ if (!empty($_POST)) {
     $c = 0;
     while ($donnees = $req->fetch())
     {
-      echo '<ul class="annonces-focus" onclick="traitement('.$c.')">
-     <li><b>Nom :</b> ' .$donnees['nom']. '</li>
+     echo '<ul class="annonces-focus" onclick="traitement('.$c.')">';
+     if ($donnees['photo'] != "") {
+       echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
+     } else {
+       echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">';
+     }
+     echo'<li><b>Nom :</b> ' .$donnees['nom']. '</li>
      <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
      <li><b>Email :</b> ' .$donnees['mail']. '</li>
      <li><b>Date d\'inscription :</b> ' .$donnees['date_inscr']. '</li>
@@ -402,15 +237,17 @@ if (!empty($_POST)) {
      <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
      <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
      <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
-     <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['competences'].'" method="post">
+     <form name="profil.freelance" id="profil.freelance'.$c.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
      <input name="titre" value="'.$donnees['nom'].'" type="hidden">
-     <input name="entreprise" value="'.$donnees['prenom'].'" type="hidden">
-     <input name="date_publication" value="'.$donnees['mail'].'" type="hidden">
-     <input name="date_debut" value="'.$donnees['date_inscr'].'" type="hidden">
-     <input name="salaire" value="'.$donnees['competences'].'" type="hidden">
-     <input name="description" value="'.$donnees['site_web'].'" type="hidden">
-     <input name="lieu" value="'.$donnees['tarif'].'" type="hidden">
-     <input name="competences" value="'.$donnees['langues'].'" type="hidden"> 
+     <input name="id" value="'.$donnees['id_free'].'" type="hidden">
+     <input name="nom" value="'.$donnees['nom'].'" type="hidden">
+     <input name="prenom" value="'.$donnees['prenom'].'" type="hidden">
+     <input name="mail" value="'.$donnees['mail'].'" type="hidden">
+     <input name="date_inscr" value="'.$donnees['date_inscr'].'" type="hidden">
+     <input name="competences" value="'.$donnees['competences'].'" type="hidden">
+     <input name="site_web" value="'.$donnees['site_web'].'" type="hidden">
+     <input name="tarif" value="'.$donnees['tarif'].'" type="hidden">
+     <input name="langues" value="'.$donnees['langues'].'" type="hidden"> 
      <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
      </form>                   
    </ul>
@@ -423,7 +260,7 @@ if (!empty($_POST)) {
 //AFFICHAGE EN FONCTION DE LA SPECIALITE
 if ($_POST['spe1'] != 'langages' AND $_POST['spe2'] != 'langages' AND $_POST['spe3'] != 'specialites' AND !empty($_POST['spe1']) OR !empty($_POST['spe2']) OR !empty($_POST['spe3'])) 
 {
-$req = $bdd->prepare('SELECT nom, prenom, mail, date_inscr, competences, site_web, tarif, langues, localisation FROM mbr_free WHERE spe = :spe OR spe = :spe2 OR spe = :spe3 ORDER BY date_inscr DESC');
+$req = $bdd->prepare('SELECT id_free, nom, prenom, photo, mail, date_inscr, competences, site_web, tarif, langues, localisation FROM mbr_free WHERE spe = :spe OR spe = :spe2 OR spe = :spe3 ORDER BY date_inscr DESC');
 $req->execute(array(
   'spe' => $_POST['spe1'],
   'spe2' => $_POST['spe2'],
@@ -433,8 +270,13 @@ $req->execute(array(
     $c = 0;
     while ($donnees = $req->fetch())
     {
-      echo '<ul class="annonces-focus" onclick="traitement('.$c.')">
-     <li><b>Nom :</b> ' .$donnees['nom']. '</li>
+     echo '<ul class="annonces-focus" onclick="traitement('.$c.')">';
+     if ($donnees['photo'] != "") {
+       echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
+     } else {
+       echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">';
+     }
+     echo'<li><b>Nom :</b> ' .$donnees['nom']. '</li>
      <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
      <li><b>Email :</b> ' .$donnees['mail']. '</li>
      <li><b>Date d\'inscription :</b> ' .$donnees['date_inscr']. '</li>
@@ -443,15 +285,17 @@ $req->execute(array(
      <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
      <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
      <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
-     <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['competences'].'" method="post">
+     <form name="profil.freelance" id="profil.freelance'.$c.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
      <input name="titre" value="'.$donnees['nom'].'" type="hidden">
-     <input name="entreprise" value="'.$donnees['prenom'].'" type="hidden">
-     <input name="date_publication" value="'.$donnees['mail'].'" type="hidden">
-     <input name="date_debut" value="'.$donnees['date_inscr'].'" type="hidden">
-     <input name="salaire" value="'.$donnees['competences'].'" type="hidden">
-     <input name="description" value="'.$donnees['site_web'].'" type="hidden">
-     <input name="lieu" value="'.$donnees['tarif'].'" type="hidden">
-     <input name="competences" value="'.$donnees['langues'].'" type="hidden"> 
+     <input name="id" value="'.$donnees['id_free'].'" type="hidden">
+     <input name="nom" value="'.$donnees['nom'].'" type="hidden">
+     <input name="prenom" value="'.$donnees['prenom'].'" type="hidden">
+     <input name="mail" value="'.$donnees['mail'].'" type="hidden">
+     <input name="date_inscr" value="'.$donnees['date_inscr'].'" type="hidden">
+     <input name="competences" value="'.$donnees['competences'].'" type="hidden">
+     <input name="site_web" value="'.$donnees['site_web'].'" type="hidden">
+     <input name="tarif" value="'.$donnees['tarif'].'" type="hidden">
+     <input name="langues" value="'.$donnees['langues'].'" type="hidden"> 
      <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
      </form>                   
    </ul>

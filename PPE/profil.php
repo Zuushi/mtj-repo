@@ -5,34 +5,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="img/ico.png">
 
-  <title>PPE Site Freelance</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/full-slider.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="assets/js/ie-emulation-modes-warning.js"></script>
-
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-
-</head>
+<?php 
+  include_once('includes/header.php'); 
+?>
 
 <!-- Corps de la page-->
 <body class="my_background bg-color-inscription">
@@ -62,7 +38,7 @@
           $localisation = $donnees['localisation'];
       } else if (!empty($_SESSION['mail_sess']) AND $_SESSION['type'] == 'societe') {
 
-        //REQUETE POUR SELECTIONNER LES INFOS DU FREELANCE CONNECTE
+        //REQUETE POUR SELECTIONNER LES INFOS DE LA SOCIETE CONNECTE
       	 $req = $bdd->prepare('SELECT * FROM mbr_society WHERE mail = :mail');
         $req->execute(array(
           'mail' => $_SESSION['mail_sess']
@@ -76,58 +52,15 @@
           $dat_inscr = $donnees['date_inscr'];
           $capital = $donnees['capital'];
           $site_web = $donnees['site_web'];
+          $logo = $donnees['logo'];
           $siege_social = $donnees['siege_social'];
           $recruteur = $donnees['recruteur'];
           $caracteristiques = $donnees['caracteristiques'];
       } else {
         header("location: index.php");
       }
+      include_once('navbar\navbar_user_connecte.php');
 ?>
-
-     <nav class="navbar navbar-inverse">
-      <div class="container2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span  style="font-weight: bold">Menu</span>
-          </button>
-          <div id="div-logo">
-          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
-            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
-          </div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        <center>
-          <form class="navbar-form navbar-right" action="recherche.php" method="post">
-            <div class="form-group" id="form-index">
-              <input type="search" class="input-xl form-control bar-form" name="recherche" id="bar-index" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-            </div>
-            <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
-              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="index.php#guide"><B>GUIDE POUR DEMARRER</B></a></div>
-            </div>
-
-            <div class="btn-nav-index">
-                <button type="button" class="btn btn-primary" id="btn-deconnexion" onclick="deco()">Déconnexion</button>
-                    <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
-                      <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                      <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
-                        <li><hr></li>
-                        <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
-                        <li><a href="#"><span class="blue">Mes Relations</span></a></li>
-                        <li><a href="#"><span class="blue">Mes Contrats</span></a></li>
-                      </ul>
-                    </div>
-            </div>
-          </form>
-          </center>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
 
 <!--PROFIL FREELANCE -->
 <!--PROFIL FREELANCE -->
@@ -135,6 +68,7 @@
 <!--PROFIL FREELANCE -->
 <!--PROFIL FREELANCE -->
 <?php if ($_SESSION['type'] == 'freelance') { ?>
+<form  method="post">
 <div class="container mise-en-page">
 
 <?php if ($_SESSION['type'] == 'freelance') { ?>
@@ -143,25 +77,31 @@
         <center><h1>Votre PROFIL FREELANCE</h1></center>
       </span>
     </div>
+        <center><?php //TRAITEMENT FORMULAIRE MISE A JOUR PROFIL FREELANCE
+          include_once('includes/action.profil.php'); ?>
+        </center>
     <?php } ?>
           
 <?php if (empty($test) AND $_SESSION['type'] == 'freelance') { ?>
-    		<center>
-			<div class="alert alert-danger">
-				<p>Vous devez d'abord passer le QCM avant de pouvoir postuler aux missions</p><br>
-				<a href="qcm.php">Faire le TEST</a>
-			</div>
+      <center>
+      <div class="alert alert-danger">
+          <p>Vous devez d'abord passer le QCM avant de pouvoir postuler aux missions</p><br>
+          <a href="qcm.php">Faire le TEST</a>
+      </div>
+      </center>
+<?php } ?>
+<?php if (isset($_SESSION['note'])) { ?>
+    	<center>
+			<div class="alert alert-success">
+  				<p>Merci d'avoir passé le test !</p><br>
+          <p>Consultez votre note onglet Compétences !</p>
+  			</div>
 			</center>
 <?php } ?>
-
-  <form  method="post">
+<?php unset($_SESSION['note']) ?>
+<center><h1><small> Informations associées à votre compte </small></h1></center>
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-            <center><?php //TRAITEMENT FORMULAIRE MISE A JOUR PROFIL FREELANCE
-                include_once('includes/action.profil.php'); ?></center>
-                <h1><small> Informations associées à votre compte </small></h1>
-            </div>
             <div class="col-md-offset-2 col-md-8">
                 <small> Date d'inscription: <?php echo $dat_inscr ?></small>
                 <br>&nbsp;
@@ -345,23 +285,39 @@
 <!--PROFIL SOCIETE -->
 <!--PROFIL SOCIETE -->
 
+<form  method="post">
 <div class="container mise-en-page">
-
       <div style="background-color: #337ab7;color: white;">
       <span>
         <center><h1>Votre PROFIL SOCIÉTÉ</h1></center>
       </span>
     </div>
+          <center><?php //TRAITEMENT FORMULAIRE MISE A JOUR PROFIL FREELANCE
+        include_once('includes/action.profil.societe.php'); ?></center>
+    <div class="col-md-offset-2 col-md-8">
+        <h1><small> Informations associées à votre compte recruteur</small></h1>
+    </div>
 
-  <form  method="post">
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <h1><small> Informations associées à votre compte recruteur</small></h1>
-            </div>
-            <div class="col-md-offset-2 col-md-8">
                 <small> Date d'inscription: <?php echo $dat_inscr ?></small>
                 <br>&nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-7">
+                <div class="form-group">
+                    <img style="float:right;width: 170px;height: 150px; border-radius: 5px; border: 1px solid #337ab7;" id="photo2" src="img/default.jpg">
+                </div>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-md-offset-2 col-md-7">
+                <div class="form-group">
+                <label for="Url2">Ajoutez l'url de votre photo !</label>
+                    <input type="text" class="form-control" id="url2" name="url2" value="<?php echo $logo;?>">
+                </div>
             </div>
         </div>
         <div class="row">
@@ -383,7 +339,7 @@
             <div class="col-md-offset-2 col-md-7">
                 <div class="form-group">
                     <label for="Email">Adresse Mail</label>
-                    <input type="text" class="form-control" id="email" name="mail" value="<?php echo $mail;?>">
+                    <input type="text" class="form-control" id="email_societe" name="mail_societe" value="<?php echo $mail;?>">
                 </div>
             </div>
         </div>
@@ -392,40 +348,54 @@
             <div class="col-md-offset-2 col-md-7">
                 <div class="form-group">
                     <label>N° Siret</label>
-                    <input type="text" class="form-control" id="cb" name="cb" placeholder="Ex: 12 3466 5488 7755" value="<?php echo $siret_societe ;?>">
+                    <input type="text" class="form-control" id="siret_societe" name="siret_societe" placeholder="Ex: 12 3466 5488 7755" value="<?php echo $siret_societe ;?>">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-md-offset-2 col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-globe"></span>
+                    <input type="text" id="siege_social" name="siege_social" class="form-control" value="<?php echo $siege_social ;?>" aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
 
-        <div class="row">
+         <div class="row">
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group"><br>
+                    <label for="Password">Mot de passe</label>
+                    <input type="password" oninput="MAJ3();" class="form-control" id="password_societe" name="password_societe" placeholder="Saisir mot de passe...">
+                </div>
+            </div>
+            <div class=" col-md-3">
+                <div class="form-group"><br>
+                    <label for="Vpassword"><span style="color: white; visibility: hidden">Vérification mot de passe</span></label>
+                    <input type="button" name="Modifier" id="modif_pw_societe" value="Modifier" class="btn btn-default">
+                </div>
+            </div>
+        </div>        
+        <div id="ch_new_pass_societe"  style="visibility: hidden;" class="row">
             <div class="col-md-offset-2 col-md-3">
                 <div class="form-group">
-                    <label for="Password">Mot de passe</label>
-                    <input type="password" oninput="checkMdp ()" class="form-control" id="password" name="password" value="<?php;?>">
+                    <label for="Password">Nouveau mot de passe</label>
+                    <input type="password" oninput="checkMdpSociete ()" class="form-control" id="npassword_societe" name="npassword_societe" placeholder="Saisir le mot de passe...">
                 </div>
             </div>
             <div class="col-md-offset-1 col-md-3">
                 <div class="form-group">
                     <label for="Vpassword">Vérification mot de passe</label>
-                    <input type="password" oninput="checkMdp ()" class="form-control" id="vpassword" name="v_password" value="<?php;?>">
+                    <input type="password" oninput="checkMdpSociete ()" class="form-control" id="nvpassword_societe" name="nvpassword_societe" placeholder="Saisir le mot de passe...">
                 </div>
             </div>
         </div>
 
-        <div class="row">
-             <div class="col-md-offset-2 col-md-3">
-                <div class="input-group">
-                    <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                    <input type="text" id="adresse" name="adresse" class="form-control" value="<?php echo $siege_social ;?>" aria-describedby="basic-addon1">
-                </div>
-            </div>
-        </div>
-
+<input type='hidden' name='profil_societe' value='check3'>
         <br/>
 
     </div>
       <center>
-          <button class="btn btn-primary" title="Saisir votre mot de passe" type="submit">Mettre à jour</button>
+          <button class="btn btn-primary" id="btn3" title="Saisir votre mot de passe" type="submit">Mettre à jour</button>
     </center>
 </form>
     <br>
@@ -463,17 +433,23 @@
         <div class="row">
             <div class="col-md-offset-2 col-md-7">
                 <div class="form-group">
-                    <label for="Comptences">Présentez votre entreprise !</label>
-                    <textarea type="text" class="form-control" id="competences" name="competences" style="height:150px;"><?php echo $caracteristiques;?></textarea>
+                    <label for="Caracteristiques">Présentez votre entreprise !</label>
+                    <textarea type="text" class="form-control" id="caracteristiques" name="caracteristiques" style="height:150px;"><?php echo $caracteristiques;?></textarea>
+                </div>
+            </div>
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group"><br>
+                    <label for="Password">Mot de passe</label>
+                    <input type="password" oninput="MAJ4();" class="form-control" id="cpassword_societe" name="cpassword_societe" placeholder="Saisir mot de passe...">
                 </div>
             </div>
         </div>
-<input type='hidden' name='profil_societe' value='check2'>
+<input type='hidden' name='profil_societe' value='check4'>
         <br/>
 
     </div>
       <center>
-          <button class="btn btn-primary" title="Saisir votre mot de passe" type="submit">Mettre à jour</button>
+          <button class="btn btn-primary" id="btn4" title="Saisir votre mot de passe" type="submit">Mettre à jour</button>
     </center>
 </form>
  <br>
@@ -484,7 +460,7 @@
 
 <script type="text/javascript">
 	 function deco () {
-      window.location= "deco.php";
+      window.location= "deconnexion/deco.php";
     }
 
   function MAJ1 () {
@@ -500,22 +476,73 @@
       document.getElementById('btn2').disabled = false;
     }
   }
+    
+  function MAJ3 () {
+    document.getElementById('btn3').disabled = true;
+    if (document.getElementById('password_societe').value != "") {
+      document.getElementById('btn3').disabled = false;
+    }
+  }
+
+  function MAJ4 () {
+    document.getElementById('btn4').disabled = true;
+    if (document.getElementById('cpassword_societe').value != "") {
+      document.getElementById('btn4').disabled = false;
+    }
+  }
+
   function Photo () {
     if (document.getElementById('url').value != "") {
       document.getElementById('photo').src = document.getElementById('url').value;
     }
+  }  
+  function Photo2 () {
+    if (document.getElementById('url2').value != "") {
+      document.getElementById('photo2').src = document.getElementById('url2').value;
+    }
   }
 
+//EXECUTE CES FONCTIONS AU CHARGEMENT DE LA PAGE
   function helloProfil () {
-    MAJ1();
-    MAJ2();
-    Photo();
+    var type = "<?php echo $_SESSION['type']?>";
+    if (type == 'freelance') {
+      MAJ1();
+      MAJ2();
+      Photo();
+    } else {
+      MAJ3();
+      MAJ4();
+      Photo2();
+    }
   }
 
       function checkMdp ()
     {
         var mdp = document.getElementById('npassword');
         var vmdp = document.getElementById('nvpassword');
+        if (mdp.value != vmdp.value) 
+        {
+            mdp.style.borderColor = "#DD546D";
+            vmdp.style.borderColor = "#DD546D"; //rouge
+        }
+
+        else if (mdp.value == "" && mdp.value == "")
+        {
+            mdp.style.borderColor = "#CCC";
+            vmdp.style.borderColor = "#CCC"; //gris
+        }
+
+        else if (mdp.value != "" && vmdp.value != "" && mdp.value == vmdp.value)
+        {
+            mdp.style.borderColor = "#64FE2E";
+            vmdp.style.borderColor = "#64FE2E"; //vert 
+        }
+    }      
+
+    function checkMdpSociete ()
+    {
+        var mdp = document.getElementById('npassword_societe');
+        var vmdp = document.getElementById('nvpassword_societe');
         if (mdp.value != vmdp.value) 
         {
             mdp.style.borderColor = "#DD546D";
@@ -542,6 +569,9 @@
 <script>
   $( "#modif_pw" ).on( "click", function() {
     $( "#ch_new_pass" ).css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1}, 800);
+  });  
+  $( "#modif_pw_societe" ).on( "click", function() {
+    $( "#ch_new_pass_societe" ).css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1}, 800);
   });
 </script>
 

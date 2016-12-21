@@ -1,212 +1,36 @@
 <?php
-/*session_start();*/
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="img/ico.png">
 
-  <title>PPE Site Freelance</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/full-slider.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="assets/js/ie-emulation-modes-warning.js"></script>
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
-    </head>
-
+<?php 
+  include_once('includes/header.php'); 
+?>
     <body>
 
       <?php
-
       //BARRE MENU UTILISATEUR CONNECTE
       if (!empty($_SESSION['mail_sess'])) {
            if ($_SESSION['type'] == 'freelance') {
-              $req = $bdd->prepare('SELECT * FROM mbr_free WHERE mail = :mail');
-              $req->execute(array(
-                'mail' => $_SESSION['mail_sess']
-                ));
-
-              $donnees = $req->fetch();
-              $_SESSION['prenom'] = $donnees['prenom'];
-              $_SESSION['id'] = $donnees['id_free'];
+            // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION FREELANCE
+            include_once('session/session_freelance.php');
             } else {
-              $req = $bdd->prepare('SELECT * FROM mbr_society WHERE mail = :mail');
-              $req->execute(array(
-                'mail' => $_SESSION['mail_sess']
-                ));
-
-              $donnees = $req->fetch();
-              $_SESSION['prenom'] = $donnees['recruteur'];
-              $_SESSION['id'] = $donnees['id_soc'];
+            // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION SOCIETE
+            include_once('session/session_societe.php');
             }  
-        ?>
 
-
-
-          <nav class="navbar navbar-inverse">
-      <div class="container2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span  style="font-weight: bold">Menu</span>
-          </button>
-          <div id="div-logo">
-          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
-            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
-          </div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        <center>
-          <form class="navbar-form navbar-right" action="recherche.php" method="post">
-            <div class="form-group" id="form-index">
-              <input type="search" class="input-xl form-control bar-form" name="recherche" id="bar-index" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-            </div>
-            <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
-              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="#guide"><B>GUIDE POUR DEMARRER</B></a></div>
-            </div>
-
-            <div class="btn-nav-index">
-                <button type="button" class="btn btn-primary" id="btn-deconnexion" onclick="deco()">Déconnexion</button>
-                    <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
-                      <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                      <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
-                        <li><hr></li>
-                        <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
-                        <li><a href="#"><span class="blue">Mes Relations</span></a></li>
-                        <li><a href="#"><span class="blue">Mes Contrats</span></a></li>
-                      </ul>
-                    </div>
-            </div>
-          </form>
-          </center>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-      <?php
-
+         //BARRE MENU UTILISATEUR CONNECTE
+            include_once('navbar\navbar_user_connecte.php');
          }
+         else {
          //BARRE MENU UTILISATEUR NON CONNECTE
-         else
-         {
-          ?>
-
-
-
-
-          <nav class="navbar navbar-inverse">
-      <div class="container2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span  style="font-weight: bold">Menu</span>
-          </button>
-          <div id="div-logo">
-          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
-            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
-          </div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        <center>
-          <form class="navbar-form navbar-right" action="recherche.php" method="post">
-            <div class="form-group" id="form-index">
-              <input name="recherche" type="search" class="input-xl form-control bar-form" id="bar-index" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-            </div>
-            <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
-              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="#guide"><B>GUIDE POUR DEMARRER</B></a></div>
-            </div>
-            		      <div class="btn-nav-index">
-		          	<button type="button" class="btn btn-primary" id="btn-connexion" data-toggle="modal" data-target="#connexion">Connexion</button>
-              		<a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
-              </div>
-          </form>
-          </center>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-      <?php
+            include_once('navbar\navbar_user_non_connecte.php');
          }
-
-      ?>
-      <!-- Connexion -->
-      <div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header title-color">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <center>
-                    <h4 class="modal-title" id="myModalLabel">Veuillez saisir vos identifiants</h4>
-                </center>
-            </div>
-            <!-- Champ connexion-->
-
-            <form method="post" action="">
-
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-offset-2 col-md-7">
-                    <div class="form-group blue">
-                      <label for="Email">Adresse Mail</label>
-                      <input type="text" class="form-control" name="email" placeholder="Entrez l'email">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-offset-2 col-md-7">
-                    <div class="form-group blue">
-                      <label for="Password">Mot de passe</label>
-                      <input type="password" class="form-control" name="password" placeholder="Mot de passe">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer footer-color">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-                <button type="submit" class="btn btn-default">Connexion</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-      <!-- Full Page Image Background Carousel Header -->
-      <?php
-
-      if (!empty($_GET['result']))
-      {
-        echo '<p id="p_err_co">Mauvais identifiant ou mot de passe</p>';
-      }
-
+         //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
+         include_once('includes\formulaire_connexion.php');
       ?>
 
       <div class="full_slide">
@@ -249,6 +73,7 @@ include_once('includes/traitement_co.php');
 		    </div><br>
 		</center>
 	</div>
+  <div style="height: 10px;"></div>
   <div id="infos" class="resp-etapes">
       <span class="resp-numbers2">
         <img class="nombre2" src="img/1.png">
@@ -335,38 +160,62 @@ include_once('includes/traitement_co.php');
 
 <div>
   <center>
-    <h3 class="blue">Les dernières missions déposées :</h3>
+    <h3 style="background-color: #337ab7;color: white;">Les dernières missions déposées :</h3>
   </center>
   <div>
   <?php 
   $c = 0;
-      $reponse = $bdd->query('SELECT titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
+      $reponse = $bdd->query('SELECT id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
     while ($donnees = $reponse->fetch() AND $c < 3)
     {
       if ($c == 0) {
-        echo '<div class="last-annonces1" ><ul class="annonces-focus">
-     <li><b>Titre :</b> ' .$donnees['titre']. '</li>
-     <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
-     <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
-     <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
-     <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
-     <li><b>Description :</b> ' .$donnees['description']. '</li>
-     <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
-     <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
-      </ul></div>';
+        echo '<div class="last-annonces1" ><ul class="annonces-focus" onclick="traitement('.$c.')">
+                   <li><b>Titre :</b> ' .$donnees['titre']. '</li>
+                   <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
+                   <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
+                   <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
+                   <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
+                   <li><b>Description :</b> ' .$donnees['description']. '</li>
+                   <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
+                   <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
+                   <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
+                   <input name="titre" value="'.$donnees['titre'].'" type="hidden">
+                   <input name="duree" value="'.$donnees['duree'].'" type="hidden">
+                   <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+                   <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
+                   <input name="date_publication" value="'.$donnees['date_publi'].'" type="hidden">
+                   <input name="date_debut" value="'.$donnees['date_debut'].'" type="hidden">
+                   <input name="salaire" value="'.$donnees['salaire'].'" type="hidden">
+                   <input name="description" value="'.$donnees['description'].'" type="hidden">
+                   <input name="lieu" value="'.$donnees['lieu'].'" type="hidden">
+                   <input name="competences" value="'.$donnees['competences'].'" type="hidden"> 
+                   </form>                   
+                 </ul></div>';
       }
       else
       {
-        echo '<div class="last-annonces" ><ul class="annonces-focus">
-     <li><b>Titre :</b> ' .$donnees['titre']. '</li>
-     <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
-     <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
-     <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
-     <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
-     <li><b>Description :</b> ' .$donnees['description']. '</li>
-     <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
-     <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
-      </ul></div>';
+        echo '<div class="last-annonces" ><ul class="annonces-focus" onclick="traitement('.$c.')">
+                   <li><b>Titre :</b> ' .$donnees['titre']. '</li>
+                   <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
+                   <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
+                   <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
+                   <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
+                   <li><b>Description :</b> ' .$donnees['description']. '</li>
+                   <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
+                   <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
+                   <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
+                   <input name="titre" value="'.$donnees['titre'].'" type="hidden">
+                   <input name="duree" value="'.$donnees['duree'].'" type="hidden">
+                   <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+                   <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
+                   <input name="date_publication" value="'.$donnees['date_publi'].'" type="hidden">
+                   <input name="date_debut" value="'.$donnees['date_debut'].'" type="hidden">
+                   <input name="salaire" value="'.$donnees['salaire'].'" type="hidden">
+                   <input name="description" value="'.$donnees['description'].'" type="hidden">
+                   <input name="lieu" value="'.$donnees['lieu'].'" type="hidden">
+                   <input name="competences" value="'.$donnees['competences'].'" type="hidden"> 
+                   </form>                   
+                 </ul></div>';
       }
       $c = $c + 1;
 
@@ -381,44 +230,78 @@ include_once('includes/traitement_co.php');
 
 <div>
   <center>
-    <h3 class="blue">Les Freelancers récemment inscrits :</h3>
+    <h3 style="background-color: #337ab7;color: white;">Les Freelancers récemment inscrits :</h3>
   </center>
   <div>
   <?php 
-  $c = 0;
-      $reponse = $bdd->query('SELECT nom, prenom, mail, date_inscr, test, competences, site_web, tarif, langues, localisation FROM mbr_free ORDER BY id_free DESC');
-    while ($donnees = $reponse->fetch() AND $c < 3)
+  $d = 0;
+      $reponse = $bdd->query('SELECT id_free, nom, photo, prenom, mail, date_inscr, test, competences, site_web, tarif, langues, localisation FROM mbr_free ORDER BY id_free DESC');
+    while ($donnees = $reponse->fetch() AND $d < 3)
     {
-      if ($c == 0) {
-        echo '<div class="last-annonces1" ><ul class="annonces-focus">
-     <li><b>Nom :</b> ' .$donnees['nom']. '</li>
+      if ($d == 0) {
+     echo '<div class="last-annonces1" ><ul class="annonces-focus" onclick="traitement('.$c.')">';
+     if ($donnees['photo'] != "") {
+       echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
+     } else {
+       echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">';
+     }
+     echo'<li><b>Nom :</b> ' .$donnees['nom']. '</li>
      <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
-     <li><b>Addresse mail :</b> ' .$donnees['mail']. '</li>
-     <li><b>Date inscription :</b> ' .$donnees['date_inscr']. '</li>
-     <li><b>Note du test :</b> ' .$donnees['test'].'/6</li>
+     <li><b>Email :</b> ' .$donnees['mail']. '</li>
+     <li><b>Date d\'inscription :</b> ' .$donnees['date_inscr']. '</li>
      <li><b>Compétences :</b> ' .$donnees['competences']. '</li>
-     <li><b>Site web :</b> ' .$donnees['site_web']. '</li>
+     <li><b>Site Web :</b> ' .$donnees['site_web']. '</li>
      <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
-     <li><b>Langues :</b> ' .$donnees['langues']. '</li>
+     <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
      <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
-      </ul></div>';
+     <form name="profil.freelance" id="profil.freelance'.$c.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
+     <input name="titre" value="'.$donnees['nom'].'" type="hidden">
+     <input name="id" value="'.$donnees['id_free'].'" type="hidden">
+     <input name="nom" value="'.$donnees['nom'].'" type="hidden">
+     <input name="prenom" value="'.$donnees['prenom'].'" type="hidden">
+     <input name="mail" value="'.$donnees['mail'].'" type="hidden">
+     <input name="date_inscr" value="'.$donnees['date_inscr'].'" type="hidden">
+     <input name="competences" value="'.$donnees['competences'].'" type="hidden">
+     <input name="site_web" value="'.$donnees['site_web'].'" type="hidden">
+     <input name="tarif" value="'.$donnees['tarif'].'" type="hidden">
+     <input name="langues" value="'.$donnees['langues'].'" type="hidden"> 
+     <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
+     </form>                   
+   </ul></div>';
       }
       else
       {
-        echo '<div class="last-annonces" ><ul class="annonces-focus">
-     <li><b>Nom :</b> ' .$donnees['nom']. '</li>
+     echo '<div class="last-annonces" ><ul class="annonces-focus" onclick="traitement('.$c.')">';
+     if ($donnees['photo'] != "") {
+       echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
+     } else {
+       echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">';
+     }
+     echo'<li><b>Nom :</b> ' .$donnees['nom']. '</li>
      <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
-     <li><b>Addresse mail :</b> ' .$donnees['mail']. '</li>
-     <li><b>Date inscription :</b> ' .$donnees['date_inscr']. '</li>
-     <li><b>Note du test :</b> ' .$donnees['test'].'/6</li>
+     <li><b>Email :</b> ' .$donnees['mail']. '</li>
+     <li><b>Date d\'inscription :</b> ' .$donnees['date_inscr']. '</li>
      <li><b>Compétences :</b> ' .$donnees['competences']. '</li>
-     <li><b>Site web :</b> ' .$donnees['site_web']. '</li>
+     <li><b>Site Web :</b> ' .$donnees['site_web']. '</li>
      <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
-     <li><b>Langues :</b> ' .$donnees['langues']. '</li>
+     <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
      <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
-      </ul></div>';
+     <form name="profil.freelance" id="profil.freelance'.$c.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
+     <input name="titre" value="'.$donnees['nom'].'" type="hidden">
+     <input name="id" value="'.$donnees['id_free'].'" type="hidden">
+     <input name="nom" value="'.$donnees['nom'].'" type="hidden">
+     <input name="prenom" value="'.$donnees['prenom'].'" type="hidden">
+     <input name="mail" value="'.$donnees['mail'].'" type="hidden">
+     <input name="date_inscr" value="'.$donnees['date_inscr'].'" type="hidden">
+     <input name="competences" value="'.$donnees['competences'].'" type="hidden">
+     <input name="site_web" value="'.$donnees['site_web'].'" type="hidden">
+     <input name="tarif" value="'.$donnees['tarif'].'" type="hidden">
+     <input name="langues" value="'.$donnees['langues'].'" type="hidden"> 
+     <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
+     </form>                   
+   </ul></div>';
       }
-      $c = $c + 1;
+      $d = $d + 1;
 
     }
 
@@ -775,9 +658,19 @@ include_once('includes/traitement_co.php');
 
     function deco () 
     {
-      window.location= "deco.php";
+      window.location= "\\PPE\\deconnexion\\deco.php";
     }
 
+        function traitement (x)
+    {
+      document.getElementById("mission"+x).submit();
+      return false;
+    }        
+    function traitementFreelance (x)
+    {
+      document.getElementById("profil.freelance"+x).submit();
+      return false;
+    }
 
     </script>
 
