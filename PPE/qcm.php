@@ -9,6 +9,9 @@ session_start();
       if (empty($_SESSION['mail_sess'])) {
         header("location: index.php");
       }
+      if (isset($_SESSION['type']) AND $_SESSION['type'] == 'societe') {
+          header("location: index.php");
+      }
 ?>
 
 <!DOCTYPE html>

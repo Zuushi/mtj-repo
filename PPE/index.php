@@ -23,14 +23,18 @@ include_once('includes/traitement_co.php');
             }  
 
          //BARRE MENU UTILISATEUR CONNECTE
-            include_once('navbar\navbar_user_connecte.php');
-         }
+            include_once('navbar\navbar_user_connecte.php'); 
+            if(isset($_SESSION['accueil'])) {
+            ?>
+            <center><div class="alert alert-info" role="alert">Bienvenue sur notre site <?php echo $_SESSION['accueil']?> !</div></center>
+         <?php } } 
          else {
          //BARRE MENU UTILISATEUR NON CONNECTE
             include_once('navbar\navbar_user_non_connecte.php');
          }
          //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
          include_once('includes\formulaire_connexion.php');
+
       ?>
 
       <div class="full_slide">
@@ -165,7 +169,7 @@ include_once('includes/traitement_co.php');
   <div>
   <?php 
   $c = 0;
-      $reponse = $bdd->query('SELECT id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
+      $reponse = $bdd->query('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
     while ($donnees = $reponse->fetch() AND $c < 3)
     {
       if ($c == 0) {
@@ -182,6 +186,7 @@ include_once('includes/traitement_co.php');
                    <input name="titre" value="'.$donnees['titre'].'" type="hidden">
                    <input name="duree" value="'.$donnees['duree'].'" type="hidden">
                    <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+                   <input name="id_annonce" value="'.$donnees['id_ann'].'" type="hidden">
                    <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
                    <input name="date_publication" value="'.$donnees['date_publi'].'" type="hidden">
                    <input name="date_debut" value="'.$donnees['date_debut'].'" type="hidden">
@@ -207,6 +212,7 @@ include_once('includes/traitement_co.php');
                    <input name="titre" value="'.$donnees['titre'].'" type="hidden">
                    <input name="duree" value="'.$donnees['duree'].'" type="hidden">
                    <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+                   <input name="id_annonce" value="'.$donnees['id_ann'].'" type="hidden">
                    <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
                    <input name="date_publication" value="'.$donnees['date_publi'].'" type="hidden">
                    <input name="date_debut" value="'.$donnees['date_debut'].'" type="hidden">
@@ -239,7 +245,7 @@ include_once('includes/traitement_co.php');
     while ($donnees = $reponse->fetch() AND $d < 3)
     {
       if ($d == 0) {
-     echo '<div class="last-annonces1" ><ul class="annonces-focus" onclick="traitement('.$c.')">';
+     echo '<div class="last-annonces1" ><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
      if ($donnees['photo'] != "") {
        echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
      } else {
@@ -254,7 +260,7 @@ include_once('includes/traitement_co.php');
      <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
      <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
      <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
-     <form name="profil.freelance" id="profil.freelance'.$c.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
+     <form name="profil.freelance" id="profil.freelance'.$d.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
      <input name="titre" value="'.$donnees['nom'].'" type="hidden">
      <input name="id" value="'.$donnees['id_free'].'" type="hidden">
      <input name="nom" value="'.$donnees['nom'].'" type="hidden">
@@ -271,7 +277,7 @@ include_once('includes/traitement_co.php');
       }
       else
       {
-     echo '<div class="last-annonces" ><ul class="annonces-focus" onclick="traitement('.$c.')">';
+     echo '<div class="last-annonces" ><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
      if ($donnees['photo'] != "") {
        echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
      } else {
@@ -286,7 +292,7 @@ include_once('includes/traitement_co.php');
      <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
      <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
      <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
-     <form name="profil.freelance" id="profil.freelance'.$c.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
+     <form name="profil.freelance" id="profil.freelance'.$d.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
      <input name="titre" value="'.$donnees['nom'].'" type="hidden">
      <input name="id" value="'.$donnees['id_free'].'" type="hidden">
      <input name="nom" value="'.$donnees['nom'].'" type="hidden">

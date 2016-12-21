@@ -1,6 +1,6 @@
 <?php 
   include_once('includes/co_bdd.php'); 
-  include_once('includes/traitement_co_recherche.php');
+  include_once('includes/traitement_co.php');
 ?>
 
 <!DOCTYPE html>
@@ -188,7 +188,7 @@
    <script type="text/javascript">
         function deco () 
     {
-      window.location= "deconnexion/deco_recherche.php";
+      window.location= "deconnexion/index.php";
     }
 
         function traitement (x)

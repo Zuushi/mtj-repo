@@ -1,6 +1,6 @@
 <?php
 include_once('includes/co_bdd.php');
-session_start();
+include_once('includes/traitement_co_annonces_free.php');
 ?>
 
 
@@ -10,6 +10,11 @@ session_start();
   include_once('includes/header.php'); 
 ?>
 
+<script type="text/javascript">
+   function deco () {
+      window.location= "deconnexion/deco.php";
+    }
+</script>
 
 <body class="my_background bg-color-inscription">
 

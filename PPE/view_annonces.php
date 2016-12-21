@@ -32,7 +32,9 @@
          }
          //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
          include_once('includes\formulaire_connexion.php');
-      ?>
+      if (isset($_SESSION['type']) AND $_SESSION['type'] == 'societe') { ?>
+        <meta http-equiv="refresh" content="0; URL=index.php">
+     <?php } ?>
 
 <div class="container mise-en-page">
     <div style="background-color: #337ab7;color: white;">
@@ -129,7 +131,7 @@
 //AFFICHAGE PAR DEFAUT DE TOUTES LES ANNONCES
   if (empty($_POST)) {
 
-    $reponse = $bdd->query('SELECT id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
+    $reponse = $bdd->query('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
     $c = 0;
     while ($donnees = $reponse->fetch())
     {
@@ -144,6 +146,7 @@
      <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
      <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
      <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+     <input name="id_annonce" value="'.$donnees['id_ann'].'" type="hidden">
      <input name="titre" value="'.$donnees['titre'].'" type="hidden">
      <input name="duree" value="'.$donnees['duree'].'" type="hidden">
      <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
@@ -169,7 +172,7 @@ if (!empty($_POST) AND !empty($_POST['inlineRadioOptions'])) {
 //AFFICHAGE EN FONCTION DE LA CATEGORIE
   if ($_POST['spe1'] == 'langages' AND $_POST['spe2'] == 'langages' AND $_POST['spe3'] == 'specialites' OR empty($_POST['spe1']) AND empty($_POST['spe2']) AND empty($_POST['spe3'])) {
 
-    $req = $bdd->prepare('SELECT id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces WHERE cat = :cat ORDER BY date_publi DESC');
+    $req = $bdd->prepare('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces WHERE cat = :cat ORDER BY date_publi DESC');
     $req->execute(array(
       'cat' => $_POST['inlineRadioOptions']
       ));
@@ -188,6 +191,7 @@ if (!empty($_POST) AND !empty($_POST['inlineRadioOptions'])) {
      <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
      <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
      <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+     <input name="id_annonce" value="'.$donnees['id_ann'].'" type="hidden">
      <input name="titre" value="'.$donnees['titre'].'" type="hidden">
      <input name="duree" value="'.$donnees['duree'].'" type="hidden">
      <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
@@ -208,7 +212,7 @@ if (!empty($_POST) AND !empty($_POST['inlineRadioOptions'])) {
 //AFFICHAGE EN FONCTION DE LA SPECIALITE
 if ($_POST['spe1'] != 'langages' AND $_POST['spe2'] != 'langages' AND $_POST['spe3'] != 'specialites' AND !empty($_POST['spe1']) OR !empty($_POST['spe2']) OR !empty($_POST['spe3'])) 
 {
-$req = $bdd->prepare('SELECT id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces WHERE spe = :spe OR spe = :spe2 OR spe = :spe3 ORDER BY date_publi DESC');
+$req = $bdd->prepare('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces WHERE spe = :spe OR spe = :spe2 OR spe = :spe3 ORDER BY date_publi DESC');
 $req->execute(array(
   'spe' => $_POST['spe1'],
   'spe2' => $_POST['spe2'],
@@ -229,8 +233,9 @@ $req->execute(array(
      <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
      <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
      <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+     <input name="id_annonce" value="'.$donnees['id_ann'].'" type="hidden">
      <input name="titre" value="'.$donnees['titre'].'" type="hidden">
-    <input name="duree" value="'.$donnees['duree'].'" type="hidden">
+     <input name="duree" value="'.$donnees['duree'].'" type="hidden">
      <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
      <input name="date_publication" value="'.$donnees['date_publi'].'" type="hidden">
      <input name="date_debut" value="'.$donnees['date_debut'].'" type="hidden">

@@ -32,6 +32,9 @@
          }
          //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
          include_once('includes\formulaire_connexion.php');
+     if (isset($_SESSION['type']) AND $_SESSION['type'] == 'freelance') { ?>
+        <meta http-equiv="refresh" content="0; URL=index.php">
+     <?php } ?>
       ?>
       
 
