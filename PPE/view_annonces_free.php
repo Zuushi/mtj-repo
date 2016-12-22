@@ -34,9 +34,7 @@
          include_once('includes\formulaire_connexion.php');
      if (isset($_SESSION['type']) AND $_SESSION['type'] == 'freelance') { ?>
         <meta http-equiv="refresh" content="0; URL=index.php">
-     <?php } ?>
-      ?>
-      
+     <?php } ?> 
 
 <div class="container mise-en-page">
     <div style="background-color: #337ab7;color: white;">

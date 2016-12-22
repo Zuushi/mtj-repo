@@ -1,6 +1,9 @@
 <?php 
   include_once('includes/co_bdd.php'); 
   include_once('includes/traitement_co_annonces.php');
+  if ($_SESSION['type'] == 'societe') {
+    header("location: index.php");
+  }
 ?>
 
 <!DOCTYPE html>

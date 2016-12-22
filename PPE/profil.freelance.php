@@ -1,6 +1,15 @@
 <?php
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co_annonces_free.php');
+
+if ($_SESSION['type'] == 'freelance') {
+        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION FREELANCE
+        include_once('session/session_freelance.php');
+        header("location: index.php");
+        } else {
+        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION SOCIETE
+        include_once('session/session_societe.php');
+        }
 ?>
 
 
@@ -39,11 +48,14 @@ include_once('includes/traitement_co_annonces_free.php');
      //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
      include_once('includes\formulaire_connexion.php');
   ?>
+  <?php if ( $_SESSION['type'] == 'freelance') { ?>
+  <meta http-equiv="refresh" content="0; URL=index.php">
+ <?php } ?>
 
 <?php
  
         //REQUETE POUR SELECTIONNER LES INFOS DE LA SOCIETE
-      	 $req = $bdd->prepare('SELECT * FROM mbr_free WHERE id_free = :id_free');
+      	$req = $bdd->prepare('SELECT * FROM mbr_free WHERE id_free = :id_free');
         $req->execute(array(
           'id_free' => $_POST['id']
           ));
@@ -68,6 +80,61 @@ include_once('includes/traitement_co_annonces_free.php');
         <center><h1>PROFIL FREELANCE<span style="text-transform: uppercase;"></span></h1></center>
       </span>
     </div>
+
+    <?php
+    //INSERTION BDD
+    if (!empty($_POST['id_free'])) {
+        //REQUETE POUR SELECTIONNER LES INFOS DE LA SOCIETE
+        $req = $bdd->prepare('SELECT * FROM mbr_free WHERE id_free = :id_free');
+        $req->execute(array(
+          'id_free' => $_POST['id']
+          ));
+
+        $donnees = $req->fetch();
+          $nom = $donnees['nom'];
+          $prenom = $donnees['prenom'];
+          $siret_freelance = $donnees['siret_free'];
+          $mail = $donnees['mail'];
+          $dat_inscr = $donnees['date_inscr'];
+          $test = $donnees['test'];
+          $site_web = $donnees['site_web'];
+          $photo = $donnees['photo'];
+          $localisation = $donnees['localisation'];
+          $langues = $donnees['langues'];
+          $competences = $donnees['competences'];
+
+      $doublon = 0;
+        $req = $bdd->prepare('SELECT * FROM messagerie WHERE id_soci = :id_soci');
+        $req->execute(array(
+          'id_soci' => $_SESSION['id']
+          ));
+      while ($doublon == 0 AND $donnees = $req->fetch()) {
+        if ($donnees['id_free'] == $_POST['id_free']) {
+          $doublon = 1;
+        }
+      }
+
+      if ($doublon == 0) {
+        //REQUETE POUR METTRE EN CONTACT LA SOCIETE ET LE FREELANCE
+        $req = $bdd->prepare('INSERT INTO messagerie(id_free, id_soci, message_soci) VALUES (:id_free, :id_soci, :message_soci)');
+        $req->execute(array(
+          'id_free' => $_POST['id_free'],
+          'id_soci' => $_SESSION['id'],
+          'message_soci' => 'Félicitation ! La société '.$_SESSION['raison_sociale'].' souhaite entrer en contact avec vous pour un éventuel contrat !'
+          )); ?>
+      <center>
+      <div class="alert alert-success">
+          <p>Le message a bien été envoyé ! Retrouvez-vos discussions onglet Profil > Mes relations !</p><br>
+      </div>
+      </center>
+
+<?php } else { ?>
+      <center>
+      <div class="alert alert-danger">
+          <p>Vous etes déjà en contact avec ce freelance ! Retrouvez-vos discussions onglet Profil > Mes relations !</p><br>
+      </div>
+      </center>
+<?php } }?>
     <div class="col-md-offset-2 col-md-8">
         		<div class="row">
         			<div>
@@ -107,10 +174,22 @@ include_once('includes/traitement_co_annonces_free.php');
             </div>
             <div>
             <br>
-              <center><button class="btn-choix" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE CONTACTER CE FREELANCE</button></center>
+            <form method="post" name="contacter_freelance" id="contacter_freelance">
+            <input type="hidden" name="id_free" value="<?php echo $_POST ['id'];?>">
+            <input type="hidden" name="id" value="<?php echo $_POST ['id'];?>">
+            <input type="hidden" name="nom" value="<?php echo $_POST ['nom'];?>">
+            <input type="hidden" name="prenom" value="<?php echo $_POST ['prenom'];?>">
+            <input type="hidden" name="mail" value="<?php echo $_POST ['mail'];?>">
+            <input type="hidden" name="localisation" value="<?php echo $_POST ['localisation'];?>">
+            <input type="hidden" name="tarif" value="<?php echo $_POST ['tarif'];?>">
+            <input type="hidden" name="competences" value="<?php echo $_POST ['competences'];?>">
+            <input type="hidden" name="langues" value="<?php echo $_POST ['langues'];?>">
+            <input type="hidden" name="site_web" value="<?php echo $_POST ['site_web'];?>">
+              <center><button type="submit" class="btn-choix" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE CONTACTER CE FREELANCE</button></center>
               <br>
               &nbsp;
             </div>
+            </form>
     </div>
     <div class="col-md-offset-2 col-md-7">
     </div>

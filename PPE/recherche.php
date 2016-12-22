@@ -1,6 +1,6 @@
 <?php 
   include_once('includes/co_bdd.php'); 
-  include_once('includes/traitement_co.php');
+  include_once('includes/traitement_co_recherche.php');
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +51,6 @@
 
         if (!empty($_POST['recherche'])) {
         $words = preg_split('/\s+/', $_POST['recherche']);
-
             $ok = 0;
             $x = 0;
             $z = 0;
@@ -79,9 +78,11 @@
               }
               $c = $c + 1;
             }
+          //ON SUPPRIME D'EVENTUELS ESPACES DANS LE TABLEAU
+          $words = array_filter($words);
           }
 
-          $reponse = $bdd->query('SELECT titre, id_soci, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
+          $reponse = $bdd->query('SELECT titre, id_ann, id_soci, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
           $c = 0;
           $a = 0;
           while ($donnees = $reponse->fetch())
@@ -103,6 +104,7 @@
                    <input name="titre" value="'.$donnees['titre'].'" type="hidden">
                    <input name="duree" value="'.$donnees['duree'].'" type="hidden">
                    <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+                   <input name="id_annonce" value="'.$donnees['id_ann'].'" type="hidden">
                    <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
                    <input name="date_publication" value="'.$donnees['date_publi'].'" type="hidden">
                    <input name="date_debut" value="'.$donnees['date_debut'].'" type="hidden">
@@ -140,7 +142,7 @@
         for($i = 0 ; $i < sizeof($words) ; $i++) {
           if (stristr($donnees['competences'], $words[$i]))
               {
-           echo '<ul class="annonces-focus" onclick="traitement('.$c.')">';
+           echo '<ul class="annonces-focus" onclick="traitementFreelance('.$c.')">';
            if ($donnees['photo'] != "") {
              echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
            } else {
@@ -188,7 +190,7 @@
    <script type="text/javascript">
         function deco () 
     {
-      window.location= "deconnexion/index.php";
+      window.location= "deconnexion/deco.php";
     }
 
         function traitement (x)

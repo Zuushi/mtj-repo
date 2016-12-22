@@ -1,7 +1,7 @@
 <?php
 include_once('includes/co_bdd.php');
 
-	if (!empty($_POST['salaire_modification']) AND $_POST['checker'] == 0) {
+	if (!empty($_POST['salaire_modification']) AND $_POST['checker'] == 0 AND $_SESSION['type'] == 'societe') {
 
 		$id = $_SESSION['id'];
 		$salaire_modification = $_POST['salaire_modification'];

@@ -1,6 +1,10 @@
 <?php
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co_annonces.php');
+
+  if ($_SESSION['id'] != $_POST['id']) {
+    header("location: index.php");
+  }
 ?>
 
 
@@ -69,6 +73,61 @@ include_once('includes/traitement_co_annonces.php');
         </center>
       </span>
     </div>
+    <?php
+    //INSERTION BDD
+    if (!empty($_POST['id_societe'])) {
+        //REQUETE POUR SELECTIONNER LES INFOS DE LA SOCIETE
+         $req = $bdd->prepare('SELECT * FROM mbr_society WHERE id_soc = :id_soc');
+        $req->execute(array(
+          'id_soc' => $_POST['id_societe']
+          ));
+
+        $donnees = $req->fetch();
+          $raison_sociale = $donnees['raison_sociale'];
+          $siret_societe = $donnees['siret'];
+          $mail = $donnees['mail'];
+          $dat_inscr = $donnees['date_inscr'];
+          $capital = $donnees['capital'];
+          $site_web = $donnees['site_web'];
+          $logo = $donnees['logo'];
+          $siege_social = $donnees['siege_social'];
+          $recruteur = $donnees['recruteur'];
+          $caracteristiques = $donnees['caracteristiques'];
+
+      $doublon = 0;
+        $req = $bdd->prepare('SELECT * FROM messagerie WHERE id_free = :id_free');
+        $req->execute(array(
+          'id_free' => $_SESSION['id']
+          ));
+      while ($doublon == 0 AND $donnees = $req->fetch()) {
+        if ($donnees['id_soci'] == $_POST['id_soci']) {
+          $doublon = 1;
+        }
+      }
+
+      if ($doublon == 0) {
+        //REQUETE POUR METTRE EN CONTACT LA SOCIETE ET LE FREELANCE
+        $req = $bdd->prepare('INSERT INTO messagerie(id_free, id_soci, message_free) VALUES (:id_free, :id_soci, :message_soci)');
+        $req->execute(array(
+          'id_free' => $_SESSION['id'],
+          'id_soci' => $_POST['id_soci'],
+          'message_soci' => 'Félicitation ! M.'.strtoupper($_SESSION['nom']).' souhaite entrer en contact avec vous pour un éventuel contrat ! Celui-ci a postuler à votre offre '.$_POST['titre']
+          )); ?>
+      <center>
+      <div class="alert alert-success">
+          <p>Le message a bien été envoyé ! Retrouvez-vos discussions onglet Profil > Mes relations !</p><br>
+      </div>
+      </center>
+
+<?php } else { ?>
+      <center>
+      <div class="alert alert-danger">
+          <p>Vous etes déjà en contact avec cette entreprise ! Retrouvez-vos discussions onglet Profil > Mes relations !</p><br>
+      </div>
+      </center>
+<?php } }?>
+
+
 <?php include_once('includes\modifier_mission.php');?>
     <div class="col-md-offset-2 col-md-8">
         		<div class="row">
@@ -84,7 +143,7 @@ include_once('includes/traitement_co_annonces.php');
               </div>
               <div>
                 <h3><b>Lieu de mission: </b><span id="1"><?php echo $_POST['lieu'];?></span></h3>
-                <input type='text' class="form-control" style="max-width: 200px;" id="11" name="lieu_modification" value="<?php echo $_POST['lieu'];?>"/>
+                <input type='text' class="form-control" style="max-width: 200px; visibility: hidden" id="11" name="lieu_modification" value="<?php echo $_POST['lieu'];?>"/>
               </div>              
                    <hr class="hr-blue">
             </div>
@@ -93,46 +152,58 @@ include_once('includes/traitement_co_annonces.php');
               <div>
                 <h2>Date de début de la mission:
                 <div id="2"><?php echo $_POST['date_debut']?></div></h2>
-                <input type='text' class="form-control" style="max-width: 200px;" id="12" name="date_debut_modification" value="<?php echo $_POST['date_debut']?>" />
+                <input type='text' class="form-control" style="max-width: 200px; display: none;" id="12" name="date_debut_modification" value="<?php echo $_POST['date_debut']?>" />
               </div>
             </center>            
               <div style="margin-top:20px;border-radius: 5px; border: 1px solid #337ab7;">
                 <center>
                   <h4><b>Compétences requises:</b></h4>
                   <div id="3"><?php echo $_POST['competences'];?></div>
-                  <input type='text' class="form-control" style="max-width: 200px;" id="7" name="competences_modification" value="<?php echo $_POST['competences'];?>" />
+                  <input type='text' class="form-control" style="max-width: 200px; display: none;" id="7" name="competences_modification" value="<?php echo $_POST['competences'];?>" />
                 </center>
               </div>
               <div style="border-radius: 5px; border: 1px solid #337ab7; margin-top: 1px;">
                 <center>
                   <h4><b>Description de la mission:</b></h4>
                   <div id="4"><?php echo $_POST['description'];?></div>
-                  <textarea type='text' class="form-control" style="max-width: 200px; min-height:200px;" id="8" name="description_modification"><?php echo $_POST['description'];?></textarea>
+                  <textarea type='text' class="form-control" style="max-width: 200px;display: none; min-height:200px;" id="8" name="description_modification"><?php echo $_POST['description'];?></textarea>
                 </center>
               </div>
               <div style="border-radius: 5px; border: 1px solid #337ab7; margin-top: 1px;">
                 <center>
                   <h4><b>Durée de la mission: </b></h4>
                   <div id="5"><?php echo $_POST['duree'];?> - renouvelable</div>
-                  <input type='text' class="form-control" style="max-width: 200px;" id="9" name="duree_modification" value="<?php echo $_POST['duree'];?>" />
+                  <input type='text' class="form-control" style="max-width: 200px; display: none;" id="9" name="duree_modification" value="<?php echo $_POST['duree'];?>" />
                 </center>
               </div>              
               <div style="border-radius: 5px; border: 1px solid #337ab7; margin-top: 1px;">
                 <center>
                   <h4><b>Salaire: </b></h4>
                   <div id="6"><?php echo $_POST['salaire'];?> € - négociable</div>
-                        <input type='text' class="form-control" style="max-width: 200px;" id="10" name="salaire_modification" value="<?php echo $_POST['salaire'];?>" />
+                        <input type='text' class="form-control" style="max-width: 200px;display: none;" id="10" name="salaire_modification" value="<?php echo $_POST['salaire'];?>" />
                 </center>
               </div>
             </div>
 
             <?php if (!isset($_SESSION['id']) || $_SESSION['id'] != $_POST['id']) { ?>
+            <form method="post" name="contacter_societe" id="contacter_societe">
+            <input type="hidden" name="id_soci" value="<?php echo $_POST ['id'];?>">
+            <input type="hidden" name="id_societe" value="<?php echo $_POST ['id'];?>">
+            <input type="hidden" name="date_publication" value="<?php echo $_POST['date_publication']?>">
+            <input type="hidden" name="date_debut" value="<?php echo $_POST['date_debut']?>">
+            <input type="hidden" name="entreprise" value="<?php echo $_POST ['entreprise'];?>">
+            <input type="hidden" name="lieu" value="<?php echo $_POST ['lieu'];?>">
+            <input type="hidden" name="salaire" value="<?php echo $_POST ['salaire'];?>">
+            <input type="hidden" name="description" value="<?php echo $_POST ['description'];?>">
+            <input type="hidden" name="competences" value="<?php echo $_POST ['competences'];?>">
+            <input type="hidden" name="duree" value="<?php echo $_POST ['duree'];?>">
             <div>
             <br>
-              <center><button class="btn-choix" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE POSTULER A CETTE MISSION</button></center>
+              <center><button type="submit" class="btn-choix" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE POSTULER A CETTE MISSION</button></center>
               <br>
               &nbsp;
             </div>
+            </form>
             <?php } else { ?>
             <div>
             <br>
@@ -206,15 +277,6 @@ include_once('includes/traitement_co_annonces.php');
   }
 
     window.onload = helloProfil;
-
-$(window).load(function() {
-  $('#7').hide();
-  $('#8').hide();
-  $('#9').hide();
-  $('#10').hide();
-  $('#11').hide();
-  $('#12').hide();
-});
 
 $('#modifier').click(function(){
   if (document.getElementById('modifier').value == "ANNULER") {

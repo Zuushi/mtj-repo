@@ -1,6 +1,20 @@
 <?php
 session_start();
-include_once('includes/co_bdd.php'); ?>
+include_once('includes/co_bdd.php'); 
+
+// SI UTILISATEUR NON CONNECTE ON REDIRIGE
+if (!isset($_SESSION['id'])) {
+        header("location: index.php");
+        }
+if ($_SESSION['type'] == 'freelance') {
+        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION FREELANCE
+        include_once('session/session_freelance.php');
+        header("location: index.php");
+        } else {
+        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION SOCIETE
+        include_once('session/session_societe.php');
+        }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +63,7 @@ include_once('includes/co_bdd.php'); ?>
 
 	<div style="background-color: #337ab7;color: white;">
       <span>
-        <center><h1>Ajouter une offre :</h1></center>
+        <center><h1>Ajouter une MISSION :</h1></center>
       </span>
     </div>
     <?php include_once('includes\action.add_annonces.php'); ?>
