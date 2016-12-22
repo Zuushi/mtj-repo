@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 21 Décembre 2016 à 20:01
+-- Généré le :  Jeu 22 Décembre 2016 à 22:41
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -54,7 +54,7 @@ INSERT INTO `annonces` (`id_ann`, `titre`, `id_soci`, `nom_soci`, `date_publi`, 
 (5, 'Site de vente', 5, 'Web2Web', '2016-10-01', '2016-11-21', '6 mois', 15000, 'Création d\'un site de vente en ligne.', 'Lyon', 'Nous recherchons un développeur Laravel expérimenté avec forte maitrise PHP/SQL. ', 'dev', 'php'),
 (6, 'Site vitrine', 6, 'B2C Webapps', '2016-11-17', '2016-11-24', '4 semaine', 4500, 'Création d\'un site vitrine pour un de nos clients', 'Bordeaux', 'Maîtrise du framework Bootstrap, des connaissances en base de données seraient un plus.', 'dev', 'css'),
 (7, 'Jeu Vidéo en Typescript', 7, 'Gamers-World', '2016-11-25', '2016-12-23', '1 mois', 6000, 'Au sein de notre équipe vous développerait notre tout dernier jeu vidéo ! Nous recherchons des personnes expérimentés soucieux de créer continuellement sur les dernières technologies en matière de graphisme et d\'instruments de construction de scène de jeux !', 'Paris ', 'Maîtrise de Typescript, expérience exigé de 5 ans minimum', 'dev', 'a1'),
-(8, 'Administrateur Windows Servers', 8, 'Netelnonik Networks', '2016-11-25', '2016-11-29', '1 an', 45000, 'Administration réseau', 'Marseille', 'Avoir 5 ans d\'expérience sur même type de poste, recommandations appréciés', 'reseau', 'windows'),
+(8, 'Administrateur Windows Servers', 8, 'Netelnonik Networks', '2016-11-25', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'reseau', 'windows'),
 (9, 'Site de vente', 9, 'Webomag', '2016-10-18', '2016-11-21', '1 mois', 2000, 'Création d\'un site de vente en ligne.', 'Nantes', 'Nous recherchons un développeur Symfony expérimenté. ', 'dev', 'php'),
 (10, 'Airbus Software', 10, 'Airbus', '2016-11-17', '2016-11-24', '5 ans', 45500, 'Airbus makes the freedom of flight possible by designing, manufacturing and supporting the world’s best aircraft. Join our team to developp next generation softwares', 'London', 'Great experience in JAVA is massively recommanded.', 'prog', 'a2'),
 (11, 'Gérer Linux Servers', 11, 'LinkNdCo', '2016-11-25', '2016-12-23', '7 mois', 21000, 'Gérer notre nouveau parc informatique Linux Servers', 'Paris ', 'Connaissances en commandes Shell indispensables!', 'reseau', 'a3'),
@@ -63,10 +63,10 @@ INSERT INTO `annonces` (`id_ann`, `titre`, `id_soci`, `nom_soci`, `date_publi`, 
 (14, 'Programmation en C', 14, 'Inside-Systems', '2016-11-17', '2016-11-24', '1 semaine', 2500, 'Amélioration de nos systèmes embarqués codé en C', 'Nice', 'Maîtrise des technologies des systèmes embarqués', 'prog', 'c'),
 (15, 'Site en JavaScript', 15, 'Site Constructor', '2016-11-25', '2016-12-23', '1 mois', 3000, 'Developpement d\'un site en JavaScript', 'Paris ', 'Maîtrise de JavaScript', 'dev', 'js'),
 (16, 'Administrateur Securité', 16, 'Monster Networks', '2016-11-25', '2016-11-29', '2 mois', 1300, 'Administration réseau et sécurité', 'Marseille', 'Etre au courant des dernières technologies en matière d\'attaque informatique', 'reseau', 'securite'),
-(18, 'php', 17, 'Nasa', '2016-12-16', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'dev', 'php'),
-(42, 'php test', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'dev', 'php'),
-(43, 'test cisco', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'reseau', 'cisco'),
-(44, 'C++', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 100001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'prog', 'c++');
+(18, 'php', 17, 'Nasa', '2016-12-16', '2016-12-16', '1 semaine', 10021001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'dev', 'php'),
+(42, 'php test', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 10021001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'dev', 'php'),
+(43, 'test cisco', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 10021001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'reseau', 'cisco'),
+(44, 'C++', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 10021001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'prog', 'c++');
 
 -- --------------------------------------------------------
 
@@ -162,6 +162,34 @@ INSERT INTO `mbr_society` (`id_soc`, `raison_sociale`, `siret`, `mail`, `passwor
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `messagerie`
+--
+
+CREATE TABLE `messagerie` (
+  `id_mess` int(11) NOT NULL,
+  `id_free` int(11) DEFAULT NULL,
+  `id_soci` int(11) DEFAULT NULL,
+  `message_free` text,
+  `message_soci` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `messagerie`
+--
+
+INSERT INTO `messagerie` (`id_mess`, `id_free`, `id_soci`, `message_free`, `message_soci`) VALUES
+(1, 8, 17, 'Bonjour ! Merci d\'avoir pris contact avec moi !', ''),
+(2, 8, 17, NULL, ' Bonjour ! Je suis le recruteur pour la Nasa ! Comment allez-vous?'),
+(8, 10, 17, NULL, 'Félicitation ! La société Nasa souhaite entrer en contact avec vous pour un éventuel contrat !'),
+(4, 9, 17, NULL, 'Félicitation ! La société Nasa souhaite entrer en contact avec vous pour un éventuel contrat !'),
+(7, 23, 17, NULL, 'Félicitation ! La société Nasa souhaite entrer en contact avec vous pour un éventuel contrat !'),
+(9, 21, 17, NULL, 'Félicitation ! La société Nasa souhaite entrer en contact avec vous pour un éventuel contrat !'),
+(13, 8, 17, 'Félicitation ! M.GRAILLE souhaite entrer en contact avec vous pour un éventuel contrat ! Celui-ci a postuler à votre offre php test', NULL),
+(15, 8, 12, 'Félicitation ! M.GRAILLE souhaite entrer en contact avec vous pour un éventuel contrat ! Celui-ci a postuler à votre offre Programmation A.I.', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `qcm`
 --
 
@@ -219,6 +247,12 @@ ALTER TABLE `mbr_society`
   ADD PRIMARY KEY (`id_soc`);
 
 --
+-- Index pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  ADD PRIMARY KEY (`id_mess`);
+
+--
 -- Index pour la table `qcm`
 --
 ALTER TABLE `qcm`
@@ -248,6 +282,11 @@ ALTER TABLE `mbr_free`
 --
 ALTER TABLE `mbr_society`
   MODIFY `id_soc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  MODIFY `id_mess` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
