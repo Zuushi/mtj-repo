@@ -1,7 +1,7 @@
 <?php 
   include_once('includes/co_bdd.php'); 
   include_once('includes/traitement_co_annonces.php');
-  if ($_SESSION['type'] == 'societe') {
+  if (isset($_SESSION['type']) AND $_SESSION['type'] == 'societe') {
     header("location: index.php");
   }
 ?>
@@ -115,13 +115,11 @@
       </div>
 
       <center><a class="btn btn-default" href="view_annonces.php">Toutes les annonces</a>&nbsp;&nbsp;<button id="btn-rech" type="submit" title="Veuillez choisir votre filtre avant de cliquer" class="btn btn-primary">Rechercher</button></center>
-
+      
 
     </div>
   </center>
   </form>
-
-
 
     <div class="hr-bleu">
       <span>

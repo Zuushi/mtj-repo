@@ -356,14 +356,13 @@ include_once('includes/traitement_co.php');
         <div class="homemenu">
             <div class="col-md-4 col-lg-4 footerblokk">
                 <div class="tittle">Services aux sociétés:</div>
-                <div><a href="/fr/corp">- freelance.com/CORP</a></div>
-                <div><a href="/fr/direct">- freelance.com/DIRECT</a></div>
-                <div><a href="/fr/interco">- freelance.com/INTERCO</a></div>
+                <div><a href="#">- freelance-sphere.com/exemple</a></div>
+
             </div>
             <div class="col-md-4 col-lg-4 footerblokk">
                 <div class="tittle">Services aux freelances:</div>
-                <div><a href="/fr/contents/vigielance">- Provigis</a></div>
-                <div><a href="/fr/contents/valor-portage-com">- Portage Salarial</a></div>
+                <div><a href="#">- Provigis</a></div>
+                <div><a href="#">- Portage Salarial</a></div>
             </div>
             <div class="col-md-4 col-lg-4 footerblokk">
                 <div class="tittle">FAQ:</div>
@@ -372,14 +371,14 @@ include_once('includes/traitement_co.php');
                     
                         
                     
-                    <a href="http://freelance-sphere.com/?">- FAQ pour les sociétés</a>
+                    <a href="#">- FAQ pour les sociétés</a>
                 </div>
                 <div>
                     
                     
                         
                     
-                    <a href="http://support.freelance.com/hc/fr/sections/200513328-Documentation-freelance">- FAQ pour les freelances</a>
+                    <a href="#">- FAQ pour les freelances</a>
                 </div>
             </div>
             <br clear="all"><br><br>
@@ -389,30 +388,30 @@ include_once('includes/traitement_co.php');
                 
                     
                 
-                <div><a href="/fr/contents/nous-contacter#headquarters">- Siège social</a></div>
+                <div><a href="#">- Siège social</a></div>
                 <div>
                     
                     
                         
                     
-                    <a href="http://support.freelance.com/hc/fr/requests/new">- Un problème technique</a>
+                    <a href="#">- Un problème technique</a>
                 </div>
-                <div><a href="/fr/contents/nous-contacter#workWithUs">- Travailler chez freelance-sphere.com</a></div>
+                <div><a href="#">- Travailler chez freelance-sphere.com</a></div>
             </div>
             <div class="col-md-4 col-lg-4 footerblokk">
-                <div class="tittle">Investisseurs:<a href="mailto:investisseurs@freelance.com" class="expose"> investisseurs@freelance-sphere.com</a></div>
+                <div class="tittle">Investisseurs:<a href="#" class="expose"> investisseurs@freelance-sphere.com</a></div>
                 <div>
                     
                     
                         
                     
-                    <a href="/fr/contents/investisseurs">- Quelques chiffres clés</a>
+                    <a href="#">- Quelques chiffres clés</a>
                 </div>
                 <div>
-                    <a href="/fr/contents/informations-reglementees">- Informations réglementées</a>
+                    <a href="#">- Informations réglementées</a>
                 </div>
                 <div>
-                    <a href="/fr/contents/espace-actionnaires">- Espace actionnaires</a>
+                    <a href="#">- Espace actionnaires</a>
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 footerblokk">
@@ -422,7 +421,7 @@ include_once('includes/traitement_co.php');
                     
                         
                     
-                    <a href="/fr/contents/a-propos-de-freelance-com">- A propos de freelance-sphere.com</a>
+                    <a href="#">- A propos de freelance-sphere.com</a>
                 </div>
                 
          
@@ -431,16 +430,16 @@ include_once('includes/traitement_co.php');
                     
                         
                     
-                    <a href="/fr/contents/l-equipe-de-direction">- Notre équipe de professionnels</a>
+                    <a href="#">- Notre équipe de professionnels</a>
                 </div>
                 <div>
                     
                     
                         
                     
-                    <a href="/fr/contents/temoignages">- Témoignages</a>
+                    <a href="#">- Témoignages</a>
                 </div>
-                <div><a href="/fr/contents/terms">- Mentions légales</a></div>
+                <div><a href="#">- Mentions légales</a></div>
             </div>
         </div>
         <br clear="all"><br><br>
