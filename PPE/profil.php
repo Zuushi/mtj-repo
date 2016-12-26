@@ -100,7 +100,7 @@
 <?php } ?>
 <?php unset($_SESSION['note']) ?>
 <center><h1><small> Informations associées à votre compte </small></h1></center>
-    <div class="container">
+    <div>
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
                 <small> Date d'inscription: <?php echo $dat_inscr ?></small>
@@ -108,14 +108,14 @@
             </div>
         </div>
           <div class="row">
-            <div class="col-md-offset-2 col-md-7">
+            <div class="col-md-offset-2 col-md-8">
                 <div class="form-group">
-                    <img style="float:right;width: 170px;height: 150px; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">
+<img class="img-responsive" style="margin-right:2px;width: 50%;height: 50%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">
                 </div>
             </div>
         </div>
           <div class="row">
-            <div class="col-md-offset-2 col-md-7">
+            <div class="col-md-offset-2 col-md-8">
                 <div class="form-group">
                 <label for="Url">Ajoutez l'url de votre photo !</label>
                     <input type="text" class="form-control" id="url" name="url" value="<?php echo $photo;?>">
@@ -123,13 +123,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-offset-2 col-md-3">
+            <div class="col-md-offset-2 col-md-4">
                 <div class="form-group">
                     <label for="Nom">Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $nom;?>">
                 </div>
             </div>
-            <div class="col-md-offset-1 col-md-3">
+            <div class="col-md-offset-0 col-md-4">
                 <div class="form-group">
                     <label for="Prenom">Prénom</label>
                     <input type="text" class="form-control" id="prenom" name="prenom" value="<?php echo $prenom;?>">
@@ -138,7 +138,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-2 col-md-7">
+            <div class="col-md-offset-2 col-md-8">
                 <div class="form-group">
                     <label for="Email">Adresse Mail</label>
                     <input type="text" class="form-control" id="email" name="mail" value="<?php echo $mail;?>">
@@ -147,7 +147,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-2 col-md-7">
+            <div class="col-md-offset-2 col-md-8">
                 <div class="form-group">
                     <label>N° Siret</label>
                     <input type="text" class="form-control" id="siret_free" name="siret_free" placeholder="Ex: 12 3466 5488 7755" value="<?php echo $siret_free ;?>">
@@ -155,13 +155,13 @@
             </div>
         </div>
         <div class="row">
-             <div class="col-md-offset-2 col-md-3">
+             <div class="col-md-offset-2 col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon glyphicon glyphicon-earphone"></span>
                     <input type="text" id="telephone" name="telephone" class="form-control" placeholder="Ex: 02 53 04 15 16" value="<?php echo $telephone ;?>" aria-describedby="basic-addon1">
                 </div>
             </div>
-            <div class="col-md-offset-1 col-md-3">
+            <div class="col-md-offset-0 col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
                     <input type="text" id="localisation" name="localisation" class="form-control" value="<?php echo $localisation ;?>" aria-describedby="basic-addon1">
@@ -169,13 +169,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-offset-2 col-md-3">
+            <div class="col-md-offset-2 col-md-4">
                 <div class="form-group"><br>
                     <label for="Password">Mot de passe</label>
                     <input type="password" oninput="MAJ1();" class="form-control" id="password" name="password" placeholder="Saisir mot de passe...">
                 </div>
             </div>
-            <div class=" col-md-3">
+            <div class=" col-md-4">
                 <div class="form-group"><br>
                     <label for="Vpassword"><span style="color: white; visibility: hidden">Vérification mot de passe</span></label>
                     <input type="button" name="Modifier" id="modif_pw" value="Modifier" class="btn btn-default">
@@ -183,13 +183,13 @@
             </div>
         </div>        
         <div id="ch_new_pass"  style="visibility: hidden;" class="row">
-            <div class="col-md-offset-2 col-md-3">
+            <div class="col-md-offset-2 col-md-4">
                 <div class="form-group">
                     <label for="Password">Nouveau mot de passe</label>
                     <input type="password" oninput="checkMdp ()" class="form-control" id="npassword" name="npassword" placeholder="Saisir le mot de passe...">
                 </div>
             </div>
-            <div class="col-md-offset-1 col-md-3">
+            <div class="col-md-offset-0 col-md-4">
                 <div class="form-group">
                     <label for="Vpassword">Vérification mot de passe</label>
                     <input type="password" oninput="checkMdp ()" class="form-control" id="nvpassword" name="nvpassword" placeholder="Saisir le mot de passe...">
@@ -212,7 +212,7 @@
       </span>
     </div>
      <form  method="post">
-    <div class="container">
+    <div>
 
         <div class="row">
 
@@ -222,13 +222,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-offset-2 col-md-3">
+            <div class="col-md-offset-2 col-md-4">
                 <div class="form-group">
                     <label for="Test">Note au test</label>
                     <input type="text" class="form-control" id="test" readonly name="test" value="<?php echo $test;?>/6">
                 </div>
             </div>
-            <div class="col-md-offset-1 col-md-3">
+            <div class="col-md-offset-0 col-md-4">
                 <div class="form-group">
                     <label for="Site Web">Site Web</label>
                     <input type="text" class="form-control" id="site" name="site" value="<?php echo $site_web;?>">
@@ -237,13 +237,13 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-2 col-md-3">
+            <div class="col-md-offset-2 col-md-4">
                 <div class="form-group">
                     <label for="Tarif">Votre tarif brut annuel</label>
                     <input type="text" class="form-control" id="tarif" name="tarif" value="<?php echo $tarif;?> €">
                 </div>
             </div>
-            <div class="col-md-offset-1 col-md-3">
+            <div class="col-md-offset-0 col-md-4">
                 <div class="form-group">
                     <label for="Langues">Langues parlées</label>
                     <input type="text" class="form-control" id="langues" name="langues" value="<?php echo $langues;?>">
@@ -252,7 +252,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-2 col-md-7">
+            <div class="col-md-offset-2 col-md-8">
                 <div class="form-group">
                     <label for="Comptences">Vos Compétences</label>
                     <textarea type="text" class="form-control" id="competences" name="competences" style="height:150px;"><?php echo $competences;?></textarea>
@@ -260,7 +260,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-offset-2 col-md-3">
+            <div class="col-md-offset-2 col-md-4">
                 <div class="form-group">
                     <label for="Password">Mot de passe</label>
                     <input type="password" class="form-control" oninput="MAJ2();" id="cpassword" name="cpassword" placeholder="Saisir mot de passe...">

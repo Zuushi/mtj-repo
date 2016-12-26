@@ -2,8 +2,8 @@
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co_annonces.php');
 
-  if ($_SESSION['id'] != $_POST['id']) {
-    if ($_SESSION['type'] == 'societe') {
+  if (isset($_SESSION['id'])) {
+    if ($_SESSION['type'] == 'societe' AND $_SESSION['id'] != $_POST['id']) {
       header("location: index.php");
     }
   }
@@ -108,11 +108,13 @@ include_once('includes/traitement_co_annonces.php');
       }
 
       if ($doublon == 0) {
+        $heure = (idate('H')+1).':'.idate('i');
         //REQUETE POUR METTRE EN CONTACT LA SOCIETE ET LE FREELANCE
-        $req = $bdd->prepare('INSERT INTO messagerie(id_free, id_soci, message_free) VALUES (:id_free, :id_soci, :message_soci)');
+        $req = $bdd->prepare('INSERT INTO messagerie(id_free, id_soci, message_free, heure_message, date_message) VALUES (:id_free, :id_soci, :message_soci, :heure_message, CURDATE())');
         $req->execute(array(
           'id_free' => $_SESSION['id'],
           'id_soci' => $_POST['id_soci'],
+          'heure_message' => $heure,
           'message_soci' => 'Félicitation ! M.'.strtoupper($_SESSION['nom']).' souhaite entrer en contact avec vous pour un éventuel contrat ! Celui-ci a postuler à votre offre '.$_POST['titre']
           )); ?>
       <center>
@@ -127,8 +129,18 @@ include_once('includes/traitement_co_annonces.php');
           <p>Vous etes déjà en contact avec cette entreprise ! Retrouvez-vos discussions onglet Profil > Mes relations !</p><br>
       </div>
       </center>
-<?php } }?>
-
+      <!-- ON VERIFIE QUE LE FREELANCE A PASSE LE TEST -->
+<?php } } if (isset($_SESSION['id']) AND $_SESSION['type'] == 'freelance' AND empty($_SESSION['test'])) {
+	$test_invalide = 1; ?>
+      <center>
+	      <div class="alert alert-danger">
+	          <p>Vous devez d'abord passer le QCM avant de pouvoir postuler aux missions</p><br>
+	          <a href="qcm.php">Faire le TEST</a>
+	      </div>
+      </center>
+<?php } else {
+ $test_invalide = 0;
+		} ?>
 
 <?php include_once('includes\modifier_mission.php');?>
     <div class="col-md-offset-2 col-md-8">
@@ -145,7 +157,7 @@ include_once('includes/traitement_co_annonces.php');
               </div>
               <div>
                 <h3><b>Lieu de mission: </b><span id="1"><?php echo $_POST['lieu'];?></span></h3>
-                <input type='text' class="form-control" style="max-width: 200px; visibility: hidden" id="11" name="lieu_modification" value="<?php echo $_POST['lieu'];?>"/>
+                <input type='text' class="form-control" style="max-width: 200px; display: none" id="11" name="lieu_modification" value="<?php echo $_POST['lieu'];?>"/>
               </div>              
                    <hr class="hr-blue">
             </div>
@@ -201,7 +213,7 @@ include_once('includes/traitement_co_annonces.php');
             <input type="hidden" name="duree" value="<?php echo $_POST ['duree'];?>">
             <div>
             <br>
-              <center><button type="submit" class="btn-choix" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE POSTULER A CETTE MISSION</button></center>
+              <center><button type="submit" id="btn-postuler" class="btn-choix" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE POSTULER A CETTE MISSION</button></center>
               <br>
               &nbsp;
             </div>
@@ -238,9 +250,19 @@ include_once('includes/traitement_co_annonces.php');
       document.getElementById('photo2').src = "<?php echo $logo ?>";
     }
   }
+  function verifQCM () {
+    var test = "<?php echo $test_invalide ?>";
+    if (test == 1) {
+      document.getElementById('btn-postuler').disabled = true;
+      document.getElementById('btn-postuler').title = 'Le boutton est désactivé ! Veuillez passer le QCM !';
+      document.getElementById("btn-postuler").style.display = "none";
+    }
+  }
+
 
 	function helloProfil () {
     Photo2();
+    verifQCM();
   }
 
   function Valider () {

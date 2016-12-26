@@ -68,7 +68,8 @@ if ($_SESSION['type'] == 'freelance') {
     </div>
     <?php include_once('includes\action.add_annonces.php'); ?>
 	<form method="post" action="">
-
+	<div class="row">
+	  <div class="col-md-offset-2 col-md-8">
 		<div class="form-group">
 			<label class="radio-inline">
 				<input type="radio" id="radio_dev" name="radio" id="inlineRadio1" value="dev"> Développement web
@@ -80,8 +81,10 @@ if ($_SESSION['type'] == 'freelance') {
 				<input type="radio" id="radio_reseau" name="radio" id="inlineRadio3" value="reseau"> Réseau
 			</label>
 		</div>
+	  </div>
+	  <div class="col-md-offset-2 col-md-8">
 		<div class="form-group">
-			<select id="list_spe" name="list_spe" style="width: 400px;" class="form-control" disabled>
+			<select id="list_spe" name="list_spe" style="" class="form-control" disabled>
 
 				<option value="defaut">Langages/Spécialités</option>
 
@@ -99,37 +102,42 @@ if ($_SESSION['type'] == 'freelance') {
 
 			</select>
 		</div>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-offset-2 col-md-8">
 		<div class="form-group">
 			
-			<input style="width: 400px;" type="text" class="form-control" id="titre" name="titre" placeholder="Titre de l'annonce">
+			<input style="" type="text" class="form-control" id="titre" name="titre" placeholder="Titre de l'annonce">
 		</div>
 		<div class="form-group">
-			<textarea style="width: 400px;" class="form-control" id="description" name="description" rows="3" placeholder="Description de l'annonce"></textarea>
+			<textarea style="" class="form-control" id="description" name="description" rows="3" placeholder="Description de l'annonce"></textarea>
 		</div>
 		<div class="form-group">
-			<textarea style="width: 400px;" class="form-control" id="competences" name="competences" rows="3" placeholder="Compétences requises"></textarea>
+			<textarea style="" class="form-control" id="competences" name="competences" rows="3" placeholder="Compétences requises"></textarea>
 		</div>
 		<div class="form-group">
 
-			<input style="width: 400px;" type="text" class="form-control" id="budget" name="budget" placeholder="Budget (en €)">
+			<input style="" type="text" class="form-control" id="budget" name="budget" placeholder="Budget (en €)">
 		</div>
 
 		<div class="form-group">
 			<label>Date de début de mission :</label><br>
-			<input style="width: 400px;" type="date" class="form-control" id="date_debut" name="date_debut" placeholder="date de début">
+			<input style="" type="date" class="form-control" id="date_debut" name="date_debut" placeholder="date de début">
 		</div>
 
 		<div class="form-group">
 
-			<input style="width: 400px;" type="text" class="form-control" id="duree" name="duree" placeholder="Durée">
+			<input style="" type="text" class="form-control" id="duree" name="duree" placeholder="Durée">
 		</div>
 
 		<div class="form-group">
 
-			<input style="width: 400px;" type="text" class="form-control" id="lieu" name="lieu" placeholder="Lieu">
+			<input style="" type="text" class="form-control" id="lieu" name="lieu" placeholder="Lieu">
 		</div>
-
-		<button style="width: 400px;" id="submit" type="submit" disabled="true" class="btn btn-primary">Poster</button><br>&nbsp;
+	</div>
+  </div>
+		<button style="" id="submit" type="submit" disabled="true" class="btn btn-primary col-md-offset-2 col-md-8">Poster</button><br>&nbsp;
 	</form>
 </center>
 </div>
