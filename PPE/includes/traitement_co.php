@@ -50,8 +50,29 @@ if (!empty($_POST))
 		header('Location: index.php');      
 	}
 
-	//SI ON EST RENTRE DANS AUCUNE DES 2 CONDI PRECEDENTES ET QUE DONC AUCUNE SESSION N'A ETE CREEE, REDIRECTION VERS ERROR
-	if(empty($_SESSION['mail_sess']))
+
+	//POUR LA TABLE ADMIN :
+
+	$req = $bdd->prepare('SELECT id_admin FROM mbr_admin WHERE pseudo = :pseudo AND password = :password');
+	$req->execute(array(
+		'pseudo' => $_POST['email'],
+		'password' => $_POST['password']
+		));
+
+	$donnees = $req->fetch();
+
+	if (!empty($donnees['id_admin']))
+
+	{	
+
+		$_SESSION['admin'] = $_POST['email'];
+		
+		header('Location: admin.php');      
+	}
+
+
+	//SI ON EST RENTRE DANS AUCUNE DES 3 CONDI PRECEDENTES ET QUE DONC AUCUNE SESSION N'A ETE CREEE, REDIRECTION VERS ERROR
+	if(empty($_SESSION['mail_sess']) AND empty($_SESSION['admin']))
 	{
 		header('Location: index.php?result=err_log');
 	}
