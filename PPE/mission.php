@@ -7,8 +7,14 @@ include_once('includes/traitement_co_annonces.php');
       header("location: index.php");
     }
   }
+  if (!isset($_SESSION['type'])) { $disabled = 1; }
 ?>
 
+<style type="text/css">
+	.btn-choix[disabled] {
+		cursor: not-allowed;
+	}
+</style>
 
 <!DOCTYPE html>
 <html>
@@ -263,6 +269,15 @@ include_once('includes/traitement_co_annonces.php');
 	function helloProfil () {
     Photo2();
     verifQCM();
+    disabled();
+  }
+
+      function disabled () {
+    var disabled = <?php echo $disabled ?>;
+    var boutton = document.getElementById('btn-postuler');
+    if (disabled == 1) {
+      boutton.disabled = true;
+    }
   }
 
   function Valider () {

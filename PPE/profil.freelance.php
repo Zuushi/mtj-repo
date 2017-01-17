@@ -2,22 +2,24 @@
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co_annonces_free.php');
 
-if ($_SESSION['type'] == 'freelance') {
-        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION FREELANCE
-        include_once('session/session_freelance.php');
-        header("location: index.php");
-        } else {
-        // ON INCLUT LE FICHIER CONTENANT TOUTE LES VARIABLES $_SESSION SOCIETE
-        include_once('session/session_societe.php');
-        }
+if (isset($_SESSION['type'])) {
+  if ($_SESSION['type'] == 'freelance') {
+          header("location: index.php");
+          }
+      }
+if (!isset($_SESSION['type'])) { $disabled = 1; }
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <?php 
   include_once('includes/header.php'); 
 ?>
+<style type="text/css">
+  .btn-choix[disabled] {
+    cursor: not-allowed;
+  }
+</style>
 
 <script type="text/javascript">
    function deco () {
@@ -48,12 +50,11 @@ if ($_SESSION['type'] == 'freelance') {
      //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
      include_once('includes\formulaire_connexion.php');
   ?>
-  <?php if ( $_SESSION['type'] == 'freelance') { ?>
+  <?php if (isset($_SESSION['type']) AND $_SESSION['type'] == 'freelance') { ?>
   <meta http-equiv="refresh" content="0; URL=index.php">
  <?php } ?>
 
 <?php
- 
         //REQUETE POUR SELECTIONNER LES INFOS DE LA SOCIETE
       	$req = $bdd->prepare('SELECT * FROM mbr_free WHERE id_free = :id_free');
         $req->execute(array(
@@ -115,11 +116,13 @@ if ($_SESSION['type'] == 'freelance') {
       }
 
       if ($doublon == 0) {
+        $heure = (idate('H')+1).':'.idate('i');
         //REQUETE POUR METTRE EN CONTACT LA SOCIETE ET LE FREELANCE
-        $req = $bdd->prepare('INSERT INTO messagerie(id_free, id_soci, message_soci) VALUES (:id_free, :id_soci, :message_soci)');
+        $req = $bdd->prepare('INSERT INTO messagerie(id_free, id_soci, message_soci, date_message, heure_message) VALUES (:id_free, :id_soci, :message_soci, CURDATE(), :heure_message)');
         $req->execute(array(
           'id_free' => $_POST['id_free'],
           'id_soci' => $_SESSION['id'],
+          'heure_message' => $heure,
           'message_soci' => 'Félicitation ! La société '.$_SESSION['raison_sociale'].' souhaite entrer en contact avec vous pour un éventuel contrat !'
           )); ?>
       <center>
@@ -143,7 +146,7 @@ if ($_SESSION['type'] == 'freelance') {
               </div>
               <div>
                 <h3><b>&nbsp;</b></h3>
-              </div>              
+              </div>
               <div>
                 <h3><b>Nom: </b><?php echo $_POST['nom'];?></h3>
                 <h3><b>Préom: </b><?php echo $_POST['prenom'];?></h3>
@@ -160,6 +163,9 @@ if ($_SESSION['type'] == 'freelance') {
               </div>
             </center>            
               <div style="margin-top:20px;border-radius: 5px; border: 1px solid #337ab7;">
+                <center><h4><b>Note au test:</b></h4><?php echo $test;?>/6</center>
+              </div>              
+              <div style="margin-top:1px;border-radius: 5px; border: 1px solid #337ab7;">
                 <center><h4><b>Compétences:</b></h4><?php echo $competences;?></center>
               </div>
               <div style="border-radius: 5px; border: 1px solid #337ab7; margin-top: 1px;">
@@ -185,7 +191,7 @@ if ($_SESSION['type'] == 'freelance') {
             <input type="hidden" name="competences" value="<?php echo $_POST ['competences'];?>">
             <input type="hidden" name="langues" value="<?php echo $_POST ['langues'];?>">
             <input type="hidden" name="site_web" value="<?php echo $_POST ['site_web'];?>">
-              <center><button type="submit" class="btn-choix" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE CONTACTER CE FREELANCE</button></center>
+              <center><button type="submit" class="btn-choix" id="bouton-contact" style="margin-left:-15px;color: white;border-radius: 5px;">JE SOUHAITE CONTACTER CE FREELANCE</button></center>
               <br>
               &nbsp;
             </div>
@@ -207,6 +213,15 @@ if ($_SESSION['type'] == 'freelance') {
 
 	function helloProfil () {
       Photo();
+      disabled();
+  }
+
+    function disabled () {
+    var disabled = <?php echo $disabled ?>;
+    var boutton = document.getElementById('bouton-contact');
+    if (disabled == 1) {
+      boutton.disabled = true;
+    }
   }
 
     window.onload = helloProfil;

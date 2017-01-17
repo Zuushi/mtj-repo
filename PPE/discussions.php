@@ -1,6 +1,10 @@
 <?php
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co_annonces.php');
+
+if (!isset($_SESSION['id'])) {
+  header("location: index.php");
+}
 ?>
 
 
@@ -39,6 +43,8 @@ include_once('includes/traitement_co_annonces.php');
      include_once('includes\formulaire_connexion.php');
 ?>
 
+
+<!-- SI L USER CONNECTE EST UNE SOCIETE -->
 <?php if ($_SESSION['type'] == 'societe') {
         //REQUETE POUR SELECTIONNER LES CONTACTS DE LA SOCIETE
         $req = $bdd->prepare('SELECT * FROM messagerie WHERE id_soci = :id_soci');
@@ -75,7 +81,6 @@ include_once('includes/traitement_co_annonces.php');
       }
 ?>
 
-<form method="post" name="modifier_mission" id="modifier_mission">
 <div class="container mise-en-page">
     <div style="background-color: #337ab7;color: white;">
       <span>
@@ -91,8 +96,8 @@ include_once('includes/traitement_co_annonces.php');
     </div>
 <?php
     while ($f < sizeof($contacts)) {
-              $reponse = $bdd->query('SELECT id_free, nom, prenom, mail, photo FROM mbr_free WHERE id_free ='.$contacts[$f]);
-      while ($donnees = $reponse->fetch()) {
+      $reponse = $bdd->query('SELECT id_free, nom, prenom, mail, localisation, photo FROM mbr_free WHERE id_free ='.$contacts[$f]);
+      if ($donnees = $reponse->fetch()) {
      echo '<ul class="annonces-focus" onclick="traitement('.$f.')">';
      if ($donnees['photo'] != "") {
        echo '<img class="img-responsive" style="width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
@@ -101,18 +106,26 @@ include_once('includes/traitement_co_annonces.php');
      }
      echo'<li><b>Nom :</b> ' .$donnees['nom']. '</li><br>
      <li><b>Prénom :</b> ' .$donnees['prenom']. '</li><br>
-     <li><b>Email :</b> ' .$donnees['mail']. '</li><br><br>
-     <form name="profil.freelance" id="profil.freelance'.$f.'" action="profil.freelance.php?" method="post">
-     <input name="id" value="'.$donnees['id_free'].'" type="hidden">
+     <li><b>Email :</b> ' .$donnees['mail']. '</li><br>
+     <li><b>Localisation :</b> ' .$donnees['localisation']. '</li><br>
+     <form name="salle" id="salle'.$f.'" action="salle.php?='.$donnees['nom'].'" method="post">
+     <input name="id_free" value="'.$donnees['id_free'].'" type="hidden">
      <input name="nom" value="'.$donnees['nom'].'" type="hidden">
      <input name="prenom" value="'.$donnees['prenom'].'" type="hidden">
      <input name="mail" value="'.$donnees['mail'].'" type="hidden">
+     <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
      </form>                   
    </ul>
    <hr class="hr-blue">';
-   }
    $f = $f + 1;
  }
+}
+
+ // SI L USER CONNECTE EST UN FREELANCE
+ // SI L USER CONNECTE EST UN FREELANCE
+ // SI L USER CONNECTE EST UN FREELANCE
+ // SI L USER CONNECTE EST UN FREELANCE
+ // SI L USER CONNECTE EST UN FREELANCE
 } else {
 
         //REQUETE POUR SELECTIONNER LES CONTACTS DU FREELANCE
@@ -150,7 +163,6 @@ include_once('includes/traitement_co_annonces.php');
       }
 ?>
 
-<form method="post" name="modifier_mission" id="modifier_mission">
 <div class="container mise-en-page">
     <div style="background-color: #337ab7;color: white;">
       <span>
@@ -177,8 +189,8 @@ include_once('includes/traitement_co_annonces.php');
      echo'<li><b>Entreprise :</b> ' .$donnees['raison_sociale']. '</li><br>
      <li><b>Recruteur :</b> ' .$donnees['recruteur']. '</li><br>
      <li><b>Email :</b> ' .$donnees['mail']. '</li><br><br>
-     <form name="profil.freelance" id="profil.freelance'.$f.'" action="profil.freelance.php?" method="post">
-     <input name="id" value="'.$donnees['id_soc'].'" type="hidden">
+     <form name="salle" id="salle'.$f.'" action="salle.php" method="post">
+     <input name="id_soci" value="'.$donnees['id_soc'].'" type="hidden">
      <input name="raison_sociale" value="'.$donnees['raison_sociale'].'" type="hidden">
      <input name="recruteur" value="'.$donnees['recruteur'].'" type="hidden">
      <input name="mail" value="'.$donnees['mail'].'" type="hidden">
@@ -196,53 +208,11 @@ include_once('includes/traitement_co_annonces.php');
 
 <script type="text/javascript">
 
-  function Photo2 () {
-    var logo = "<?php echo $logo ?>";
-    if (logo != "") {
-      document.getElementById('photo2').src = "<?php echo $logo ?>";
+  function traitement (x)
+    {
+      document.getElementById('salle'+x).submit();
+      return false;
     }
-  }
-
-	function helloProfil () {
-    Photo2();
-  }
-
-  function Valider () {
-    var btn_supprimer = document.getElementById('supprimer');
-    if (btn_supprimer.value == "VALIDER" && confirm("Modifier la Mission ?")) {
-      var modifier_mission = window.document.modifier_mission;
-          modifier_mission.submit();
-    } else if (btn_supprimer.value == "SUPPRIMER" && confirm("ATTENTION ! Supprimer la Mission ?")) {
-          var supprimer_mission = window.document.supprimer_mission;
-          supprimer_mission.submit();
-    }
-  }
-
-  function Modifier () {
-    var btn_modifier = document.getElementById('modifier');
-    var btn_supprimer = document.getElementById('supprimer');
-    var annuler;
-
-    if (btn_modifier.value == "MODIFIER") {
-      annuler = 0;
-    } else {
-      annuler = 1;
-    }
-
-    if (annuler == 0) {
-      btn_modifier.style.backgroundColor = "red";
-      btn_modifier.value = "ANNULER";    
-      btn_supprimer.style.backgroundColor = "green";
-      btn_supprimer.value = "VALIDER";
-    } else {
-      btn_modifier.style.backgroundColor = "rgb(111, 146, 179)";
-      btn_modifier.value = "MODIFIER";    
-      btn_supprimer.style.backgroundColor = "rgb(111, 146, 179)";
-      btn_supprimer.value = "SUPPRIMER";
-    }
-  }
-
-    window.onload = helloProfil;
 
 </script>
 

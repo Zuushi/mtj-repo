@@ -1,7 +1,7 @@
 <?php 
   include_once('includes/co_bdd.php'); 
   include_once('includes/traitement_co_annonces_free.php');
-  if ($_SESSION['type'] == 'freelance') {
+  if (isset($_SESSION['type']) AND $_SESSION['type'] == 'freelance') {
     header("location: index.php");
   }
 ?>
