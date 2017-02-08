@@ -4,4 +4,4 @@ session_start();
 
 session_destroy();
 
-header('Location: \PPE\recherche.php');
+header('Location: ../recherche.php');

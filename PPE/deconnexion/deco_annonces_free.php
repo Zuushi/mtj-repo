@@ -4,4 +4,4 @@ session_start();
 
 session_destroy();
 
-header('Location: \PPE\view_annonces_free.php');
+header('Location: ../view_annonces_free.php');
