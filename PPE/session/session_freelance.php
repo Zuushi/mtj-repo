@@ -14,4 +14,5 @@
               $_SESSION['nom'] = $donnees['nom'];
               $_SESSION['id'] = $donnees['id_free'];
               $_SESSION['accueil'] = $donnees['prenom'];
+              $_SESSION['test'] = $donnees['test'];
               $_SESSION['type'] = 'freelance';
