@@ -48,14 +48,14 @@ if ($_SESSION['type'] == 'freelance') {
         }  
 
      //BARRE MENU UTILISATEUR CONNECTE
-        include_once('navbar\navbar_user_connecte.php');
+        include_once('navbar/navbar_user_connecte.php');
      }
      else {
      //BARRE MENU UTILISATEUR NON CONNECTE
-        include_once('navbar\navbar_user_non_connecte.php');
+        include_once('navbar/navbar_user_non_connecte.php');
      }
      //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
-     include_once('includes\formulaire_connexion.php');
+     include_once('includes/formulaire_connexion.php');
   ?>
 
 <div class="container mise-en-page">
@@ -66,7 +66,7 @@ if ($_SESSION['type'] == 'freelance') {
         <center><h1>Ajouter une MISSION :</h1></center>
       </span>
     </div>
-    <?php include_once('includes\action.add_annonces.php'); ?>
+    <?php include_once('includes/action.add_annonces.php'); ?>
 	<form method="post" action="">
 	<div class="row">
 	  <div class="col-md-offset-2 col-md-8">

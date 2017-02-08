@@ -32,14 +32,14 @@ if (!isset($_SESSION['id'])) {
         include_once('session/session_societe.php');
         }  
      //BARRE MENU UTILISATEUR CONNECTE
-        include_once('navbar\navbar_user_connecte.php');
+        include_once('navbar/navbar_user_connecte.php');
      }
      else {
      //BARRE MENU UTILISATEUR NON CONNECTE
-        include_once('navbar\navbar_user_non_connecte.php');
+        include_once('navbar/navbar_user_non_connecte.php');
      }
      //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
-     include_once('includes\formulaire_connexion.php');
+     include_once('includes/formulaire_connexion.php');
 ?>
 
 <form method="post" name="modifier_mission" id="modifier_mission">

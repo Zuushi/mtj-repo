@@ -23,17 +23,17 @@ include_once('includes/traitement_co.php');
             }  
 
          //BARRE MENU UTILISATEUR CONNECTE
-            include_once('navbar\navbar_user_connecte.php'); 
+            include_once('navbar/navbar_user_connecte.php'); 
             if(isset($_SESSION['accueil'])) {
             ?>
             <center><div class="alert alert-info" role="alert">Bienvenue sur notre site <?php echo $_SESSION['accueil']?> !</div></center>
          <?php } } 
          else {
          //BARRE MENU UTILISATEUR NON CONNECTE
-            include_once('navbar\navbar_user_non_connecte.php');
+            include_once('navbar/navbar_user_non_connecte.php');
          }
          //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
-         include_once('includes\formulaire_connexion.php');
+         include_once('includes/formulaire_connexion.php');
 
       ?>
 
@@ -173,7 +173,7 @@ include_once('includes/traitement_co.php');
     while ($donnees = $reponse->fetch() AND $c < 3)
     {
       if ($c == 0) {
-        echo '<div class="last-annonces1" ><ul class="annonces-focus" onclick="traitement('.$c.')">
+        echo '<div class="last-annonces1" style="min-height:230px"><ul class="annonces-focus" onclick="traitement('.$c.')">
                    <li><b>Titre :</b> ' .$donnees['titre']. '</li>
                    <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
                    <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
@@ -199,7 +199,7 @@ include_once('includes/traitement_co.php');
       }
       else
       {
-        echo '<div class="last-annonces" ><ul class="annonces-focus" onclick="traitement('.$c.')">
+        echo '<div class="last-annonces" style="min-height:230px"><ul class="annonces-focus" onclick="traitement('.$c.')">
                    <li><b>Titre :</b> ' .$donnees['titre']. '</li>
                    <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
                    <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
@@ -245,7 +245,7 @@ include_once('includes/traitement_co.php');
     while ($donnees = $reponse->fetch() AND $d < 3)
     {
       if ($d == 0) {
-     echo '<div class="last-annonces1" ><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
+     echo '<div class="last-annonces1" style="min-height:230px"><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
      if ($donnees['photo'] != "") {
        echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
      } else {
@@ -277,7 +277,7 @@ include_once('includes/traitement_co.php');
       }
       else
       {
-     echo '<div class="last-annonces" ><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
+     echo '<div class="last-annonces" style="min-height:230px" ><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
      if ($donnees['photo'] != "") {
        echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
      } else {
@@ -663,7 +663,7 @@ include_once('includes/traitement_co.php');
 
     function deco () 
     {
-      window.location= "\\PPE\\deconnexion\\deco.php";
+      window.location= "./deconnexion/deco.php";
     }
 
         function traitement (x)

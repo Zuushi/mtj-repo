@@ -59,7 +59,7 @@
       } else {
         header("location: index.php");
       }
-      include_once('navbar\navbar_user_connecte.php');
+      include_once('navbar/navbar_user_connecte.php');
 ?>
 
 <!--PROFIL FREELANCE -->

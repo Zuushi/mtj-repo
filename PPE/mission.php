@@ -41,14 +41,14 @@ include_once('includes/traitement_co_annonces.php');
         include_once('session/session_societe.php');
         }  
      //BARRE MENU UTILISATEUR CONNECTE
-        include_once('navbar\navbar_user_connecte.php');
+        include_once('navbar/navbar_user_connecte.php');
      }
      else {
      //BARRE MENU UTILISATEUR NON CONNECTE
-        include_once('navbar\navbar_user_non_connecte.php');
+        include_once('navbar/navbar_user_non_connecte.php');
      }
      //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
-     include_once('includes\formulaire_connexion.php');
+     include_once('includes/formulaire_connexion.php');
 ?>
 
 <?php
@@ -148,7 +148,7 @@ include_once('includes/traitement_co_annonces.php');
  $test_invalide = 0;
 		} ?>
 
-<?php include_once('includes\modifier_mission.php');?>
+<?php include_once('includes/modifier_mission.php');?>
     <div class="col-md-offset-2 col-md-8">
         		<div class="row">
         			<div>
@@ -252,6 +252,7 @@ include_once('includes/traitement_co_annonces.php');
 
   function Photo2 () {
     var logo = "<?php echo $logo ?>";
+    console.log(logo+"yolo");
     if (logo != "") {
       document.getElementById('photo2').src = "<?php echo $logo ?>";
     }
@@ -273,12 +274,14 @@ include_once('includes/traitement_co_annonces.php');
   }
 
       function disabled () {
-    var disabled = <?php echo $disabled ?>;
+      	<?php if (!empty($disabled)) { ?> 
+    		var disabled = "<?php echo $disabled ?>";
     var boutton = document.getElementById('btn-postuler');
     if (disabled == 1) {
       boutton.disabled = true;
     }
-  }
+  <?php } ?>
+}
 
   function Valider () {
     var btn_supprimer = document.getElementById('supprimer');
