@@ -23,17 +23,17 @@ include_once('includes/traitement_co.php');
             }  
 
          //BARRE MENU UTILISATEUR CONNECTE
-            include_once('navbar/navbar_user_connecte.php'); 
+            include_once('navbar\navbar_user_connecte.php'); 
             if(isset($_SESSION['accueil'])) {
             ?>
             <center><div class="alert alert-info" role="alert">Bienvenue sur notre site <?php echo $_SESSION['accueil']?> !</div></center>
          <?php } } 
          else {
          //BARRE MENU UTILISATEUR NON CONNECTE
-            include_once('navbar/navbar_user_non_connecte.php');
+            include_once('navbar\navbar_user_non_connecte.php');
          }
          //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
-         include_once('includes/formulaire_connexion.php');
+         include_once('includes\formulaire_connexion.php');
 
       ?>
 
@@ -47,10 +47,10 @@ include_once('includes/traitement_co.php');
             </div>
             <div class="item" id="item2">
               <!-- Set the second background image using inline CSS below. -->
-              <div class="fill image-resp" style="background-image:url('img/bandeau2.png');color:white"><center><span id="slogan-2-1">DES PROFESSIONNELS<br></span><span id="slogan-2-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;À l'ECOUTE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DE VOS BESOINS</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau2.png');color:white"><center><span id="slogan-2-1">DES PROFESSIONNELS<br></span><span id="slogan-2-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;À l'ÉCOUTE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DE VOS BESOINS</span></center></div>
             </div>       
             <div class="item" id="item3">
-              <div class="fill image-resp" style="background-image:url('img/bandeau5.jpg');color:white"><center><span id="slogan-3-1">&nbsp;DES MISSIONS <br>ADAPTÉES<br></span><span id="slogan-3-2">À VOS COMPETENCES</span></center></div>
+              <div class="fill image-resp" style="background-image:url('img/bandeau5.jpg');color:white"><center><span id="slogan-3-1">&nbsp;DES MISSIONS <br>ADAPTÉES<br></span><span id="slogan-3-2">À VOS COMPÉTENCES</span></center></div>
             </div>
           </div>
 
