@@ -23,17 +23,17 @@ include_once('includes/traitement_co.php');
             }  
 
          //BARRE MENU UTILISATEUR CONNECTE
-            include_once('navbar\navbar_user_connecte.php'); 
+            include_once('navbar/navbar_user_connecte.php'); 
             if(isset($_SESSION['accueil'])) {
             ?>
             <center><div class="alert alert-info" role="alert">Bienvenue sur notre site <?php echo $_SESSION['accueil']?> !</div></center>
          <?php } } 
          else {
          //BARRE MENU UTILISATEUR NON CONNECTE
-            include_once('navbar\navbar_user_non_connecte.php');
+            include_once('navbar/navbar_user_non_connecte.php');
          }
          //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
-         include_once('includes\formulaire_connexion.php');
+         include_once('includes/formulaire_connexion.php');
 
       ?>
 

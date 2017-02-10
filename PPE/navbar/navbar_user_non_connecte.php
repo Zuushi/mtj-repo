@@ -25,7 +25,7 @@
             <div class="form-group">
               <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
               <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="index.php#guide"><B>GUIDE POUR DEMARRER</B></a></div>
+              <div class="lien-nav2"><a href="index.php#guide"><B>GUIDE POUR DÉMARRER</B></a></div>
             </div>
             	<div class="btn-nav-index">
 		          	<button type="button" class="btn btn-primary" id="btn-connexion" data-toggle="modal" data-target="#connexion">Connexion</button>

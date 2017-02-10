@@ -28,7 +28,7 @@ if ($_SESSION['type'] == 'freelance') {
             <div class="form-group">
               <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
               <div class="lien-nav2"><a href="vos.missions.freelance.php"><B>MES MISSIONS</B></a></div>
-              <div class="lien-nav2"><a href="profil.php#competences"><B>MES COMPETENCES</B></a></div>
+              <div class="lien-nav2"><a href="profil.php#competences"><B>MES COMPÉTENCES</B></a></div>
             </div>
 
             <div class="btn-nav-index">
