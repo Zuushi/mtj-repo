@@ -1,2 +1,2 @@
-# mtj-repo
-school project for freelance platform
+# Dossier dépôt du projet freelance-sphere.com
+# Projet BTS SIO SLAM
