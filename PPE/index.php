@@ -169,7 +169,7 @@ include_once('includes/traitement_co.php');
   <div>
   <?php 
   $c = 0;
-      $reponse = $bdd->query('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
+      $reponse = $bdd->query('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY id_ann DESC');
     while ($donnees = $reponse->fetch() AND $c < 3)
     {
       if ($c == 0) {
