@@ -169,7 +169,7 @@ include_once('includes/traitement_co.php');
   <div>
   <?php 
   $c = 0;
-      $reponse = $bdd->query('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY id_ann DESC');
+      $reponse = $bdd->query('SELECT id_ann, id_soci, titre, nom_soci, date_publi, date_debut, duree, salaire, description, lieu, competences FROM annonces ORDER BY date_publi DESC');
     while ($donnees = $reponse->fetch() AND $c < 3)
     {
       if ($c == 0) {
@@ -179,7 +179,7 @@ include_once('includes/traitement_co.php');
                    <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
                    <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
                    <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
-                   <li><b>Description :</b> ' .$donnees['description']. '</li>
+                   <li style="min-height:40px"><b>Description :</b> ' .$donnees['description']. '</li>
                    <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
                    <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
                    <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
@@ -205,7 +205,7 @@ include_once('includes/traitement_co.php');
                    <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
                    <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
                    <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
-                   <li><b>Description :</b> ' .$donnees['description']. '</li>
+                   <li style="min-height:40px"><b>Description :</b> ' .$donnees['description']. '</li>
                    <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
                    <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
                    <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
