@@ -66,6 +66,8 @@ if (!empty($_POST))
 	{	
 
 		$_SESSION['admin'] = $_POST['email'];
+		$_SESSION['type'] = 'admin';
+		$_SESSION['mail_sess'] = 'admin';
 		
 		header('Location: admin.php');      
 	}
