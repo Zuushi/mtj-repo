@@ -1,4 +1,6 @@
 <?php 
+session_start();
+$_SESSION['type'] = 'admin';
 include_once('includes/co_bdd.php'); 
 include_once('includes/traitement_co_annonces.php');
 ?>
@@ -31,6 +33,12 @@ include_once('includes/traitement_co_annonces.php');
 
  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+ <style type="text/css">
+   .form-horizontal {
+    position: relative;right: 5%;
+   }
+ </style>
+
 
 
 
@@ -39,165 +47,19 @@ include_once('includes/traitement_co_annonces.php');
 <!-- Corps de la page-->
 <body class="my_background bg-color-inscription">
 
- <?php
+<?php
       //BARRE MENU UTILISATEUR CONNECTE
- if (!empty($_SESSION['mail_sess'])) {
-   if ($_SESSION['type'] == 'freelance') {
-    $req = $bdd->prepare('SELECT * FROM mbr_free WHERE mail = :mail');
-    $req->execute(array(
-      'mail' => $_SESSION['mail_sess']
-      ));
-
-    $donnees = $req->fetch();
-    $_SESSION['prenom'] = $donnees['prenom'];
-    $_SESSION['id'] = $donnees['id_free'];
-  } else {
-    $req = $bdd->prepare('SELECT * FROM mbr_society WHERE mail = :mail');
-    $req->execute(array(
-      'mail' => $_SESSION['mail_sess']
-      ));
-
-    $donnees = $req->fetch();
-    $_SESSION['prenom'] = $donnees['recruteur'];
-    $_SESSION['id'] = $donnees['id_soc'];
-  }  
-  ?>
-
-
-
-  <nav class="navbar navbar-inverse">
-    <div class="container2">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span  style="font-weight: bold">Menu</span>
-        </button>
-        <div id="div-logo">
-          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
-          <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
-        </div>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <center>
-          <form class="navbar-form navbar-right" action="recherche.php" method="post">
-            <div class="form-group" id="form-index">
-              <input type="search" class="input-xl form-control bar-form" name="recherche" id="bar-index" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-            </div>
-            <div class="form-group">
-              <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
-              <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-              <div class="lien-nav2"><a href="index.php#guide"><B>GUIDE POUR DEMARRER</B></a></div>
-            </div>
-
-            <div class="btn-nav-index">
-              <button type="button" class="btn btn-primary" id="btn-deconnexion" onclick="deco()">Déconnexion</button>
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profil
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><center class="blue">&nbsp;<?php echo 'Bonjour '.$_SESSION['prenom'].'!'; ?>&nbsp;</center></li>
-                    <li><hr></li>
-                    <li><a href="profil.php"><span class="blue">Mon Profil</span></a></li>
-                    <li><a href="#"><span class="blue">Mes Relations</span></a></li>
-                    <li><a href="#"><span class="blue">Mes Contrats</span></a></li>
-                  </ul>
-                </div>
-              </div>
-            </form>
-          </center>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-    <?php
-
-  }
+      if (!empty($_SESSION['mail_sess'])) {
+         //BARRE MENU UTILISATEUR CONNECTE
+            include_once('navbar/navbar_user_connecte.php');  
+        } else {
          //BARRE MENU UTILISATEUR NON CONNECTE
-  else
-  {
-    ?>
+            include_once('navbar/navbar_user_non_connecte.php');
+         }
+         //FORMULAIRE DE CONNEXION QUI S'AFFICHE LORS DE LA CONNEXION
+         include_once('includes/formulaire_connexion.php');
 
-
-
-
-    <nav class="navbar navbar-inverse">
-      <div class="container2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span  style="font-weight: bold">Menu</span>
-          </button>
-          <div id="div-logo">
-            <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
-            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
-          </div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <center>
-            <form class="navbar-form navbar-right" action="recherche.php" method="post">
-              <div class="form-group" id="form-index">
-                <input type="search" class="input-xl form-control bar-form" id="bar-index" name="recherche" placeholder="Mots-clés..."><button type="submit" class="btn btn-primary" id="btn-search"><span class="glyphicon glyphicon-search"></span> Chercher</button> 
-              </div>
-              <div class="form-group">
-                <div class="lien-nav2"><a href="view_annonces_free.php"><B>ENGAGER UN FREELANCE</B></a></div>
-                <div class="lien-nav2"><a href="view_annonces.php"><B>CONTRAT &nbsp;DE&nbsp; MISSION</B></a></div>
-                <div class="lien-nav2"><a href="index.php#guide"><B>GUIDE POUR DEMARRER</B></a></div>
-              </div>
-              <div class="btn-nav-index">
-                <button type="button" class="btn btn-primary" id="btn-connexion" data-toggle="modal" data-target="#connexion">Connexion</button>
-                <a href="inscription.php"><button type="button" class="btn btn-primary">Créer un compte</button></a>
-              </div>
-            </form>
-          </center>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-    <?php
-  }
-
-  ?>
-  <!-- Connexion -->
-  <div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header title-color">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <center>
-            <h4 class="modal-title" id="myModalLabel">Veuillez saisir vos identifiants</h4>
-          </center>
-        </div>
-        <!-- Champ connexion-->
-
-        <form method="post" action="">
-
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-offset-2 col-md-7">
-                <div class="form-group blue">
-                  <label for="Email">Adresse Mail</label>
-                  <input type="text" class="form-control" name="email" placeholder="Entrez l'email">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-offset-2 col-md-7">
-                <div class="form-group blue">
-                  <label for="Password">Mot de passe</label>
-                  <input type="password" class="form-control" name="password" placeholder="Mot de passe">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer footer-color">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-            <button type="submit" class="btn btn-default">Connexion</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
+      ?>
   <!-- Full Page Image Background Carousel Header -->
   <?php
 
@@ -231,7 +93,7 @@ include_once('includes/traitement_co_annonces.php');
 
       <!-- GESTION ANNONCES SOCIETES -->
 
-         <button id="btn_admin" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ann_soci2" aria-expanded="false" aria-controls="collapseExample">
+<button id="btn_admin" style="min-width: 100%;margin-bottom: 1%" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ann_soci2" aria-expanded="false" aria-controls="collapseExample">
   GESTION DES ANNONCES SOCIETES
 </button>
       <div class="collapse" id="ann_soci2">
@@ -241,7 +103,8 @@ include_once('includes/traitement_co_annonces.php');
        $c = 0;
        while ($donnees = $reponse->fetch())
        {
-         echo '
+         echo '<ul class="annonces-focus">
+         <br>
 
          <form class="form-horizontal" id="form_admin" method="post" action="includes/traitement_admin.php">
 
@@ -322,7 +185,8 @@ include_once('includes/traitement_co_annonces.php');
        <input name="description" value="'.$donnees['description'].'" type="hidden">
        <input name="lieu" value="'.$donnees['lieu'].'" type="hidden">
        <input name="competences" value="'.$donnees['competences'].'" type="hidden"> 
-     </form>                   
+     </form> 
+     <br>                  
    </ul>
    <hr class="hr-blue">';
 
@@ -335,7 +199,7 @@ include_once('includes/traitement_co_annonces.php');
 
 
 <!-- GESTION PROFILS FREELANCES  -->
-  <button id="btn_admin" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ann_free" aria-expanded="false" aria-controls="collapseExample">
+  <button id="btn_admin" style="min-width: 100%;margin-top: 1%;margin-bottom: 1%" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ann_free" aria-expanded="false" aria-controls="collapseExample">
   GESTION DES PROFILS FREELANCES
 </button>
       <div class="collapse" id="ann_free">
@@ -347,6 +211,7 @@ $c = 0;
 while ($donnees = $reponse->fetch())
 {
   echo '<ul class="annonces-focus">
+  <br>
   
          <form class="form-horizontal" id="form_admin" method="post" action="includes/traitement_admin.php">
 
@@ -441,7 +306,8 @@ while ($donnees = $reponse->fetch())
    <input name="lieu" value="'.$donnees['tarif'].'" type="hidden">
    <input name="competences" value="'.$donnees['langues'].'" type="hidden"> 
    <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
- </form>                   
+ </form>  
+ <br>                 
 </ul>
 <hr class="hr-blue">';
      /*if (stristr($donnees['titre'],'java'))
@@ -507,7 +373,7 @@ while ($donnees = $reponse->fetch())
 
   function deco () 
   {
-    window.location= "deco_annonces.php";
+    window.location= "./deconnexion/deco.php";
   }
 
   function traitement (x)
