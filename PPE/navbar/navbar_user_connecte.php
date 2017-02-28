@@ -50,7 +50,7 @@ if ($_SESSION['type'] == 'freelance') {
       </div>
     </nav>
 <?php
-} else {
+} else if ($_SESSION['type'] == 'societe') {
 ?>
 <nav class="navbar navbar-inverse">
       <div class="container2">
@@ -95,5 +95,31 @@ if ($_SESSION['type'] == 'freelance') {
       </div>
     </nav>
 <?php
-}
-?>
+} else if ($_SESSION['type'] == 'admin') {
+	session_start();
+  ?>
+
+<nav class="navbar navbar-inverse">
+      <div class="container2">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span  style="font-weight: bold">Menu</span>
+          </button>
+          <div id="div-logo">
+          <a href="index.php"><img class="image-resp" src="img/FS5.png" id="logo"></a>   
+            <a class="lien-nav" href="index.php"><B>FREELANCE-SPHERE.COM</B></a>
+          </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <center>
+        	<div style="position: relative;top: 15px">
+        	  <span>Vous êtes connecté en tant qu'administrateur</span>
+              <button type="button" class="btn btn-primary" id="btn-deconnexion" onclick="deco()">Déconnexion</button>
+          </div>
+        </center>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+<?php } ?>
