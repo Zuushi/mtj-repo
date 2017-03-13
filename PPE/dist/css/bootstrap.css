@@ -5971,6 +5971,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
 .last-annonces
 {
+  min-height: 250px;
+  left: 65%;
+  position: absolute;
   width:30%;
   display: inline-block;
   border-style: solid;
@@ -5979,7 +5982,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .last-annonces1
 {
+  min-height: 250px;
   margin-left:5%;
+  width:30%;
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #466E95;
+}
+.last-annonces2
+{
+  min-height: 250px;
+  position: absolute;
   width:30%;
   display: inline-block;
   border-style: solid;
@@ -5988,6 +6002,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 .last-annonces1:hover 
+{
+    background: #C3E1FE;
+}
+.last-annonces2:hover 
 {
     background: #C3E1FE;
 }
@@ -6172,6 +6190,8 @@ margin: auto;
 }
 .annonces-focus
 {
+    position: relative;
+    top: 10px;
     margin-top: 5px;
 }
 
