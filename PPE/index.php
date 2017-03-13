@@ -326,12 +326,12 @@ include_once('includes/traitement_co.php');
 
     <div>
     <br>
-	    <center><span class="phrase-plateforme" id="les-part">Nos partenaires : &nbsp;
-	    	<img class="part" src="img/logo_part/air-logo.png">&nbsp;&nbsp;
-	    	<img class="part2" src="img/logo_part/logo-etat.png">&nbsp;&nbsp;
-	    	<img class="part2" src="img/logo_part/sophia-logo1.png">&nbsp;&nbsp;
-	    	<img class="part2" src="img/logo_part/eurocop.png">&nbsp;&nbsp;
-	    </span></center>
+<!--	    <center><span class="phrase-plateforme" id="les-part">Nos partenaires : &nbsp;-->
+<!--	    	<img class="part" src="img/logo_part/air-logo.png">&nbsp;&nbsp;-->
+<!--	    	<img class="part2" src="img/logo_part/logo-etat.png">&nbsp;&nbsp;-->
+<!--	    	<img class="part2" src="img/logo_part/sophia-logo1.png">&nbsp;&nbsp;-->
+<!--	    	<img class="part2" src="img/logo_part/eurocop.png">&nbsp;&nbsp;-->
+<!--	    </span></center>-->
         <br clear="all"><br><br>
     </div>
 </div>
