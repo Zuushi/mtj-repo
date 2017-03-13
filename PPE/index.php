@@ -1,6 +1,13 @@
 <?php
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co.php');
+
+if (isset($_SESSION['admin']) && empty($_POST)) {
+    session_destroy();
+    header('location: index.php');
+}
+
+
 ?>
 
 <!DOCTYPE html>
