@@ -1,13 +1,10 @@
 <?php
 include_once('includes/co_bdd.php');
 include_once('includes/traitement_co.php');
-
 if (isset($_SESSION['admin']) && empty($_POST)) {
     session_destroy();
     header('location: index.php');
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -180,7 +177,7 @@ if (isset($_SESSION['admin']) && empty($_POST)) {
     while ($donnees = $reponse->fetch() AND $c < 3)
     {
       if ($c == 0) {
-        echo '<div class="last-annonces1" style="min-height:230px"><ul class="annonces-focus" onclick="traitement('.$c.')">
+        echo '<div class="last-annonces1" ><ul class="annonces-focus" onclick="traitement('.$c.')">
                    <li><b>Titre :</b> ' .$donnees['titre']. '</li>
                    <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
                    <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
@@ -204,9 +201,33 @@ if (isset($_SESSION['admin']) && empty($_POST)) {
                    </form>                   
                  </ul></div>';
       }
-      else
+      else if ($c == 1)
       {
-        echo '<div class="last-annonces" style="min-height:230px"><ul class="annonces-focus" onclick="traitement('.$c.')">
+        echo '<div class="last-annonces2" ><ul class="annonces-focus" onclick="traitement('.$c.')">
+                   <li><b>Titre :</b> ' .$donnees['titre']. '</li>
+                   <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
+                   <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
+                   <li><b>Date de début :</b> ' .$donnees['date_debut']. '</li>
+                   <li><b>Budget :</b> ' .$donnees['salaire']. '€</li>
+                   <li style="min-height:40px"><b>Description :</b> ' .$donnees['description']. '</li>
+                   <li><b>Lieu :</b> ' .$donnees['lieu']. '</li>
+                   <li><b>Compétences requises :</b> ' .$donnees['competences']. '</li>
+                   <form name="mission" id="mission'.$c.'" action="mission.php?='.$donnees['titre'].'" method="post">
+                   <input name="titre" value="'.$donnees['titre'].'" type="hidden">
+                   <input name="duree" value="'.$donnees['duree'].'" type="hidden">
+                   <input name="id" value="'.$donnees['id_soci'].'" type="hidden">
+                   <input name="id_annonce" value="'.$donnees['id_ann'].'" type="hidden">
+                   <input name="entreprise" value="'.$donnees['nom_soci'].'" type="hidden">
+                   <input name="date_publication" value="'.$donnees['date_publi'].'" type="hidden">
+                   <input name="date_debut" value="'.$donnees['date_debut'].'" type="hidden">
+                   <input name="salaire" value="'.$donnees['salaire'].'" type="hidden">
+                   <input name="description" value="'.$donnees['description'].'" type="hidden">
+                   <input name="lieu" value="'.$donnees['lieu'].'" type="hidden">
+                   <input name="competences" value="'.$donnees['competences'].'" type="hidden"> 
+                   </form>                   
+                 </ul></div>';
+      } else {
+                echo '<div class="last-annonces" ><ul class="annonces-focus" onclick="traitement('.$c.')">
                    <li><b>Titre :</b> ' .$donnees['titre']. '</li>
                    <li><b>Entreprise :</b> ' .$donnees['nom_soci']. '</li>
                    <li><b>Date de publication :</b> ' .$donnees['date_publi']. '</li>
@@ -252,7 +273,7 @@ if (isset($_SESSION['admin']) && empty($_POST)) {
     while ($donnees = $reponse->fetch() AND $d < 3)
     {
       if ($d == 0) {
-     echo '<div class="last-annonces1" style="min-height:230px"><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
+     echo '<div class="last-annonces1"><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
      if ($donnees['photo'] != "") {
        echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
      } else {
@@ -282,9 +303,39 @@ if (isset($_SESSION['admin']) && empty($_POST)) {
      </form>                   
    </ul></div>';
       }
-      else
+      else if ($d == 1)
       {
-     echo '<div class="last-annonces" style="min-height:230px" ><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
+     echo '<div class="last-annonces2" ><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
+     if ($donnees['photo'] != "") {
+       echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
+     } else {
+       echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="img/default.jpg">';
+     }
+     echo'<li><b>Nom :</b> ' .$donnees['nom']. '</li>
+     <li><b>Prénom :</b> ' .$donnees['prenom']. '</li>
+     <li><b>Email :</b> ' .$donnees['mail']. '</li>
+     <li><b>Date d\'inscription :</b> ' .$donnees['date_inscr']. '</li>
+     <li><b>Compétences :</b> ' .$donnees['competences']. '</li>
+     <li><b>Site Web :</b> ' .$donnees['site_web']. '</li>
+     <li><b>Tarif :</b> ' .$donnees['tarif']. '€</li>
+     <li><b>Langues parlées :</b> ' .$donnees['langues']. '</li>
+     <li><b>Localisation :</b> ' .$donnees['localisation']. '</li>
+     <form name="profil.freelance" id="profil.freelance'.$d.'" action="profil.freelance.php?='.$donnees['competences'].'" method="post">
+     <input name="titre" value="'.$donnees['nom'].'" type="hidden">
+     <input name="id" value="'.$donnees['id_free'].'" type="hidden">
+     <input name="nom" value="'.$donnees['nom'].'" type="hidden">
+     <input name="prenom" value="'.$donnees['prenom'].'" type="hidden">
+     <input name="mail" value="'.$donnees['mail'].'" type="hidden">
+     <input name="date_inscr" value="'.$donnees['date_inscr'].'" type="hidden">
+     <input name="competences" value="'.$donnees['competences'].'" type="hidden">
+     <input name="site_web" value="'.$donnees['site_web'].'" type="hidden">
+     <input name="tarif" value="'.$donnees['tarif'].'" type="hidden">
+     <input name="langues" value="'.$donnees['langues'].'" type="hidden"> 
+     <input name="localisation" value="'.$donnees['localisation'].'" type="hidden"> 
+     </form>                   
+   </ul></div>';
+      } else {
+             echo '<div class="last-annonces"><ul class="annonces-focus" onclick="traitementFreelance('.$d.')">';
      if ($donnees['photo'] != "") {
        echo '<img class="img-responsive" style="margin-right:2px;width: 30%;height: 30%;max-width: 170px;max-height: 150px;float: right; border-radius: 5px; border: 1px solid #337ab7;" id="photo" src="'.$donnees['photo'].'">';
      } else {
