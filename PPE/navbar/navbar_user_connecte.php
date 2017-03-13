@@ -96,7 +96,7 @@ if ($_SESSION['type'] == 'freelance') {
     </nav>
 <?php
 } else if ($_SESSION['type'] == 'admin') {
-	session_start();
+	//session_start();
   ?>
 
 <nav class="navbar navbar-inverse">
