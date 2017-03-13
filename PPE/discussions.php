@@ -119,6 +119,12 @@ if (!isset($_SESSION['id'])) {
    <hr class="hr-blue">';
    $f = $f + 1;
  }
+  if ($f == 0) {
+       echo '<ul>
+       <h3>Aucun contact actuellement...</h3>            
+   </ul>
+   <hr class="hr-blue">';
+ }
 }
 
  // SI L USER CONNECTE EST UN FREELANCE
@@ -199,6 +205,12 @@ if (!isset($_SESSION['id'])) {
    <hr class="hr-blue">';
    }
    $f = $f + 1;
+ }
+  if ($f == 0) {
+       echo '<ul>
+       <h3>Aucun contact actuellement...</h3>            
+   </ul>
+   <hr class="hr-blue">';
  }
 }?>
 </div>
