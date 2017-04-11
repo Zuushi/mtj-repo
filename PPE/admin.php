@@ -46,7 +46,20 @@ include_once('includes/traitement_co_annonces.php');
 
 <!-- Corps de la page-->
 <body class="my_background bg-color-inscription">
-
+<?php if (!empty($_SESSION['success_supp_annonce']) and $_SESSION['success_supp_annonce'] == 1) { ?>
+	<div id="msg-suppression-annonce" class="alert alert-success" style="position: fixed;top: 50px; left: 45%; z-index: 1">
+		<p id="msg-suppression-annonce">Annonce supprimé avec succès !</p>
+	</div>
+<?php
+	unset($_SESSION['success_supp_annonce']);
+ } 
+  if (!empty($_SESSION['success_supp_freelance']) and $_SESSION['success_supp_freelance'] == 1) { ?>
+	<div id="msg-suppression-freelance" class="alert alert-success" style="position: fixed;top: 50px; left: 45%; z-index: 1">
+		<p id="msg-suppression-freelance">Freelance supprimé avec succès !</p>
+	</div>
+<?php
+	unset($_SESSION['success_supp_freelance']);
+ } ?>
 <?php
       //BARRE MENU UTILISATEUR CONNECTE
       if (!empty($_SESSION['mail_sess'])) {
@@ -165,11 +178,13 @@ include_once('includes/traitement_co_annonces.php');
           </div>
 
           <input type="hidden" name="id_ann" value="' .$donnees['id_ann']. '">
+          <input type="hidden" name="supprimer_annonce" id="supprimer_annonce">
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Modifier</button>
-            </div>
+              <button type="submit" class="btn btn-warning">Modifier</button>
+              <button class="btn btn-danger" onclick="return supprimerAnnonce()">Supprimer</button>
+            </div>            
           </div>
 
         </form>
@@ -286,10 +301,12 @@ while ($donnees = $reponse->fetch())
           </div>
 
           <input type="hidden" name="id_free" value="' .$donnees['id_free']. '">
+          <input type="hidden" name="supprimer_freelance" id="supprimer_freelance">
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Modifier</button>
+              <button type="submit" class="btn btn-warning">Modifier</button>
+              <button class="btn btn-danger" onclick="return supprimerFreelance()">Supprimer</button>
             </div>
           </div>
 
@@ -373,7 +390,7 @@ while ($donnees = $reponse->fetch())
 
   function deco () 
   {
-    window.location= "./deconnexion/deco.php";
+    window.location = "./deconnexion/deco.php";
   }
 
   function traitement (x)
@@ -381,6 +398,75 @@ while ($donnees = $reponse->fetch())
     document.getElementById("mission"+x).submit();
     return false;
   }
+
+  function supprimerFreelance () {
+  	if (confirm("Supprimer le freelance ?")) {
+  		document.getElementById('supprimer_freelance').value = 1;
+  	} else {
+  		document.getElementById('supprimer_freelance').value = 0;
+  		return false;
+  	}
+  }
+
+  function supprimerAnnonce () {
+  	if (confirm("Supprimer la mission ?")) {
+  		document.getElementById('supprimer_annonce').value = 1;
+  	} else {
+  		document.getElementById('supprimer_annonce').value = 0;
+  		return false;
+  	}
+  }
+    function FluffyKittenMaker(SomeNumberThing)
+    {
+    	var div = document.getElementById('msg-suppression-annonce');
+    	div.style.opacity = SomeNumberThing/100;
+    }   
+
+    function disappear (SomeNumberThing)
+    {
+    	if (document.getElementById('msg-suppression-annonce') && document.getElementById('msg-suppression-annonce').style.opacity <= 100) 
+    	{
+		    FluffyKittenMaker(SomeNumberThing);
+		    SomeNumberThing -= 0.2;
+		    window.setTimeout("disappear("+SomeNumberThing+")", 1);
+		}
+		if (document.getElementById('msg-suppression-annonce') && document.getElementById('msg-suppression-annonce').style.opacity <= 0)
+		{
+			
+			document.getElementById('msg-suppression-annonce').style.display = "none";
+		}
+    }    
+
+    function FluffyKittenFreelance(SomeNumberThing)
+    {
+    	var div = document.getElementById('msg-suppression-freelance');
+    	div.style.opacity = SomeNumberThing/100;
+    }   
+
+    function disappearFreelance (SomeNumberThing)
+    {
+    	if (document.getElementById('msg-suppression-freelance') && document.getElementById('msg-suppression-freelance').style.opacity <= 100) 
+    	{
+		    FluffyKittenFreelance(SomeNumberThing);
+		    SomeNumberThing -= 0.2;
+		    window.setTimeout("disappearFreelance("+SomeNumberThing+")", 1);
+		}
+		if (document.getElementById('msg-suppression-freelance') && document.getElementById('msg-suppression-freelance').style.opacity <= 0)
+		{
+			
+			document.getElementById('msg-suppression-freelance').style.display = "none";
+		}
+    }
+
+    function loading () {
+	    setTimeout(function(){
+	    	disappear(100);
+	    	disappearFreelance(100);
+		}, 2000);
+    }
+
+    window.onload = loading;
+
 </script>
 
     <!-- Bootstrap core JavaScript
