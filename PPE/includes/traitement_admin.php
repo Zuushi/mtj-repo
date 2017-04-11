@@ -3,7 +3,7 @@ session_start();
 include_once('co_bdd.php');
 
 // SI UNE INFO A ETE MODIF POUR LA PARTIE ANNONCES
-if (!empty($_POST['id_ann']) ) {
+if (!empty($_POST['id_ann']) and !empty($_POST['supprimer_annonce']) and $_POST['supprimer_annonce'] != 1) {
 	
 //SI CLICK SUR MODIF SANS RIEN AVOIR MODIFIER.
 if (empty($_POST['titre']) AND empty($_POST['nom_soci']) AND empty($_POST['date_publi']) AND empty($_POST['date_debut']) AND empty($_POST['salaire']) AND empty($_POST['description']) AND empty($_POST['lieu']) AND empty($_POST['competences'])) {
@@ -109,7 +109,7 @@ else
 
 
 // SI UNE INFO A ETE MODIF POUR LA PARTIE PROFILS FREE
-if (!empty($_POST['id_free']) ) {
+if (!empty($_POST['id_free']) and !empty($_POST['supprimer_freelance']) and $_POST['supprimer_freelance'] != 1) {
 	
 //SI CLICK SUR MODIF SANS RIEN AVOIR MODIFIER.
 if (empty($_POST['siret_free']) AND empty($_POST['nom']) AND empty($_POST['prenom']) AND empty($_POST['mail']) AND empty($_POST['date_inscr']) AND empty($_POST['competences']) AND empty($_POST['site_web']) AND empty($_POST['tarif']) AND empty($_POST['langues']) AND empty($_POST['localisation'])) {
@@ -236,6 +236,25 @@ else
 }
 
 } //!empty(id_free)
+
+// SUPPRESSION FREELANCE
+if (!empty($_POST['id_free']) and !empty($_POST['supprimer_freelance']) and $_POST['supprimer_freelance'] == 1) {
+		$req = $bdd->prepare('DELETE FROM mbr_free WHERE id_free = :id_free');
+		$req->execute(array(
+			'id_free' => $_POST['id_free']
+			));
+		$_SESSION['success_supp_freelance'] = 1;
+		header('Location: ../admin.php');
+}
+// SUPPRESSION MISSION
+if (!empty($_POST['id_ann']) and !empty($_POST['supprimer_annonce']) and $_POST['supprimer_annonce'] == 1) {
+		$req = $bdd->prepare('DELETE FROM annonces WHERE id_ann = :id_ann');
+		$req->execute(array(
+			'id_ann' => $_POST['id_ann']
+			));
+		$_SESSION['success_supp_annonce'] = 1;
+		header('Location: ../admin.php');
+}
 
 
 
