@@ -13,6 +13,6 @@
               $_SESSION['prenom'] = $donnees['recruteur'];
               $_SESSION['raison_sociale'] = $donnees['raison_sociale'];
               $_SESSION['id'] = $donnees['id_soc'];
-              $_SESSION['accueil'] = $donnees['recruteur'];
+              $_SESSION['accueil'] = ""+$donnees['recruteur'];
               $_SESSION['type'] = 'societe';
 ?>
