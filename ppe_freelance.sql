@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 20 Février 2017 à 17:31
+-- Généré le :  Lun 05 Juin 2017 à 12:02
 -- Version du serveur :  5.7.14
--- Version de PHP :  5.6.25
+-- Version de PHP :  7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -64,7 +64,52 @@ INSERT INTO `annonces` (`id_ann`, `titre`, `id_soci`, `nom_soci`, `date_publi`, 
 (14, 'Programmation en C', 14, 'Inside-Systems', '2016-11-17', '2016-11-24', '1 semaine', 2500, 'Amélioration de nos systèmes embarqués codé en C', 'Nice', 'Maîtrise des technologies des systèmes embarqués', 'prog', 'c', NULL),
 (15, 'Site en JavaScript', 15, 'Site Constructor', '2016-11-25', '2016-12-23', '1 mois', 3000, 'Développement d\'un site en JavaScript et PHP pour l\'un de nos clients. Vous aurez en charge la responsabilité" du projet.', 'Paris ', 'Maîtrise de JavaScript', 'dev', 'js', NULL),
 (16, 'Administrateur Securité', 16, 'Monster Networks', '2016-11-25', '2016-11-29', '2 mois', 1300, 'Administration réseau et sécurité', 'Marseille', 'Etre au courant des dernières technologies en matière d\'attaque informatique', 'reseau', 'securite', NULL),
-(44, 'C++', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 10021001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'prog', 'c++', NULL);
+(44, 'C++', 17, 'Nasa', '2016-12-21', '2016-12-16', '1 semaine', 10021001, 'Dans une galaxie lointaine, très lointaine, une entreprise recrute un développeur/programmeur PHP avec de fortes connaissances en SQL !', 'New York', 'php', 'prog', 'c++', NULL),
+(45, 'Développement application bancaire en C++', 20, 'exemples', '2017-04-11', '2017-04-28', '3 ans', 30000, 'Dans le cadre de notre restructuration d\'entreprise et de notre SI, nous souhaitons signer un contrat avec un freelance pour développer / programmer notre nouveau logiciel de paiement.', 'Ajaccio', '5 ans d\'expérience sur un poste similaire.Recommandations appréciées', 'prog', 'c++', NULL),
+(46, 'Création d\'un site e-commerce', 21, 'société', '2017-04-14', '2017-04-21', '2 ans', 0, 'Pour l\'un de nos clients, nous sommes à la recherche d\'un développeur - programmeur informatique qualifié en PHP, JavaScript principalement et ayant une expérience professionnelle de 5 ans minimum.', 'Nice', 'PHP, JavaScript', 'dev', 'php', NULL);
+
+--
+-- Déclencheurs `annonces`
+--
+DELIMITER $$
+CREATE TRIGGER `Suppression_annonces` BEFORE DELETE ON `annonces` FOR EACH ROW BEGIN
+
+INSERT INTO annonces_suppr(titre, date_publi, date_debut, duree, salaire, description, lieu, competences, cat, spe, id_soci, nom_soci) VALUES(OLD.titre, CURDATE(), OLD.date_debut, OLD.duree, OLD.salaire, OLD.description, OLD.lieu, OLD.competences, OLD.cat, OLD.spe, OLD.id_soci, OLD.nom_soci);
+
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonces_suppr`
+--
+
+CREATE TABLE `annonces_suppr` (
+  `id_ann` int(11) NOT NULL,
+  `titre` varchar(150) NOT NULL,
+  `id_soci` int(255) DEFAULT NULL,
+  `nom_soci` varchar(255) DEFAULT NULL,
+  `date_publi` date NOT NULL,
+  `date_debut` date NOT NULL,
+  `duree` varchar(50) NOT NULL,
+  `salaire` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `lieu` varchar(100) NOT NULL,
+  `competences` varchar(255) NOT NULL,
+  `cat` varchar(50) NOT NULL,
+  `spe` varchar(50) NOT NULL,
+  `id_free` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `annonces_suppr`
+--
+
+INSERT INTO `annonces_suppr` (`id_ann`, `titre`, `id_soci`, `nom_soci`, `date_publi`, `date_debut`, `duree`, `salaire`, `description`, `lieu`, `competences`, `cat`, `spe`, `id_free`) VALUES
+(1, 'gegr', 21, 'société', '2017-04-17', '2017-04-18', '47', 282, 'gerg', 'Paris', 'erg', 'prog', 'c++', NULL),
+(2, 'gs', 21, 'société', '2017-06-01', '2017-06-01', '25', 85, 'gsdfds', 'nice', 'gfdgfd', 'dev', 'php', NULL);
 
 -- --------------------------------------------------------
 
@@ -83,7 +128,7 @@ CREATE TABLE `mbr_admin` (
 --
 
 INSERT INTO `mbr_admin` (`id_admin`, `pseudo`, `password`) VALUES
-(1, 'admin', 'admin');
+(1, 'admin', 'Admin06');
 
 -- --------------------------------------------------------
 
@@ -130,7 +175,16 @@ INSERT INTO `mbr_free` (`id_free`, `siret_free`, `nom`, `prenom`, `mail`, `passw
 (19, '0', 'Bresckov', 'Roslov', 'Bresckov.Roslov@mail.ru', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-08', 1, 'Professionnel Windows 2008 Servers', 'www.bres-roslov.com', NULL, 2000, 'anglais, Russe', 'Krasnoïarsk', 'reseau', 'windows'),
 (20, '0', 'Ariani', 'Ariane', 'ariani.ariane@gmail.com', '$2y$10$erzRtkc2lzqFBnsjA4hbZeygwPPxuTN7NPWPUMlT7gHJ2rqM56QbG', '', '2016-12-08', 4, 'Développeur Ruby', 'www.armani.tom.com', NULL, 2500, 'anglais, français', 'Paris', 'web', 'a1'),
 (21, '0', 'Hermes', 'Tom', 'hermes.tom@gmail.com', '$2y$10$jlHpPNERJLFdlh6Ljr65gOKZwMTHw17dMInv829tS8ew64Gip2Ulu', '', '2016-12-18', 2, 'Professionnel Perl', 'www.hermes.tom.com', NULL, 2000, 'anglais, français', 'Nice', 'programmeur', 'a2'),
-(22, '0', 'Teves', 'Charles', 'theves.charles@gmail.com', '$2y$10$o2/cnJjw1TTaKlLKt.EB5unlKu5soPiPTjgqgr0gpoLJSb3uFPxsq', '', '2016-12-08', 6, 'Professionnel Linux Servers', 'www.theves.charles.com', NULL, 3000, 'anglais, français', 'Marseille', 'reseau', 'a3');
+(22, '0', 'Teves', 'Charles', 'theves.charles@gmail.com', '$2y$10$o2/cnJjw1TTaKlLKt.EB5unlKu5soPiPTjgqgr0gpoLJSb3uFPxsq', '', '2016-12-08', 6, 'Professionnel Linux Servers', 'www.theves.charles.com', NULL, 3000, 'anglais, français', 'Marseille', 'reseau', 'a3'),
+(26, NULL, 'Salvadore', 'Tom', 'tom.salvadore@gmail.com', '$2y$10$MKYju0x6EPTqMH17s6t.kuQhr0y7JXs7FHHf.Fh.nRFE2EaDbWbz2', NULL, '2017-03-13', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, NULL, 'Ferrara', 'Manuel', 'manu.fer@gmail.com', '$2y$10$aS1i8Ivj/DUWr5rCI9GDg.2ezQuavTh7lLsBKF5Bm7goitOK.rVQa', NULL, '2017-03-14', 4, 'Rien a signaler', '', NULL, 500000, 'Mandarin, Grec, Russe', NULL, NULL, NULL),
+(28, NULL, 'test', 'test', 'test2@test2.com', '$2y$10$QfA.MkBiCcnkiGLOAUBAOeyNxKoJaDiMiwDbNVQQQQMYHlP6zYEQG', NULL, '2017-03-19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, NULL, 'Bonnet', 'Joe', 'mail@mail.fr', '$2y$10$X8/ZUZJlz5sTDDSD0h/KEex.KULaUceCKEWGgAE9lbhOPSK93.ZLi', NULL, '2017-03-31', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, NULL, 'thoams', 'besson', 'mail@tho.fr', '$2y$10$WiutK2SNaex50mvEgJ7FueXWZjxu8eA82D4rHmaPGuN2TaYoJ0UmS', NULL, '2017-03-31', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, NULL, 'gaddouri', 'radhia', 'radhia.g@y.m', '$2y$10$VbXPhX0VUObtx5LG9dDVPuLLc2pgR2sqT6U1HLp3YXvyA4ZS2XTzu', NULL, '2017-03-31', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, NULL, 'johny', 'john', 'jona@jona.jo', '$2y$10$pW5JVIW2uO13L.87H5D/4OcLEmjibHjf/15Cogg4joPLsyeMmuD1.', NULL, '2017-04-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, NULL, 'exemple', 'exemple', 'exemple@exemple.ex', '$2y$10$Ik3NLdY9xhDbAREgavphc.KOnHZOXRVZQDqvQgS4KpmCm/oa/4tK.', NULL, '2017-04-11', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, '00 0000 0000 0000', 'Doe', '', 'freelance@freelance.fr', '$2y$10$dCf.9DM.aagEVDQl9oyuZeTAV0NnK/QaK1U7gFJVLqmlR0OQx4tvG', NULL, '2017-04-12', NULL, NULL, NULL, 'http://samuelhounkpe.com/wp-content/uploads/2016/04/freelance.jpg', NULL, NULL, 'Corse', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -159,7 +213,11 @@ CREATE TABLE `mbr_society` (
 
 INSERT INTO `mbr_society` (`id_soc`, `raison_sociale`, `siret`, `mail`, `password`, `date_inscr`, `capital`, `site_web`, `logo`, `siege_social`, `recruteur`, `caracteristiques`) VALUES
 (7, 'Gamers-World', '01 2345 6789 0124', 'gamers.worlds@gmail.com', '$2y$10$Ud7B7AAxmwLh72jmJi1FaObHyT1aKBaYMzO6Y3Awb.5N6hOxYPfsm', '2016-12-20', 12000, 'gamers.worlds.com', 'http://vignette3.wikia.nocookie.net/sf-wikia/images/1/1e/Maxis_logo.png/revision/latest?cb=20120809192031.jpg', 'Paris', 'gamers world recruteur', 'Gamers World, société fondée en 1990 est un entreprise leader sur le marché des jeux vidéo grâce à ses créations dépassant à chaque fois toute attentes !'),
-(17, 'Nasa', '123456', 'ja@ja.ja', '$2y$10$Ze/8VrL.aUkvKWWF9Pg5CuaihYbTL0H9HmaEDM55qY2hwzh7a4uVG', '2016-12-15', 0, 'lol', 'http://www.dafont.com/forum/attach/orig/5/2/524557.png', 'Floride', 'M.toutlemonde', 'un deux trois soleil');
+(17, 'Nasa', '123456', 'ja@ja.ja', '$2y$10$Ze/8VrL.aUkvKWWF9Pg5CuaihYbTL0H9HmaEDM55qY2hwzh7a4uVG', '2016-12-15', 0, 'lol', 'http://www.dafont.com/forum/attach/orig/5/2/524557.png', 'Floride', 'M.toutlemonde', 'un deux trois soleil'),
+(19, 'test', '5555', 'test@test.com', '$2y$10$wZ.E9Gxw9LnoegA.75KscOiVP1.w9dYrq4PcI70284CQj.lI6/ES6', '2017-03-13', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'exemples', '0123456789', 'exemples@exemples.ex', '$2y$10$HgK8cQlcun5xfm2zX2iapey7sfrHUlD0DmTyqzqddukD1hbydvmZq', '2017-04-11', NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'société', '012345678978', 'societe@societe.so', '$2y$10$DzklQeBIH6DSgNGd..py8.ZmCyajCcbiMHtJ0EE8/xaD2H4f5/lBi', '2017-04-12', NULL, NULL, '', '', 'Recruteur Societe', NULL),
+(22, 'testso', '0123456789', 'testso@testso.so', '$2y$10$/6QSlQZAKAghcOxgwI2mvuuyu.H/ELTHYhE.KQ2k7qi43CMtI3A6C', '2017-04-14', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -193,7 +251,24 @@ INSERT INTO `messagerie` (`id_mess`, `id_free`, `id_soci`, `message_free`, `mess
 (63, 25, NULL, NULL, 'Félicitation ! La société  souhaite entrer en contact avec vous pour un éventuel contrat !', '2017-01-17', '22:42'),
 (64, 25, NULL, NULL, 'Félicitation ! La société  souhaite entrer en contact avec vous pour un éventuel contrat !', '2017-01-17', '22:43'),
 (65, 8, 17, 'bonjour je suis revenu!', NULL, '2017-01-17', '22:47'),
-(66, 8, 17, 'Avez vous des nouvelles de notre engagement ?', NULL, '2017-02-08', '12:27');
+(66, 8, 17, 'Avez vous des nouvelles de notre engagement ?', NULL, '2017-02-08', '12:27'),
+(67, 26, 19, NULL, 'Félicitation ! La société test souhaite entrer en contact avec vous pour un éventuel contrat !', '2017-03-13', '16:48'),
+(68, 21, 19, NULL, 'Félicitation ! La société test souhaite entrer en contact avec vous pour un éventuel contrat !', '2017-03-13', '16:49'),
+(69, 26, 3, 'Félicitation ! M.SALVADORE souhaite entrer en contact avec vous pour un éventuel contrat ! Celui-ci a postuler à votre offre Programme JAVA', NULL, '2017-03-13', '17:4'),
+(70, 26, 19, 'Alors ?', NULL, '2017-03-13', '17:32'),
+(71, 26, 19, NULL, 'Oui ?', '2017-03-13', '17:33'),
+(72, 31, 17, 'Félicitation ! M.THOAMS souhaite entrer en contact avec vous pour un éventuel contrat ! Celui-ci a postuler à votre offre C++', NULL, '2017-03-31', '10:18'),
+(73, 31, 17, 'OBnjout', NULL, '2017-03-31', '10:18'),
+(74, 32, 3, 'Félicitation ! M.GADDOURI souhaite entrer en contact avec vous pour un éventuel contrat ! Celui-ci a postuler à votre offre Programme JAVA', NULL, '2017-03-31', '15:38'),
+(75, 10, 20, NULL, 'Félicitation ! La société exemples souhaite entrer en contact avec vous pour un éventuel contrat !', '2017-04-11', '15:18'),
+(76, 10, 20, NULL, 'Bonjour, comment allez vous ?', '2017-04-11', '15:18'),
+(77, 34, 20, NULL, 'Félicitation ! La société exemples souhaite entrer en contact avec vous pour un éventuel contrat !', '2017-04-11', '15:21'),
+(78, 34, 20, NULL, 'Bonjour, comment allez-vous ?', '2017-04-11', '15:21'),
+(79, 34, 20, 'Bonjour ! Très bien et vous ?', NULL, '2017-04-11', '15:22'),
+(80, 35, 21, NULL, 'Félicitation ! La société société souhaite entrer en contact avec vous pour un éventuel contrat !', '2017-04-14', '13:15'),
+(81, 35, 21, NULL, 'Bonjour, nous souhaiterions vous rencontrer très prochainement, quand seriez-vous disponible ?', '2017-04-14', '13:17'),
+(82, 35, 21, 'Bonjour, je vous propose le lundi 26 juillet à 10h au siège de la société ', NULL, '2017-04-14', '13:18'),
+(83, 35, 21, NULL, 'Super, cela nous convient parfaitement, voici notre adresse, à très bientôt ! \r\n\r\nAdresse : Bâtiment Space C, 11 Rue des Grenouillères, 06200 Nice\r\nTéléphone : 04 93 19 41 21', '2017-04-14', '13:20');
 
 -- --------------------------------------------------------
 
@@ -238,6 +313,13 @@ ALTER TABLE `annonces`
   ADD KEY `id_free` (`id_free`);
 
 --
+-- Index pour la table `annonces_suppr`
+--
+ALTER TABLE `annonces_suppr`
+  ADD PRIMARY KEY (`id_ann`),
+  ADD KEY `id_free` (`id_free`);
+
+--
 -- Index pour la table `mbr_admin`
 --
 ALTER TABLE `mbr_admin`
@@ -275,7 +357,12 @@ ALTER TABLE `qcm`
 -- AUTO_INCREMENT pour la table `annonces`
 --
 ALTER TABLE `annonces`
-  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+--
+-- AUTO_INCREMENT pour la table `annonces_suppr`
+--
+ALTER TABLE `annonces_suppr`
+  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `mbr_admin`
 --
@@ -285,17 +372,17 @@ ALTER TABLE `mbr_admin`
 -- AUTO_INCREMENT pour la table `mbr_free`
 --
 ALTER TABLE `mbr_free`
-  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_free` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT pour la table `mbr_society`
 --
 ALTER TABLE `mbr_society`
-  MODIFY `id_soc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_soc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT pour la table `messagerie`
 --
 ALTER TABLE `messagerie`
-  MODIFY `id_mess` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_mess` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
